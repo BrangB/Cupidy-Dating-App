@@ -1,0 +1,8 @@
+{
+    "navbar": {
+        "dashboard": "dashboard",
+        "about": "about",
+        "setting": "setting",
+        "landing": "landing"
+    }
+}
