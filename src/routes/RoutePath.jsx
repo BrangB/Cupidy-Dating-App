@@ -6,11 +6,13 @@ import About from '../pages/About'
 import Authentication from './Authentication'
 import Settings from '../pages/Settings'
 import Landing from '../pages/Landing'
+import SignUp from '../pages/SignUp'
 
 const RoutePath = () => {
   return (
     <Routes>
         <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<SignUp />} />
         <Route path='/dashboard' element={<Authentication>
             <Dashboard />
         </Authentication>} />

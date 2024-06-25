@@ -4,11 +4,12 @@ import RoutePath from "./routes/RoutePath"
 import { useLocation } from "react-router-dom"
 import ColorProvider from "./providers/ColorProvider";
 import LanguageProvider from "./providers/LanguageProvider";
+import './App.css'
 
 function App() {
 
   const location = useLocation();
-  const hideNavbar = location.pathname === '/login';
+  const hideNavbar = location.pathname === '/login' || location.pathname === '/signup';
 
   return (
     <div className="App w-screen h-screen overflow-hidden flex bg-primary-50 text-primary-900 duration-300">

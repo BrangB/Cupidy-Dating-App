@@ -1,25 +1,25 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useAuth } from '../providers/AuthProvider'
-import { Link, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { MdOutlineEmail } from "react-icons/md";
 import { MdLockOutline } from "react-icons/md";
 import SlideLeftMotion from '../animations/SlideLeftMotion';
-import { FaEye } from "react-icons/fa"
-import { FaEyeSlash } from "react-icons/fa";
 
-const Login = () => {
 
-  const {user, setUser} = useAuth();
 
-  const login = () => {
-    localStorage.setItem("user" ,JSON.stringify({user: "Brang"}))
-    setUser(JSON.parse(localStorage.getItem("user")))
-    return <Navigate to="/dashboard" />
-  }
 
-  const [showPassword, setShowPassword] = useState(false)
+const SignUp = () => {
 
-  if(user) return <Navigate to="/dashboard" />
+    const {user, setUser} = useAuth();
+
+    const login = () => {
+      localStorage.setItem("user" ,JSON.stringify({user: "Brang"}))
+      setUser(JSON.parse(localStorage.getItem("user")))
+      return <Navigate to="/dashboard" />
+    }
+  
+    if(user) return <Navigate to="/dashboard" />
+    
   return (
     <div className='w-full h-full flex items-center justify-center'>
       <SlideLeftMotion>
@@ -33,10 +33,7 @@ const Login = () => {
               </div>
               <div className="password flex flex-col gap-2 w-full text-primary-800">
                 <label htmlFor="password" className='flex gap-2 items-center'><MdLockOutline /> Password</label>
-                <div className="input relative">
-                  <input type={showPassword ? 'text' : "password"} id='password' placeholder='Enter your password' className='border-l-4 bg-gray-100 border-primary-400 w-full h-12 p-3 rounded-sm outline-none'/>
-                  {showPassword ? <FaEye className='absolute top-4 right-3 text-lg cursor-pointer' onClick={() => setShowPassword(!showPassword)}/> : <FaEyeSlash className='absolute top-4 right-3 text-lg cursor-pointer' onClick={() => setShowPassword(!showPassword)}/>}
-                </div>
+                <input type="password" id='password' placeholder='Enter your password' className='border-l-4 bg-gray-100 border-primary-400 w-full h-12 p-3 rounded-sm outline-none'/>
                 <p className='text-sm text-primary-600 font-medium cursor-pointer'>Forgot password?</p>
               </div>
               <button className='uppercase bg-primary-400 font-semibold hover:bg-primary-500 duration-200 flex items-center justify-center w-full h-12 text-primary-50' onClick={login}>Sign In</button>
@@ -46,7 +43,7 @@ const Login = () => {
             <h1 className=' font-bold text-xl text-primary-50'>Hello, Friends</h1>
             <p className='text-primary-50 flex items-center justify-center text-center text-sm'>Create an account and start your journey
             to find love.</p>
-            <Link to='/signup'><button className='uppercase w-28 h-10 border rounded-md border-primary-50 text-primary-50 mt-6 hover:bg-primary-50 hover:text-primary-900 duration-200 font-medium'>Sign Up</button></Link>
+            <button className='uppercase w-28 h-10 border rounded-md border-primary-50 text-primary-50 mt-6 hover:bg-primary-50 hover:text-primary-900 duration-200 font-medium'>Sign Up</button>
           </div>
         </div>
       </SlideLeftMotion>
@@ -54,4 +51,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default SignUp
