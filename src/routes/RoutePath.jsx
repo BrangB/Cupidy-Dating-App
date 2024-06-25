@@ -7,6 +7,7 @@ import Authentication from './Authentication'
 import Settings from '../pages/Settings'
 import Landing from '../pages/Landing'
 import SignUp from '../pages/SignUp'
+import PrivacyPolicy from '../pages/PrivacyPolicy'
 
 const RoutePath = () => {
   return (
@@ -16,9 +17,18 @@ const RoutePath = () => {
         <Route path='/dashboard' element={<Authentication>
             <Dashboard />
         </Authentication>} />
-        <Route path='/about' element={<About />} />
-        <Route path='/setting' element={<Settings />} />
-        <Route path='/landing' element={<Landing />} />
+        <Route path='/about' element={<Authentication>
+          <About />
+        </Authentication> }/>
+        <Route path='/' element={<Authentication>
+          <Landing />
+        </Authentication> }/>
+        <Route path='/setting' element={<Authentication>
+          <Settings />
+        </Authentication> }/>
+        <Route path='/policy' element={<Authentication>
+          <PrivacyPolicy />
+        </Authentication> }/>
     </Routes>
   )
 }

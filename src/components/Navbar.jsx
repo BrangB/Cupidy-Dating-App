@@ -11,7 +11,7 @@ const Navbar = () => {
         <Link to="/dashboard" className='capitalize'>{languageData.navbar.dashboard}</Link>
         <Link to="/about" className='capitalize'>{languageData.navbar.about}</Link>
         <Link to="/setting" className='capitalize'>{languageData.navbar.setting}</Link>
-        <Link to="/landing" className='capitalize'>{languageData.navbar.landing}</Link>
+        <Link to="/" className='capitalize'>{languageData.navbar.landing}</Link>
     </div>
   )
 }

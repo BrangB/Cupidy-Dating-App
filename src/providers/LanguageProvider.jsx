@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import englishLanguage from '../languages/en.json';
 import myanmarLanguage from '../languages/mm.json';
+import LanguageAnimation from '../animations/animateIcons/LanguageAnimation';
 
 const LanguageContext = createContext();
 
@@ -25,7 +26,7 @@ const LanguageProvider = ({ children }) => {
         }
     }, [language]);
 
-    if(loading) return <div className='w-screen h-screen absolute top-0 left-0 bg-purple-600 flex items-center justify-center'>Loading...</div>
+    if(loading) return <div className='w-screen h-screen absolute top-0 left-0 bg-primary-50 flex items-center justify-center'><LanguageAnimation /></div>
 
     return (
         <LanguageContext.Provider value={{ language, changeLanguage, languageData }}>

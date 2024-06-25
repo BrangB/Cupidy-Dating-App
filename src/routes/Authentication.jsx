@@ -7,11 +7,12 @@ const Authentication = ({children}) => {
     const {user} = useAuth();
 
     if(!user) return <Navigate to='/login' />
-  return (
-    <div>
-        {children}
-    </div>
-  )
+    
+    return (
+      <div>
+          {children}
+      </div>
+    )
 }
 
 export default Authentication

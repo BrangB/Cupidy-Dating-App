@@ -17,24 +17,22 @@
   --color-900: #752642;
   --color-950: #411020;
 
-
-
 }
 
-/* Dark Theme */
-[data-theme="contessa"] {
-  --color-50: #fbf6f5;
-  --color-100: #f6ecea;
-  --color-200: #f0dcd8;
-  --color-300: #e4c3bd;
-  --color-400: #d3a096;
-  --color-500: #ba7264;
-  --color-600: #aa6558;
-  --color-700: #8e5347;
-  --color-800: #77463d;
-  --color-900: #643f38;
-  --color-950: #351e1a;
+[data-theme="pink"]{
+  --color-50: #fdf3f4;
+  --color-100: #fbe8eb;
+  --color-200: #f6d5da;
+  --color-300: #ea9daa;
+  --color-400: #e58799;
+  --color-500: #d75c77;
+  --color-600: #c13d60;
+  --color-700: #a22e4f;
+  --color-800: #882947;
+  --color-900: #752642;
+  --color-950: #411020;
 }
+
 
 [data-theme="dark-blue"] {
   --color-50:  #1a2c32;
