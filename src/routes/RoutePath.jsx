@@ -20,15 +20,11 @@ const RoutePath = () => {
         <Route path='/about' element={<Authentication>
           <About />
         </Authentication> }/>
-        <Route path='/' element={<Authentication>
-          <Landing />
-        </Authentication> }/>
+        <Route path='/' element={<Landing />} />
         <Route path='/setting' element={<Authentication>
           <Settings />
         </Authentication> }/>
-        <Route path='/policy' element={<Authentication>
-          <PrivacyPolicy />
-        </Authentication> }/>
+        <Route path='/policy' element={<PrivacyPolicy />} />
     </Routes>
   )
 }

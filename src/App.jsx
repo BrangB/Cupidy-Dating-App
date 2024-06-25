@@ -9,7 +9,7 @@ import './App.css'
 function App() {
 
   const location = useLocation();
-  const hideNavbar = location.pathname === '/login' || location.pathname === '/signup';
+  const hideNavbar = location.pathname === '/login' || location.pathname === '/signup' || location.pathname === "/" || location.pathname === "/policy";
 
   return (
     <div className="App w-screen h-screen overflow-hidden flex bg-primary-50 text-primary-900 duration-300">
