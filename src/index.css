@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* Light Theme */
-:root {
+/* :root {
 
   --color-50: #fdf3f4;
   --color-100: #fbe8eb;
@@ -17,10 +17,46 @@
   --color-900: #752642;
   --color-950: #411020;
 
+  --color-primary: #e58799;
+  --color-primary-hover: #d75c77;
+  --color-secondary: #fdf3f4;
+  --color-secondary-hover: #fbe8eb;
+
+  --primary-text-color: #411020;
+  --secondary-text-color: #fdf3f4;
+
+} */
+
+:root{
+  --color-primary: #e58799;
+  --color-primary-hover: #d75c77;
+  --color-secondary: #fdf3f4;
+  --color-secondary-hover: #fbe8eb;
+  --color-third: #752642;
+  --color-third-hover: #fdf3f4;
+
+  /* 50 */
+  --primary-bg-color: #fdf3f4;
+  /* white */
+  --secondary-bg-color: #fff;
+  /* 400 */
+  --third-bg-color: #e58799;
+
+  /* 400 */
+  --btn-primary-color: #e58799; 
+  /* 500 */
+  --btn-primary-color-hover: #d75c77;
+
+  /* 500 */
+  --text-primary: #d75c77;
+  /* 900 */
+  --text-secondary: #752642;
+    /* 50 */
+    --text-third: #fdf3f4;
 }
 
 [data-theme="pink"]{
-  --color-50: #fdf3f4;
+  /* --color-50: #fdf3f4;
   --color-100: #fbe8eb;
   --color-200: #f6d5da;
   --color-300: #ea9daa;
@@ -30,22 +66,58 @@
   --color-700: #a22e4f;
   --color-800: #882947;
   --color-900: #752642;
-  --color-950: #411020;
+  --color-950: #411020; */
+
+  /* 50 */
+  --primary-bg-color: #fdf3f4;
+  /* white */
+  --secondary-bg-color: #fff;
+  /* 400 */
+  --third-bg-color: #e58799;
+
+  /* 400 */
+  --btn-primary-color: #e58799; 
+  /* 500 */
+  --btn-primary-color-hover: #d75c77;
+
+  /* 500 */
+  --text-primary: #d75c77;
+  /* 900 */
+  --text-secondary: #752642;
+    /* 50 */
+    --text-third: #fdf3f4;
 }
 
 
-[data-theme="dark-blue"] {
-  --color-50:  #1a2c32;
-  --color-100: #2d464c;
-  --color-200: #325158;
-  --color-300: #356169;
-  --color-400: #3b757f;
-  --color-500: #3b757f;
-  --color-600: #5faab1;
-  --color-700: #5faab1;
-  --color-800: #bfe0e2;
-  --color-900: #ddeff0;
-  --color-950: #f2f9f9;
+[data-theme="mantis"] {
+
+  /* 'mantis': {
+    '50': '#f6faf3',
+    '100': '#e9f5e3',
+    '200': '#d3eac8',
+    '300': '#afd89d',
+    '400': '#82bd69',
+    '500': '#61a146',
+    '600': '#4c8435',
+    '700': '#3d692c',
+    '800': '#345427',
+    '900': '#2b4522',
+    '950': '#13250e',
+}, */
+
+  --primary-bg-color: #f6faf3;
+  --secondary-bg-color: #fff;
+  --third-bg-color: #82bd69;
+
+  --btn-primary-color: #82bd69; 
+  --btn-primary-color-hover: #61a146;
+
+  /* 500 */
+  --text-primary: #61a146;
+  /* 900 */
+  --text-secondary: #2b4522;
+  /* 50 */
+  --text-third: #f6faf3;
 }
 
 body{
