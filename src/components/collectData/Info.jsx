@@ -6,9 +6,9 @@ import FadeCard from "../../animations/collectdata/FadeCard";
 const Info = () => {
   return (
     <FadeCard>
-        <div className="flex flex-col items-center justify-center gap-6">
+        <div className="flex flex-col items-center justify-center gap-6 p-3">
           <Welcomeinfo />
-          <h1 className="text-colortext-secondary flex w-[400px] text-center">
+          <h1 className="text-colortext-secondary flex w-full md:w-[400px] text-center">
             <p className="text-center">
             <span className="font-bold text-lg">Welcome.  </span>
               We collect data to enhance user experience. Please read <Link to={'/policy'} className="font-bold cursor-pointer">the following

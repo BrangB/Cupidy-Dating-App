@@ -7,6 +7,7 @@ import ColorProvider from './providers/ColorProvider';
 import LanguageProvider from './providers/LanguageProvider';
 
 import './App.css';
+import DetailInfoProvider from './providers/DetailInfoProvider';
 
 function App() {
   const location = useLocation();
@@ -21,16 +22,18 @@ function App() {
 
   return (
     <div className="App w-screen h-screen overflow-hidden flex bg-colorbg-primary duration-300">
+      <DetailInfoProvider>
         <ColorProvider>
-          <LanguageProvider>
-            <AuthProvider>
-              <>
-                {!hideNavbar && <Navbar />}
-                <RoutePath />
-              </>
-            </AuthProvider>
-          </LanguageProvider>
-        </ColorProvider>
+            <LanguageProvider>
+              <AuthProvider>
+                <>
+                  {!hideNavbar && <Navbar />}
+                  <RoutePath />
+                </>
+              </AuthProvider>
+            </LanguageProvider>
+          </ColorProvider>
+      </DetailInfoProvider>
     </div>
   );
 }

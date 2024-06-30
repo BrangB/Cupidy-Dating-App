@@ -10,6 +10,7 @@ import toast from 'react-hot-toast';
 import BtnLogin from '../animations/animateIcons/BtnLogin';
 import axios from 'axios';
 import { useColor } from '../providers/ColorProvider';
+import ThemeToggle from '../components/ThemeToggle';
 
 const Login = () => {
 
@@ -106,10 +107,7 @@ const Login = () => {
                     </div>
                 </div>
             </SlideLeftMotion>
-            <div className="toggleTheme absolute top-0 right-5">
-                <button onClick={() => changeTheme("pink")} className='p-2 flex items-center justify-center .bg-secondary'>Pink</button>
-                <button onClick={() => changeTheme("mantis")} className='p-2 flex items-center justify-center b.bg-secondary'>Dark Theme</button>
-            </div>
+            <ThemeToggle />
         </div>
     );
 }

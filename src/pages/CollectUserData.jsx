@@ -11,17 +11,13 @@ import Cat from '../animations/animateIcons/Cat';
 
 const CollectUserData = () => {
   return (
-    <div className='w-full flex items-center justify-center flex-col bg-[#00000013]'>
+    <div className='w-full flex items-center justify-center flex-col bg-[#1a1a1a0a]'>
       <Routes>
         <Route path='welcome' element={<Info />} />
         <Route path="main-info" element={<MainInfo />} />
         <Route path="interest" element={<Interest />} />
         <Route path="gender" element={<Gender />} />
       </Routes>
-      {/* <div className="link">
-        <Link to='/collect-data/interest'>Interest</Link>
-        <Link to='/collect-data/gender'>Gender</Link>
-      </div> */}
       <ThemeToggle />
       <Cat />
     </div>

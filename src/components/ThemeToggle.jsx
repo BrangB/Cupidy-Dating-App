@@ -3,7 +3,7 @@ import { useColor } from '../providers/ColorProvider';
 
 const ThemeToggle = () => {
     const { changeTheme } = useColor();
-    const [theme, setTheme] = useState("pink"); // Correct usage of useState
+    const [theme, setTheme] = useState(localStorage.getItem("theme") || "pink"); // Correct usage of useState
 
     useEffect(() => {
         changeTheme(theme);

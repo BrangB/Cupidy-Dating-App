@@ -1,13 +1,12 @@
 import React, { useRef, useState } from 'react';
 import { useAuth } from '../providers/AuthProvider';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { MdOutlineEmail, MdLockOutline } from "react-icons/md";
 import SlideLeftMotion from '../animations/loginAndSignup/SlideLeftMotion';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import toast from 'react-hot-toast';
 import BtnLogin from '../animations/animateIcons/BtnLogin';
 import axios from 'axios';
-import { useColor } from '../providers/ColorProvider';
 import ThemeToggle from '../components/ThemeToggle';
 
 const SignUp = () => {
@@ -26,7 +25,9 @@ const SignUp = () => {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const confirmPasswordRef = useRef(null);
-  const {changeTheme} = useColor()
+
+  const navigate = useNavigate();
+
   const handleSignup = () => {
     if (inputData.email === '') {
       toast.error('Please enter your email!');
@@ -62,7 +63,7 @@ const SignUp = () => {
               })
               localStorage.setItem("user", JSON.stringify({ user: "Brang" }))
               setUser(JSON.parse(localStorage.getItem("user")))
-              return <Navigate to="/dashboard" />
+              navigate('/collect-data/welcome')
             },
           error: (err) => {
             setLoading(false);

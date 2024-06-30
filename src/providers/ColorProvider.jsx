@@ -1,13 +1,18 @@
-import React, { createContext, useContext, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 
 const ColorContext = createContext();
 
 const ColorProvider = ({children}) => {
 
-    const [theme, setTheme] = useState("purple-heart")
+    const [theme, setTheme] = useState(localStorage.getItem("theme") || "pink")
+
+    useEffect(() => {
+      setTheme(localStorage.getItem("theme"))
+    }, [])
 
     const changeTheme = (themeName) => {
         setTheme(themeName)
+        localStorage.setItem("theme", themeName)
         document.body.setAttribute("data-theme", themeName)
     }
   return (
