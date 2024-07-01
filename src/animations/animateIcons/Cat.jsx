@@ -4,7 +4,7 @@ import cat from '../../lotties/cat.json'
 
 const Cat = () => {
     return (
-        <div style={{ width: '200px'}} className='flex items-center justify-center absolute bottom-0 right-5 md:right-32'>
+        <div className='w-[200px] flex items-center justify-center absolute -bottom-5 right-5 md:right-32'>
           <Lottie
             animationData={cat}
             className="flex justify-center items-center"

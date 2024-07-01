@@ -9,8 +9,6 @@ import Landing from '../pages/Landing';
 import SignUp from '../pages/SignUp';
 import PrivacyPolicy from '../pages/PrivacyPolicy';
 import CollectUserData from '../pages/CollectUserData';
-import Interest from '../components/collectData/Interest';
-import Gender from '../components/collectData/Gender';
 
 const RoutePath = () => {
   return (
@@ -21,10 +19,6 @@ const RoutePath = () => {
       <Route path='/about' element={<Authentication><About /></Authentication>} />
       <Route path='/' element={<Landing />} />
       <Route path='/setting' element={<Authentication><Settings /></Authentication>} />
-      {/* <Route path='/collect-data'>
-        <Route path='interest' element={<Interest />} />
-        <Route path='gender' element={<Gender />} />
-      </Route> */}
       <Route path='/collect-data/*' element={<CollectUserData />} />
       <Route path='/policy' element={<PrivacyPolicy />} />
     </Routes>
