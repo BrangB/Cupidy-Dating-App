@@ -15,7 +15,7 @@ const CollectUserData = () => {
       <Routes>
         <Route path='welcome' element={<Info />} />
         <Route path="main-info" element={<MainInfo />} />
-        <Route path="interest" element={<Interest />} />
+        <Route path="interest/*" element={<Interest />} />
         <Route path="gender" element={<Gender />} />
       </Routes>
       <ThemeToggle />
