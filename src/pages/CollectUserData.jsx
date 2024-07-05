@@ -1,13 +1,13 @@
 // CollectUserData.js
 
 import React from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Interest from '../components/collectData/Interest';
-import Gender from '../components/collectData/Gender';
 import Info from '../components/collectData/Info';
 import MainInfo from '../components/collectData/MainInfo';
 import ThemeToggle from '../components/ThemeToggle';
 import Cat from '../animations/animateIcons/Cat';
+import Zodiac from '../components/collectData/Zodiac';
 
 const CollectUserData = () => {
   return (
@@ -15,8 +15,8 @@ const CollectUserData = () => {
       <Routes>
         <Route path='welcome' element={<Info />} />
         <Route path="main-info" element={<MainInfo />} />
-        <Route path="interest/*" element={<Interest />} />
-        <Route path="gender" element={<Gender />} />
+        <Route path="interest" element={<Interest />} />
+        <Route path='zodiac' element={<Zodiac />} />
       </Routes>
       <ThemeToggle />
       <Cat/>

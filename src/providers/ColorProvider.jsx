@@ -8,6 +8,7 @@ const ColorProvider = ({children}) => {
 
     useEffect(() => {
       setTheme(localStorage.getItem("theme"))
+      changeTheme(theme)
     }, [])
 
     const changeTheme = (themeName) => {

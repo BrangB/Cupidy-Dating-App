@@ -9,7 +9,9 @@ const DetailInfoProvider = ({children}) => {
         birthdate: '',
         gender: '',
         location: null,
-        interestedIn: ''
+        interestedIn: '',
+        interests: [],
+        zodiacSign: ''
     })
 
   return (
