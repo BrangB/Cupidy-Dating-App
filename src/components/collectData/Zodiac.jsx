@@ -3,6 +3,7 @@ import FadeCard from '../../animations/collectdata/FadeCard'
 import { Link } from 'react-router-dom'
 import { useDetailInfo } from '../../providers/DetailInfoProvider'
 import aries from '../../assets/arieszodiacsign.jpg'
+import toast from 'react-hot-toast'
 
 const Zodiac = () => {
 
@@ -18,6 +19,12 @@ const Zodiac = () => {
 
     const {detailInfo, setDetailInfo} = useDetailInfo();
 
+    const handleData = () => {
+        if(detailInfo.zodiacSign == ''){
+            toast.error("Please choose your Sign.")
+        }
+    }
+
   return (
     <FadeCard>
     <div className='card w-full md:w-[700px] bg-colorbg-primary p-4 py-6 rounded-sm flex flex-col gap-8 overflow-hidden duration-200'>
@@ -29,7 +36,7 @@ const Zodiac = () => {
       <div className='flex flex-wrap gap-6 h-[400px] md:h-[300px] items-center justify-center overflow-y-scroll' style={{ scrollbarWidth: 'thin', scrollbarColor: '#4A5568 #CBD5E0', scrollbarTrackColor: '#CBD5E0' }}>
           {zodiacSigns.map((sign, index) => (
             <div key={index} className='flex flex-col items-center justify-center gap-3'>
-                <img src={aries} alt="zodiac" className={`${detailInfo.zodiacSigns == sign ? 'border-btnbg-primary border-4' : ''} w-[80px] h-[80px] md:w-[100px] md:h-[100px] rounded-full object-cover cursor-pointer duration-150`} onClick={() => setDetailInfo({...detailInfo, zodiacSigns: sign})}/>
+                <img src={aries} alt="zodiac" className={`${detailInfo.zodiacSign == sign ? 'border-btnbg-primary border-4' : ''} w-[80px] h-[80px] md:w-[100px] md:h-[100px] rounded-full object-cover cursor-pointer duration-150`} onClick={() => setDetailInfo({...detailInfo, zodiacSign: sign})}/>
                 <span
                     className='text-colortext-secondary duration-200 font-medium p-1 px-3 cursor-pointer rounded-md'
                     onClick={() => openWikipediaPage(`https://en.wikipedia.org/wiki/${sign}_(astrology)`)}
@@ -46,11 +53,9 @@ const Zodiac = () => {
         >
           Prev
         </Link>
-        <button
-                  className='bg-btnbg-primary text-colortext-third p-2 w-16 flex items-center justify-center cursor-pointer'
-              >
-                  Next
-              </button>
+        <button className='bg-btnbg-primary text-colortext-third p-2 w-16 flex items-center justify-center cursor-pointer' onClick={handleData}>
+            Next
+        </button>
       </div>
     </div>
   </FadeCard>
