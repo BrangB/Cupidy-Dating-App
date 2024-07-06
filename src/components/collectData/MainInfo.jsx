@@ -7,7 +7,6 @@ import { useDetailInfo } from '../../providers/DetailInfoProvider';
 
 const MainInfo = () => {
     const [btnLoading, setBtnLoading] = useState(false);
-    const [address, setAddress] = useState(null);
 
     const { detailInfo, setDetailInfo } = useDetailInfo();
 
@@ -30,7 +29,6 @@ const MainInfo = () => {
         fetch(geoURL)
             .then(res => res.json())
             .then(data => {
-                setAddress(data);
                 setDetailInfo({ ...detailInfo, location: data });
                 setBtnLoading(false);
             })
@@ -77,7 +75,7 @@ const MainInfo = () => {
 
     return (
         <FadeCard>
-            <div className="w-screen md:w-[400px] bg-colorbg-secondary rounded-xl p-6">
+            <div className="w-screen md:w-[450px] bg-colorbg-secondary rounded-xl p-6">
                 <div className="inputs w-full h-full flex flex-col items-center justify-between gap-4">
                     <div className="flex w-full flex-col">
                         <label htmlFor="name" className="mb-2">Full Name: </label>
@@ -130,14 +128,14 @@ const MainInfo = () => {
                     </div>
                     <div className="flex w-full gap-4 mt-3 items-center">
                         <button
-                            className='bg-btnbg-primary text-colortext-third py-2 p-3 w-36 flex items-center justify-center'
+                            className='bg-btnbg-primary text-colortext-third py-2 p-3 flex duration-200 items-center justify-center'
                             onClick={getLocation}
                         >
-                            {btnLoading ? <LocationBtn /> : 'Current Location'}
+                            {btnLoading ? <LocationBtn /> : detailInfo.location ? 'Generate Location' : 'Current Location'}
                         </button>
-                        {address && (
+                        {detailInfo.location && (
                             <p className='text-colortext-secondary'>
-                                {address.locality}, {address.city} - {address.countryName}
+                                {detailInfo.location.locality}, {detailInfo.location.city} - {detailInfo.location.countryName}
                             </p>
                         )}
                     </div>
