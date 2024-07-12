@@ -1,6 +1,7 @@
 import React from 'react'
 import { useColor } from '../providers/ColorProvider';
 import { useLanguage } from '../providers/LanguageProvider';
+import ThemeToggle from '../components/ThemeToggle';
 
 const Settings = () => {
 
@@ -8,8 +9,7 @@ const Settings = () => {
     const {changeLanguage} = useLanguage();
   return (
     <div>
-        <button onClick={() => changeTheme("pink")} className='p-2 flex items-center justify-center .bg-secondary'>Pink</button>
-        <button onClick={() => changeTheme("dark-blue")} className='p-2 flex items-center justify-center b.bg-secondary'>Dark Theme</button>
+      <ThemeToggle />
         <button onClick={() => changeLanguage("en")} className='p-2 flex items-center justify-center .bg-secondary'>EN</button>
         <button onClick={() => changeLanguage("mm")} className='p-2 flex items-center justify-center b.bg-secondary'>MM</button>
     </div>
