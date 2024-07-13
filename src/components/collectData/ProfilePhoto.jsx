@@ -12,7 +12,6 @@ const ProfilePhoto = () => {
   const handleClick = (index) => () => {
     inputRefs.current[index].current.click();
   };
-  
 
   const handleChange = async (index, event) => {
     const file = event.target.files[0];
@@ -21,38 +20,41 @@ const ProfilePhoto = () => {
       const folderName = detailInfo.fullName.replace(/\s+/g, '_');
       const fileName = `${folderName}/${index}_${Date.now()}.${file.name.split('.').pop()}`;
       console.log(fileName);
-      
-      // Upload the file to Supabase Storage
-      const { error } = await supabase.storage
-        .from('cupidyImg')
-        .upload(fileName, file);
-      
-      if (error) {
-        toast.error(`Error: ${error.message}`);
-      } else {
-        // Construct the public URL manually
-        const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-        const publicUrl = `${supabaseUrl}/storage/v1/object/public/cupidyImg/${fileName}`;
-        
-        // Update the profilePhoto array with the new URL
-        const updatedProfilePhoto = [...detailInfo.profilePhoto];
-        updatedProfilePhoto[index].url = publicUrl;
-  
-        setDetailInfo({
-          ...detailInfo,
-          profilePhoto: updatedProfilePhoto
-        });
-  
-        toast.success(`File uploaded successfully!`);
-        console.log(JSON.stringify(detailInfo))
-        // You can do something with the public URL, e.g., save it to your database or display it
-      }
+
+      toast.promise(
+        supabase.storage
+          .from('cupidyImg')
+          .upload(fileName, file)
+          .then(({ error }) => {
+            if (error) throw error;
+
+            // Construct the public URL manually
+            const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+            const publicUrl = `${supabaseUrl}/storage/v1/object/public/cupidyImg/${fileName}`;
+
+            // Update the profilePhoto array with the new URL
+            const updatedProfilePhoto = [...detailInfo.profilePhoto];
+            updatedProfilePhoto[index].url = publicUrl;
+
+            setDetailInfo({
+              ...detailInfo,
+              profilePhoto: updatedProfilePhoto
+            });
+            console.log(JSON.stringify(detailInfo));
+
+            return "File uploaded successfully!";
+          })
+          .catch((error) => {
+            throw new Error(`Error: ${error.message}`);
+          }),
+        {
+          loading: 'Uploading file...',
+          success: 'File uploaded successfully!',
+          error: 'Error uploading file.'
+        }
+      );
     }
   };
-  
-  
-  
-  
 
   return (
     <FadeCard>

@@ -3,6 +3,18 @@
         "dashboard": "dashboard",
         "about": "about",
         "setting": "setting",
-        "landing": "landing"
+        "chat": "chat"
+    },
+    "profilePage": {
+        "header": "User Profile",
+        "interests": "Interests",
+        "address": "Address",
+        "birthDate": "Date of Birth"
+    },
+    "setting": {
+        "header": "Settings",
+        "language": "Language",
+        "theme": "Theme",
+        "logout": "LogOut"
     }
 }

@@ -9,6 +9,7 @@ import Landing from '../pages/Landing';
 import SignUp from '../pages/SignUp';
 import PrivacyPolicy from '../pages/PrivacyPolicy';
 import CollectUserData from '../pages/CollectUserData';
+import Chat from '../pages/Chat';
 
 const RoutePath = () => {
   return (
@@ -16,6 +17,7 @@ const RoutePath = () => {
       <Route path='/login' element={<Login />} />
       <Route path='/signup' element={<SignUp />} />
       <Route path='/dashboard' element={<Authentication><Dashboard /></Authentication>} />
+      <Route path='/chat' element={<Authentication><Chat /></Authentication>} />
       <Route path='/about' element={<Authentication><About /></Authentication>} />
       <Route path='/' element={<Landing />} />
       <Route path='/setting' element={<Authentication><Settings /></Authentication>} />

@@ -1,7 +1,20 @@
 {
     "navbar": {
-        "dashboard": "ဒက်ရှ်ဘုတ်",
+        "dashboard": "ဒိုင်ခွက်",
         "about": "အကြောင်း",
-        "setting": "ဆက်တင်"
+        "setting": "ဆက်တင်",
+        "chat": "စကားပြော"
+    },
+    "profilePage": {
+        "header": "အသုံးပြုသူ ပရိုဖိုင်",
+        "interests": "စိတ်ဝင်စားမှုများ",
+        "address": "လိပ်စာ",
+        "birthDate": "မွေးသက္ကရာဇ်"
+    },
+    "setting": {
+        "header": "ဆက်တင်များ",
+        "language": "ဘာသာစကား",
+        "theme": "အပြောင်းအလဲ",
+        "logout": "အကောင့်ထွက်ရန်"
     }
 }
