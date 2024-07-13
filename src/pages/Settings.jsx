@@ -3,10 +3,13 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '../providers/LanguageProvider';
 import SettingTheme from '../components/SettingTheme';
 import { FiLogOut } from "react-icons/fi";
+import { Navigate } from 'react-router-dom'
+import { useAuth } from '../providers/AuthProvider';
 
 const Settings = () => {
 
     const {changeLanguage, languageData} = useLanguage();
+    const {setUser} = useAuth();
 
     const logout = () => {
       localStorage.removeItem("user")
