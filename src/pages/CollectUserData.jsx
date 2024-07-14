@@ -13,7 +13,7 @@ import ProfilePhoto from '../components/collectData/ProfilePhoto';
 
 const CollectUserData = () => {
   return (
-    <div className='w-full relative flex items-center justify-center flex-col bg-[#1a1a1a0a]'>
+    <div className='w-full h-full relative flex items-center justify-center flex-col bg-[#1a1a1a0a]'>
       <Routes>
         <Route path='welcome' element={<Info />} />
         <Route path="main-info" element={<MainInfo />} />

@@ -13,7 +13,6 @@ const SettingTheme = () => {
     const handleThemeChange = (color) => {
         setTheme(color); // Update theme based on selection
     };
-
   return (
     <div className="themes flex gap-6">
         <div className="pink flex gap-2 cursor-pointer" onClick={() => handleThemeChange("pink")}>
@@ -23,6 +22,10 @@ const SettingTheme = () => {
         <div className="mantis flex gap-2 cursor-pointer" onClick={() => handleThemeChange("mantis")}>
             <div className="mantisColor bg-[#82bd69] w-7 h-7"></div>
             <span className='italic'>Mantis</span>
+        </div>
+        <div className="mantis flex gap-2 cursor-pointer" onClick={() => handleThemeChange("purple-heart")}>
+            <div className="mantisColor bg-[#9f75ff] w-7 h-7"></div>
+            <span className='italic'>Purple Heart</span>
         </div>
     </div>
   )

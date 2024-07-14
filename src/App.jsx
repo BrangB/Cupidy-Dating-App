@@ -1,11 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import AuthProvider from "./providers/AuthProvider";
 import Navbar from "./components/Navbar";
 import RoutePath from "./routes/RoutePath";
-import ColorProvider from "./providers/ColorProvider";
-import LanguageProvider from "./providers/LanguageProvider";
-import DetailInfoProvider from "./providers/DetailInfoProvider";
 import { IoMdMenu, IoMdClose, IoMdSettings } from "react-icons/io";
 import { useLanguage } from "./providers/LanguageProvider";
 
@@ -33,11 +29,11 @@ function App() {
   return (
     <div className="App w-screen h-screen overflow-hidden flex bg-colorbg-primary duration-300">
       {!hideNavbar && <Navbar />}
-      <div className="w-full md:w-[85%]">
+      <div className={`w-full`}>
         <RoutePath />
       </div>
       <div
-        className="menu absolute top-6 right-6 flex md:hidden items-center justify-center bg-btnbg-primary text-colortext-third p-2 rounded-full cursor-pointer z-50"
+        className={`menu absolute top-6 right-6 flex md:hidden items-center justify-center ${isMobileMenuOpen ? "text-colortext-primary bg-colortext-third" : "bg-btnbg-primary text-colortext-third"} p-2 rounded-full cursor-pointer z-50`}
         onClick={toggleMobileMenu}
       >
         {isMobileMenuOpen ? (
