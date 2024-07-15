@@ -5,6 +5,7 @@ import RoutePath from "./routes/RoutePath";
 import MobileMenu from "./components/MobileMenu";
 
 import "./App.css";
+import BottomMenu from "./components/BottomMenu";
 
 function App() {
   const location = useLocation();
@@ -26,7 +27,8 @@ function App() {
       <div className={`w-full h-full `}>
         <RoutePath />
       </div>
-      {!hideNavbar && <MobileMenu />}
+      {/* {!hideNavbar && <MobileMenu />} */}
+      {!hideNavbar && <BottomMenu />}
     </div>
   );
 }

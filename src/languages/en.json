@@ -3,7 +3,8 @@
         "dashboard": "dashboard",
         "about": "about",
         "setting": "setting",
-        "chat": "chat"
+        "chat": "chat",
+        "userProfile": "User Profile"
     },
     "profilePage": {
         "header": "User Profile",

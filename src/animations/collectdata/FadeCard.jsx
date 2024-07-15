@@ -7,7 +7,7 @@ const FadeCard = ({ children }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ type: 'spring', duration: 2 }}
-      className='fade-card w-full flex items-center justify-center flex-col'
+      className='fade-card w-full h-full flex items-center justify-center flex-col'
     >
       {children}
     </motion.div>

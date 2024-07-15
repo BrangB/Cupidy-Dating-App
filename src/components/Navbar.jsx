@@ -13,6 +13,7 @@ const Navbar = () => {
           <Link to="/dashboard" className='capitalize'>{languageData.navbar.dashboard}</Link>
           <Link to="/chat" className='capitalize'>{languageData.navbar.chat}</Link>
           <Link to="/about" className='capitalize'>{languageData.navbar.about}</Link>
+          <Link to="/userProfile" className='capitalize'>{languageData.navbar.userProfile}</Link>
         </div>
         <Link to="/setting" className='capitalize w-full flex p-2 bg-white text-colortext-primary justify-center items-center gap-3 rounded-sm'>
           <IoMdSettings  className='flex items-center justify-center'/>

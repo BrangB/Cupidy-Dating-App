@@ -10,6 +10,7 @@ import SignUp from '../pages/SignUp';
 import PrivacyPolicy from '../pages/PrivacyPolicy';
 import CollectUserData from '../pages/CollectUserData';
 import Chat from '../pages/Chat';
+import UserProfile from '../pages/UserProfile';
 
 const RoutePath = () => {
   return (
@@ -23,6 +24,7 @@ const RoutePath = () => {
       <Route path='/setting' element={<Authentication><Settings /></Authentication>} />
       <Route path='/collect-data/*' element={<CollectUserData />} />
       <Route path='/policy' element={<PrivacyPolicy />} />
+      <Route path='/userProfile' element={<UserProfile />} />
     </Routes>
   );
 };

@@ -40,6 +40,7 @@ const MobileMenu = () => {
                 <Link to="/about" className="capitalize" onClick={toggleMobileMenu}>
                 {languageData.navbar.about}
                 </Link>
+                <Link to="/userProfile" className='capitalize'>{languageData.navbar.userProfile}</Link>
                 <Link
                 to="/setting"
                 className="capitalize w-full flex p-2 bg-white text-colortext-primary justify-center items-center gap-3 rounded-sm"
