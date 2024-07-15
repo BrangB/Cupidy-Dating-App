@@ -27,7 +27,7 @@ function App() {
       <div className={`w-full h-full `}>
         <RoutePath />
       </div>
-      {/* {!hideNavbar && <MobileMenu />} */}
+      {!hideNavbar && <MobileMenu />}
       {!hideNavbar && <BottomMenu />}
     </div>
   );
