@@ -3,6 +3,7 @@ import { useDetailInfo } from '../../providers/DetailInfoProvider';
 import FadeCard from '../../animations/collectdata/FadeCard';
 import { Link, useNavigate } from 'react-router-dom';
 import ISTJ from '../../assets/mbti/ISTJ.png';
+import testing from '../../assets/mbti/ENFJ.svg'
 import ISFJ from '../../assets/mbti/ISFJ.png';
 import INFJ from '../../assets/mbti/INFJ.png';
 import INTJ from '../../assets/mbti/INTJ.png';
@@ -22,7 +23,7 @@ import ENTJ from '../../assets/mbti/ENTJ.png';
 const Mbti = () => {
 
     const mbtiTypes = [
-      { value: 'ISTJ', label: 'ISTJ - The Inspector', img: ISTJ },
+      { value: 'ISTJ', label: 'ISTJ - The Inspector', img: testing },
       { value: 'ISFJ', label: 'ISFJ - The Protector', img: ISFJ },
       { value: 'INFJ', label: 'INFJ - The Advocate', img: INFJ },
       { value: 'INTJ', label: 'INTJ - The Architect', img: INTJ },
