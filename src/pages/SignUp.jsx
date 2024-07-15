@@ -7,7 +7,6 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import toast from 'react-hot-toast';
 import BtnLogin from '../animations/animateIcons/BtnLogin';
 import axios from 'axios';
-import ThemeToggle from '../components/ThemeToggle';
 
 const SignUp = () => {
   const { user, setUser } = useAuth();
@@ -87,11 +86,14 @@ const SignUp = () => {
   if (user) return <Navigate to="/dashboard" />
 
   return (
-    <div className='w-full h-full flex items-center justify-center'>
       <SlideLeftMotion>
-        <div className='card w-full md:w-[700px] md:h-[530px] bg-colorbg-secondary flex items-center justify-center rounded-tl-[40px] rounded-tr-[40px] md:rounded-[50px] overflow-hidden'>
-          <div className="left w-full md:w-7/12 h-full flex items-center justify-center p-4">
-            <div className="form flex flex-col w-full p-10 items-center justify-center gap-6">
+        <div className='card w-full md:w-[700px] h-full md:h-[560px] bg-colorbg-secondary flex flex-col md:flex-row items-center justify-center rounded-none md:rounded-[50px] overflow-hidden'>
+          <div className="header  uppercase flex md:hidden text-colortext-secondary font-bold text-[30px] flex-col items-center justify-center gap-6">
+            <div className="logo bg-colorbg-third text-colortext-third flex rounded-full w-[80px] h-[80px] items-center justify-center font-bold italic text-[60px]">C</div>
+            <h1 >Sign Up</h1>
+          </div>
+          <div className="left w-full md:w-7/12 h-auto md:h-full flex items-center justify-center p-4">
+            <div className="form flex flex-col w-full h-full p-8  items-center justify-center gap-6">
               <h1 className='uppercase hidden md:flex text-colortext-primary text-xl font-semibold'>Sign Up</h1>
               <div className="inputs flex flex-col gap-6 md:gap-4 w-full text-colortext-secondary">
                 <div className="email flex flex-col gap-2 md:gap-4 w-full ">
@@ -118,7 +120,7 @@ const SignUp = () => {
                 </div>
               </div>
               <button className='uppercase bg-btnbg-primary font-semibold hover:bg-btnbg-hover duration-200 flex items-center justify-center w-full h-12 text-secondary' onClick={handleSignup}>{loading ? <BtnLogin /> : "Register"}</button>
-              <p className='block md:hidden'>Already have an account? <Link to={'/login'} className='font-semibold text-primary'>Log In</Link></p>
+              <p className='block md:hidden'>Already have an account? <Link to={'/login'} className='font-semibold text-colortext-primary'>Log In</Link></p>
             </div>
           </div>
           <div className="right w-6/12 bg-colorbg-third duration-300 h-full rounded-tl-[150px] rounded-bl-[100px] hidden md:flex flex-col items-center justify-center p-6 gap-3">
@@ -128,8 +130,6 @@ const SignUp = () => {
           </div>
         </div>
       </SlideLeftMotion>
-      <ThemeToggle />
-    </div>
   );
 }
 
