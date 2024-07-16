@@ -12,6 +12,7 @@ const Navbar = () => {
         <div className="mainLink flex flex-col gap-4 items-center justify-center">
           <Link to="/dashboard" className='capitalize'>{languageData.navbar.dashboard}</Link>
           <Link to="/chat" className='capitalize'>{languageData.navbar.chat}</Link>
+          <Link to="/match" className='capitalize'>{languageData.navbar.match}</Link>
           <Link to="/about" className='capitalize'>{languageData.navbar.about}</Link>
           <Link to="/userProfile" className='capitalize'>{languageData.navbar.userProfile}</Link>
         </div>
