@@ -4,7 +4,8 @@
         "about": "about",
         "setting": "setting",
         "chat": "chat",
-        "userProfile": "User Profile"
+        "userProfile": "User Profile",
+        "match": "Match"
     },
     "profilePage": {
         "header": "User Profile",

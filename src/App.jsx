@@ -22,12 +22,12 @@ function App() {
 
 
   return (
-    <div className="App w-screen h-screen overflow-hidden flex bg-colorbg-primary duration-300">
+    <div className="App w-screen h-screen overflow-hidden flex bg-colorbg-primary relative duration-300 z-10">
       {!hideNavbar && <Navbar />}
       <div className={`w-full h-full `}>
         <RoutePath />
       </div>
-      {!hideNavbar && <MobileMenu />}
+      {/* {!hideNavbar && <MobileMenu />} */}
       {!hideNavbar && <BottomMenu />}
     </div>
   );
