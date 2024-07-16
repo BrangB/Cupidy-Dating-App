@@ -17,8 +17,9 @@ const BottomMenu = () => {
     <div className="w-full h-[80px] bg-white fixed bottom-0 flex md:hidden items-center justify-end gap-3 rounded-t-3xl p-6">
       <div
         className={`overlay w-screen h-screen bg-[#69696921] fixed top-0 left-0 ${
-          openMenu ? "opacity-100 z-30" : "opacity-0 z-0"
-        } duration-500 pointer-events-none backdrop-blur-sm`}
+          openMenu ? "opacity-100 z-30 " : "opacity-0 z-0 pointer-events-none"
+        } duration-500 backdrop-blur-sm`}
+        onClick={() => setOpenMenu(!openMenu)}
       ></div>
       <Link
         to="/match"

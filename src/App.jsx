@@ -24,7 +24,7 @@ function App() {
   return (
     <div className="App w-screen h-screen overflow-hidden flex bg-colorbg-primary relative duration-300 z-10">
       {!hideNavbar && <Navbar />}
-      <div className={`w-full h-full `}>
+      <div className={`w-full h-full overflow-hidden overflow-y-scroll`}>
         <RoutePath />
       </div>
       {/* {!hideNavbar && <MobileMenu />} */}
