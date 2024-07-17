@@ -157,6 +157,10 @@
   --text-third: #f6faf3;
 }
 
+html{
+  scroll-behavior: smooth;
+}
+
 body{
   /* font-family: "Lato", sans-serif; */
   font-family: "Roboto", sans-serif;
@@ -180,4 +184,19 @@ body{
   transform: scale(0.9);
   transition: opacity 300ms, transform 300ms;
 }
+
+/* Define the keyframes for the shake animation */
+@keyframes shake {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(20deg); }
+  75% { transform: rotate(-20deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* Apply the animation to the desired element */
+.shake {
+  animation: shake .8s ease-in-out;
+  /* You can adjust the duration and easing function as needed */
+}
+
 

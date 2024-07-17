@@ -44,11 +44,15 @@ const Match = () => {
 
   return (
     <MatchTransition>
-      <div className="card w-[80%] min-h-[500px] relative flex items-center justify-center ">
+      <div className="card w-[80%] min-h-[500px] relative flex items-center justify-center">
         {visibleProfiles.map((profile, index) => (
-          <div 
-            key={profile.id} 
-            className={`img w-full md:w-[250px] h-[300px] rounded-3xl overflow-hidden absolute top-12 left-0 scale-90 hover:scale-100 duration-200 cursor-pointer z-${40 - index * 10} shadow-xl ${index === 0 ? '' : `rotate-${index * 6}`}`}
+          <div
+            key={profile.id}
+            className={`img w-full md:w-[250px] h-[300px] rounded-3xl overflow-hidden absolute top-12 left-0 scale-90 hover:scale-100 duration-700 cursor-pointer shadow-xl`}
+            style={{
+              zIndex: 30 - index * 10,
+              transform: `rotate(${index * 6}deg)`
+            }}
             onClick={() => handleProfileClick(profile.id)}
           >
             <img src={profile.img} alt="profile" className='w-full h-full object-cover' />
@@ -72,7 +76,6 @@ const Match = () => {
         ))}
       </div>
     </MatchTransition>
-
   );
 };
 

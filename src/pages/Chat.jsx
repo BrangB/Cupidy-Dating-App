@@ -14,7 +14,7 @@ const Chat = () => {
         initial={{ y: '-100px' }}
         animate={{ y: 0 }}
         transition={{ duration: .5 }}
-      className='w-full flex items-center justify-center p-2 font-bold bg-btnbg-primary text-colortext-third italic text-xl'
+      className='w-full flex md:hidden items-center justify-center p-2 font-bold bg-btnbg-primary text-colortext-third italic text-xl'
       >
         Cupidy
       </motion.div>
