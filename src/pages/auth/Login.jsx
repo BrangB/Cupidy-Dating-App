@@ -1,13 +1,13 @@
 import React, { useRef, useState } from 'react'
-import { useAuth } from '../providers/AuthProvider'
+import { useAuth } from '../../providers/AuthProvider'
 import { Link, Navigate } from 'react-router-dom';
 import { MdOutlineEmail } from "react-icons/md";
 import { MdLockOutline } from "react-icons/md";
-import SlideLeftMotion from '../animations/loginAndSignup/SlideLeftMotion';
+import SlideLeftMotion from '../../animations/loginAndSignup/SlideLeftMotion';
 import { FaEye } from "react-icons/fa"
 import { FaEyeSlash } from "react-icons/fa";
 import toast from 'react-hot-toast';
-import BtnLogin from '../animations/animateIcons/BtnLogin';
+import BtnLogin from '../../animations/animateIcons/BtnLogin';
 import axios from 'axios';
 
 const Login = () => {
@@ -98,7 +98,7 @@ const Login = () => {
                                         <input type={showPassword ? 'text' : "password"} id='password' placeholder='Enter your password' className='border-l-4 bg-gray-100 border-btnbg-primary w-full h-14 md:h-12 p-3 rounded-sm outline-none' onChange={(e) => setInputData({ ...inputData, password: e.target.value })} />
                                         {showPassword ? <FaEye className='absolute top-4 right-3 text-lg cursor-pointer' onClick={() => setShowPassword(!showPassword)} /> : <FaEyeSlash className='absolute top-4 right-3 text-lg cursor-pointer' onClick={() => setShowPassword(!showPassword)} />}
                                     </div>
-                                    <p className='text-sm text-btnbg-primary font-medium cursor-pointer'>Forgot password?</p>
+                                    <Link to={'/forgetpassword'} className='text-sm text-btnbg-primary font-medium cursor-pointer'>Forgot password?</Link>
                                 </div>
                             </div>
                             <button className='uppercase bg-btnbg-primary font-semibold hover:bg-btnbg-hover duration-200 flex items-center justify-center w-full h-12 text-secondary' onClick={handleLogin}>{loading ? <BtnLogin /> : "Sign In"}</button>

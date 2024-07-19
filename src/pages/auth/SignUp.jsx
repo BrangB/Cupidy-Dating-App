@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react';
-import { useAuth } from '../providers/AuthProvider';
+import { useAuth } from '../../providers/AuthProvider';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { MdOutlineEmail, MdLockOutline } from "react-icons/md";
-import SlideLeftMotion from '../animations/loginAndSignup/SlideLeftMotion';
+import SlideLeftMotion from '../../animations/loginAndSignup/SlideLeftMotion';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import toast from 'react-hot-toast';
-import BtnLogin from '../animations/animateIcons/BtnLogin';
+import BtnLogin from '../../animations/animateIcons/BtnLogin';
 import axios from 'axios';
 
 const SignUp = () => {

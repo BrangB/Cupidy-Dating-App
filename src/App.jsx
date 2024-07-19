@@ -12,7 +12,7 @@ function App() {
 
   // Use useMemo to memoize the result and avoid unnecessary calculations
   const hideNavbar = useMemo(() => {
-    const pathsToHideNavbar = ["/login", "/signup", "/", "/policy"];
+    const pathsToHideNavbar = ["/login", "/signup", "/", "/policy", '/forgetpassword', '/resetpassword'];
     const pathsToPrefixHideNavbar = ["/collect-data"];
     return (
       pathsToHideNavbar.includes(location.pathname) ||
