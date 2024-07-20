@@ -112,50 +112,53 @@ const BottomMenu = () => {
             } duration-1000`}
           />
         </Link>
-        <div
-          className={`capitalize ${openMenu ? 'scale-100' : 'scale-0'} duration-300 w-14 h-14 z-50 rounded-full relative bg-btnbg-primary flex items-center justify-center`}
-          onClick={() => setShowAbout(!showAbout)}
-        >
+        <div className="w-14 h-14 relative">
+          <Link
+          to={'/about'}
+            className={`capitalize ${openMenu ? 'scale-100' : 'scale-0'} duration-300  z-50 rounded-full w-full h-full bg-btnbg-primary flex items-center justify-center`}
+            onClick={() => setShowAbout(!showAbout)}
+          >
+            <RiTeamFill
+              className={`text-white text-2xl ${
+                openMenu ? "scale-100" : "scale-50"
+              } duration-1000`}
+            />
+          </Link>
           <div className={`subMenu ${showAbout ? ' opacity-100 translate-x-20' : 'overflow-hidden opacity-0 translate-x-12'} h-full rounded-3xl z-10 duration-300 flex gap-3 items-center justify-end absolute top-0 left-0`}>
-            <Link
-            to={'/about'}
-            className={`capitalize w-12 h-12 z-50 ${showAbout ? 'rotate-0 scale-100' : 'rotate-180 scale-0'} duration-1000 rounded-full relative bg-btnbg-primary flex items-center justify-center`}
-            onClick={closeAllMenu}
-          >
-            <FaGlobe
-              className={`text-white text-xl ${
-                openMenu ? "rotate-0" : "rotate-0"
-              } duration-1000`}
-            />
-            </Link>
-            <a
-            href='#fraud'
-            className={`capitalize w-12 h-12 z-50 ${showAbout ? 'rotate-0 scale-100' : 'rotate-180 scale-0'} duration-1000 rounded-full relative bg-btnbg-primary flex items-center justify-center`}
-            onClick={closeAllMenu}
-          >
-            <MdOutlineSecurity
-              className={`text-white text-xl ${
-                openMenu ? "rotate-0" : "rotate-0"
-              } duration-1000`}
-            />
-            </a>
-            <a
-            href='#illegal'
-            className={`capitalize w-12 h-12 z-50 ${showAbout ? 'rotate-0 scale-100' : 'rotate-180 scale-0'} duration-1000 rounded-full relative bg-btnbg-primary flex items-center justify-center`}
-            onClick={closeAllMenu}
-          >
-            <FaQuestionCircle
-              className={`text-white text-xl ${
-                openMenu ? "rotate-0" : "rotate-0"
-              } duration-1000`}
-            />
-            </a>
-          </div>
-          <RiTeamFill
-            className={`text-white text-2xl ${
-              openMenu ? "scale-100" : "scale-50"
-            } duration-1000`}
-          />
+              <a
+              href="#purpose"
+              className={`capitalize w-12 h-12 z-50 ${showAbout ? 'rotate-0 scale-100' : 'rotate-180 scale-0'} duration-1000 rounded-full relative bg-btnbg-primary flex items-center justify-center`}
+              onClick={closeAllMenu}
+            >
+              <FaGlobe
+                className={`text-white text-xl ${
+                  openMenu ? "rotate-0" : "rotate-0"
+                } duration-1000`}
+              />
+              </a>
+              <a
+              href='#safety'
+              className={`capitalize w-12 h-12 z-50 ${showAbout ? 'rotate-0 scale-100' : 'rotate-180 scale-0'} duration-1000 rounded-full relative bg-btnbg-primary flex items-center justify-center`}
+              onClick={closeAllMenu}
+            >
+              <MdOutlineSecurity
+                className={`text-white text-xl ${
+                  openMenu ? "rotate-0" : "rotate-0"
+                } duration-1000`}
+              />
+              </a>
+              <a
+              href='#faq'
+              className={`capitalize w-12 h-12 z-50 ${showAbout ? 'rotate-0 scale-100' : 'rotate-180 scale-0'} duration-1000 rounded-full relative bg-btnbg-primary flex items-center justify-center`}
+              onClick={closeAllMenu}
+            >
+              <FaQuestionCircle
+                className={`text-white text-xl ${
+                  openMenu ? "rotate-0" : "rotate-0"
+                } duration-1000`}
+              />
+              </a>
+            </div>
         </div>
       </div>
       <Link

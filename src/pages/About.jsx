@@ -1,209 +1,195 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React from 'react';
+import { motion } from 'framer-motion';
 
 const About = () => {
-  return(
+  return (
     <motion.div
-      initial={{opacity: 0 }}
-        animate={{opacity: 1}}
-        transition={{duration: .9}}
-        className='container mx-auto px-6 py-8'
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.9 }}
+      className="w-full mx-auto px-6 py-8"
     >
-      <h1 className="text-5xl font-bold mb-4">Cupidy Privacy Policy Center</h1>
+      <div className="about-page flex flex-col gap-6">
+        <header className="about-header">
+          <h1 className="text-3xl font-bold text-colortext-primary">Cupidy - Find Your Perfect Match</h1>
+          <p className="tagline text-gray-600 italic">"Where Hearts Connect!"</p>
+        </header>
 
-      <p className="text-gray-700 mb-4">
-        Welcome to Cupidy Privacy Policy (“Policy”)! This explains how we
-        collect, store, protect and share your information, and with whom we
-        share it. We suggest you read this in conjunction with our Terms and
-        Conditions of Use.
-      </p>
+        <section className="app-purpose" id='purpose'>
+          <h2 className="text-xl text-colortext-primary font-semibold">App Purpose</h2>
+          <div className="mission-statement p-4">
+            <h3 className="text-lg font-semibold">Mission Statement</h3>
+            <p>
+              At Cupidy, our mission is to bring people together to form genuine and lasting relationships. 
+              Whether you're searching for love, companionship, or friendship, Cupidy is the platform that helps you find your perfect match.
+            </p>
+          </div>
+          <div className="goals p-4">
+            <h3 className="text-lg font-semibold">Goals</h3>
+            <ul className="px-6 list-disc">
+              <li><span className="font-semibold text-colortext-primary">Create - </span> a safe and welcoming space for users to meet and interact.</li>
+              <li><span className="font-semibold text-colortext-primary">Utilize - </span> cutting-edge technology to provide accurate and meaningful matches.</li>
+              <li><span className="font-semibold text-colortext-primary">Offer - </span> a variety of interactive features to enhance the user experience.</li>
+              <li><span className="font-semibold text-colortext-primary">Foster - </span> a community where users can connect and grow together.</li>
+            </ul>
+          </div>
+        </section>
 
-      <h2 className="text-2xl font-bold mb-2" >Our Commitment</h2>
-      <p className="text-gray-700 mb-4">
-        We take the safety, security and well-being of our users very seriously.
-        As the world’s most popular app for meeting new people, we take pride in
-        connecting millions of people every day. While a relatively small
-        percentage of these matches have led to users falling victim to criminal
-        activity, we firmly believe any incident of misconduct or criminal
-        behavior is one too many.
-      </p>
-      <p className="text-gray-700 mb-4">
-        We are continuously exploring new updates, partnerships and technologies
-        to enhance and inform our safety efforts while fostering a respectful
-        environment for meeting new people.Our goalremains the same: a safe and
-        positive experience for users on our platform.
-      </p>
+        <section className="features-overview flex flex-col gap-6">
+          <h2 className="text-xl font-semibold text-colortext-primary">Features</h2>
+          <div className="features p-4">
+            <h3 className="text-lg font-semibold">Overview of Features</h3>
+            <ul className="px-4 list-disc">
+              <li>Smart Matching Algorithm: Our advanced algorithm matches you with users who share your interests and values.</li>
+              <li>Secure Chat: Private messaging to help you get to know your matches better.</li>
+              <li>Customizable Profiles: Showcase your personality and preferences.</li>
+              <li>Advanced Search Filters: Find potential matches based on location, age, interests, and more.</li>
+            </ul>
+          </div>
+        </section>
 
-      <h2 className="text-2xl font-bold mb-2">Our Safety Tools</h2>
+        <section className="how-it-works flex flex-col gap-6">
+          <h2 className="text-xl font-semibold text-colortext-primary">How It Works</h2>
+          <ol className="px-6 list-decimal">
+            <li><strong className="text-colortext-primary">Sign Up:</strong> Create an account quickly using your email or social media.</li>
+            <li><strong className="text-colortext-primary">Build Your Profile:</strong> Add details about yourself and what you're looking for.</li>
+            <li><strong className="text-colortext-primary">Find Matches:</strong> Browse profiles and use our matching algorithm to find the best matches.</li>
+            <li><strong className="text-colortext-primary">Chat and Connect:</strong> Start conversations with your matches.</li>
+          </ol>
+        </section>
 
-      <p className="text-gray-700 mb-4">
-        We utilize a network of industry-leading automated and manual moderation
-        and review tools, systems and processes - and invest significant
-        resources - to prevent, monitor and remove inappropriate behavior
-        (impersonation, harassment and more) from our app.
-      </p>
-      <p className="text-gray-700 mb-4">
-        These tools include automatic scans of profiles for red-flag language
-        and images; manual reviews of suspicious profiles, activity, and user
-        generated reports; shadow-banning suspicious accounts; as well as
-        blocking of email addresses, phone numbers, IP addresses and other
-        identifiers associated with bad actors.
-      </p>
-      <p className="text-gray-700 mb-4">
-        We have a zero-tolerance policy on harassment and encourage our
-        community to report any instance of misconduct and/or anyone who
-        violates our Community Guidelines or Terms of Use, via the
-        self-reporting tool featured on all Cupidy profiles or by contacting our
-        team online. In the event that we receive such a report, our dedicated
-        community team takes appropriate measures, which may include removing
-        the content, banning the user, or notifying the appropriate law
-        enforcement resources.
-      </p>
-      <p className="text-gray-700 mb-4">
-        We are constantly evaluating and refining our processes, and will always
-        work with law enforcement, where possible, to protect our users.
-      </p>
+        <section className="get-started-planning" id='planning'>
+          <h2 className="text-xl text-colortext-primary font-semibold">Get Started & Planning</h2>
+          <div className="sdlc px-4 p-2">
+            <h3 className="text-lg font-semibold">SDLC: Agile Model</h3>
+            <p>
+              We follow the Agile development model, which allows us to continuously improve and quickly deliver new features. 
+              Our development is divided into four iterations:
+            </p>
+            <div className="iterations p-4">
+              <div className="iteration mb-4">
+                <h4 className="text-lg font-semibold">First Iteration:</h4>
+                <ul className="list-disc pl-4">
+                  <li>Implement Login, Sign-in, and Sign-up functionalities.</li>
+                  <li>Collect user data and create user profiles.</li>
+                  <li>Develop matching algorithms to connect users based on their preferences.</li>
+                </ul>
+              </div>
+              <div className="iteration mb-4">
+                <h4 className="text-lg font-semibold">Second Iteration:</h4>
+                <ul className="list-disc pl-4">
+                  <li>Create the Admin Dashboard for better management.</li>
+                  <li>Implement other mini features to enhance user experience.</li>
+                </ul>
+              </div>
+              <div className="iteration mb-4">
+                <h4 className="text-lg font-semibold">Third Iteration:</h4>
+                <ul className="list-disc pl-4">
+                  <li>Develop the Chatting Workspace to enable users to communicate with each other.</li>
+                </ul>
+              </div>
+              <div className="iteration mb-4">
+                <h4 className="text-lg font-semibold">Fourth Iteration:</h4>
+                <ul className="list-disc pl-4">
+                  <li>Set up Website Settings.</li>
+                  <li>Create the About Us page.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
 
-      <h2 className="text-2xl font-bold mb-2">
-        Response to Reports of Assault
-      </h2>
+        <section className="safety-privacy" id='safety'>
+          <h2 className="text-xl text-colortext-primary font-semibold">Safety and Privacy</h2>
+          <div className="safety-tips p-4">
+            <h3 className="text-lg font-semibold">Safety Tips</h3>
+            <ul className="list-disc pl-4">
+              <li>Do not share personal information like your home address or financial details.</li>
+              <li>Always meet in public places for your initial dates.</li>
+              <li>Trust your instincts and report any suspicious behavior.</li>
+            </ul>
+          </div>
+          <div className="privacy-policy p-4">
+            <h3 className="text-lg font-semibold">Privacy Policy</h3>
+            <p>
+              At Cupidy, your privacy is our priority. We are committed to safeguarding your personal data. 
+              <a href="/privacy-policy" className="text-colortext-primary underline">Read our full Privacy Policy here.</a>
+            </p>
+          </div>
+        </section>
 
-      <p className="text-gray-700 mb-4">
-        Cupidy users can easily report instances of abuse or assault in-app or
-        online. We strongly encourage any user who believes they have been a
-        victim of a crime to report it to law enforcement. Our team works to
-        promptly investigate reported crimes, assess and take appropriate
-        action, and fully cooperates with law enforcement in any investigation.
-      </p>
-      <p className="text-gray-700 mb-4">
-        When a user reports an assault to Tinder, we attempt to identify the
-        alleged perpetrator and block the associated account. The incident is
-        then reported to Match Group’s centralized safety repository and checked
-        across our various brands to see if the user has other accounts on other
-        platforms. If any are found, they are blocked as well.
-      </p>
+        <section className="team" id='team'>
+          <h2 className="text-xl text-colortext-primary font-semibold">Meet the Cupidy Team</h2>
+          <div className="team-members p-4">
+            <div className="member mb-4">
+              <h3 className="text-lg font-semibold">Moe Yan: Project Manager</h3>
+              <p>Leading the project with expertise and vision, ensuring everything runs smoothly.</p>
+            </div>
+            <div className="member mb-4">
+              <h3 className="text-lg font-semibold">Thin Esther: Data Collector</h3>
+              <p>Responsible for gathering and analyzing user data to improve the app's performance and user experience.</p>
+            </div>
+            <div className="member mb-4">
+              <h3 className="text-lg font-semibold">Helen: Frontend Developer</h3>
+              <p>Creating beautiful and functional user interfaces for an engaging user experience.</p>
+            </div>
+            <div className="member mb-4">
+              <h3 className="text-lg font-semibold">Arkar: Frontend Developer</h3>
+              <p>Collaborating on the design and implementation of the app's frontend features.</p>
+            </div>
+            <div className="member mb-4">
+              <h3 className="text-lg font-semibold">Brang: Frontend Developer</h3>
+              <p>Enhancing the app's look and feel, ensuring a seamless user experience.</p>
+            </div>
+            <div className="member mb-4">
+              <h3 className="text-lg font-semibold">Shine Bo Bo: Backend Developer</h3>
+              <p>Developing the server-side logic, database management, and ensuring the app's scalability.</p>
+            </div>
+            <div className="member mb-4">
+              <h3 className="text-lg font-semibold">Lin Pyae: Backend Developer</h3>
+              <p>Working on backend functionalities to support the app's core features and performance.</p>
+            </div>
+          </div>
+        </section>
 
-      <h2 className="text-2xl font-bold mb-2">User Education</h2>
+        <section className="faqs" id='faq'>
+          <h2 className="text-xl text-colortext-primary font-semibold">Frequently Asked Questions</h2>
+          <div className="faq-items p-4">
+            <div className="faq-item mb-4">
+              <h3 className="text-lg font-semibold">How do I create an account?</h3>
+              <p>Sign up with your email or social media account and follow the prompts to build your profile.</p>
+            </div>
+            <div className="faq-item mb-4">
+              <h3 className="text-lg font-semibold">Is Cupidy free to use?</h3>
+              <p>Yes, Cupidy offers basic features for free. Premium features are available through subscription plans.</p>
+            </div>
+            <div className="faq-item mb-4">
+              <h3 className="text-lg font-semibold">How can I report a user?</h3>
+              <p>Use the 'Report' button on the user's profile or contact our support team.</p>
+            </div>
+            <div className="faq-item mb-4">
+              <h3 className="text-lg font-semibold">What if I forget my password?</h3>
+              <p>Click on 'Forgot Password' on the login page and follow the instructions to reset it.</p>
+            </div>
+          </div>
+        </section>
 
-      <p className="text-gray-700 mb-4">
-        We offer safety tips, both online and via the app, to educate and
-        empower users to make smart and safe choices while interacting on
-        Tinder.
-      </p>
-
-      <h2 className="text-2xl font-bold mb-2" id='fraud'>Fraud</h2>
-      <p className="text-gray-700">
-        We take the issue of fraud very seriously at Cupidy. We have a
-        zero-tolerance policy on predatory behavior of any kind. We have a
-        dedicated fraud team that utilizes a network of industry leading
-        technology that scans for fraud and reviews each and every member
-        profile for red flag language, and conducts manual reviews of suspicious
-        profiles, activity, and user generated reports. Ultimately, no one,
-        whether they met on Cupidy or not, should ever send money to someone
-        they haven't met in person. In addition, we encourage our members to
-        report any individual who has requested financial information via our
-        self reporting tool. Those two steps will greatly assist in stopping
-        almost every scam in its tracks and help protect the next potential
-        victim.
-      </p>
-
-      <h2 className="text-2xl font-bold mb-2">
-        Data Privacy and Platform Security
-      </h2>
-      <p className="text-gray-700">
-        Our users’ privacy is a top priority at Cupidy, and we work diligently
-        to ensure that we go above and beyond applicable privacy laws and
-        industry standards. We know that your time on the app is a private
-        matter and have strict policies and technical systems in place,
-        including encryption for user photos and messages and tools that
-        restrict employee access to user communications and other user data.
-        When it comes to Cupidy users’ data, our sole mandate is keeping our
-        users safe and their data private.
-      </p>
-      <p className="text-gray-700">
-        We do not sell data to third parties or depend on advertising to
-        maintain or grow our business. Your data is yours. As such, users can
-        request a copy of their data here at any time. The most up-to-date
-        information on our data practices is always available to the general
-        public through our Privacy Policy, which can be also accessed through
-        our app.
-      </p>
-      <p className="text-gray-700">
-        Additionally, we are constantly improving our defenses in the battle
-        against those with malicious intent. However, we do not discuss any
-        specific security tools we use or enhancements we may implement to best
-        protect our users and avoid tipping off any would-be offenders.
-      </p>
-
-      <h2 className="text-2xl font-bold mb-2" id='hello'>
-        Additional Policies and Information
-      </h2>
-      <p className="text-gray-700">
-        Our fundamental goal is to introduce our community of users to new
-        people. And while this is a lot of fun, it’s important to remember that
-        there are Community Guidelines that our users must abide by to help make
-        Tinder the best app for meeting new people.
-      </p>
-      <p className="text-gray-700">
-        We encourage our users to report any instance of bad behavior on or off
-        our platform. Reporting a user for inappropriate conduct is
-        straightforward and easy to do. On any given profile, users can tap the
-        ‘3 dots’ icon and select ‘Report’. Users can also report another user by
-        submitting a help request online.
-      </p>
-      <p className="text-gray-700">
-        Below are more details about some of our policies that we have
-        implemented to keep Tinder more safe.
-      </p>
-
-      <h2 className="text-2xl font-bold mb-2">Dedication to Inclusion</h2>
-      <p className="text-gray-700">
-        No matter your gender identity, sexual orientation, ethnicity, or
-        background, Cupidy welcomes you. We strive to make Cupidy the most
-        inclusive platform for meeting new people and have worked closely with
-        organizations around the world to constantly improve our practices.
-        Today, we offer users more than 50 gender identities in countries around
-        the world and 9 sexual orientations.
-      </p>
-
-      <h2 className="text-2xl font-bold mb-2">Underage Usage</h2>
-      <p className="text-gray-700">
-        Cupidy is for users 18+, and we work hard to vigilantly maintain an
-        adults only community. We utilize a network of industry-leading
-        automated and manual moderation and review tools, systems and processes
-        - and invest significant resources - to prevent and remove minors from
-        our app.
-      </p>
-      <p className="text-gray-700">
-        These tools may include automatic scans of profiles for red-flag
-        language and images, manual reviews of suspicious profiles, activity,
-        and user generated reports, as well as blocking email addresses, phone
-        numbers and other identifiers associated with underage users trying to
-        circumvent these restrictions. We also depend on our users to report any
-        profiles that may depict a minor, so that we can investigate and remove,
-        accordingly.
-      </p>
-      <p className="text-gray-700">We do not want minors on Cupidy. Period.</p>
-
-      <h2 className="text-2xl font-bold mb-2">Solicitation/Prostitution</h2>
-      <p className="text-gray-700">
-        Solicitation of any kind - whether attempting to buy or sell - is
-        against our Terms of Use. If a user encounters a profile violating our
-        terms, we encourage them to report via the self-reporting tool featured
-        on all Cupidy profiles or online. Making such a report allows our
-        dedicated community team to take appropriate measures, which may include
-        removing the profile or banning the user.
-      </p>
-
-      <h2 className="text-2xl font-bold mb-2" id='illegal'>Illegal Substances</h2>
-      <p className="text-gray-700">
-        Profiles (or Cupidy users) promoting illegal substances violate our
-        Terms of Use and we have a system in place to remove these profiles from
-        the app. If a user encounters a profile violating our terms, we
-        encourage them to report it in within the app.
-      </p>
+        <section className="contact-information" id='contact'>
+          <h2 className="text-xl text-colortext-primary font-semibold">Contact Information</h2>
+          <div className="support-feedback p-4">
+            <h3 className="text-lg font-semibold">Support and Feedback</h3>
+            <p>
+              Need help or want to share your thoughts? Visit our 
+              <a href="/support" className="text-colortext-primary underline"> Support Page </a> 
+              or email us at 
+              <a href="mailto:cupidyhepta@gmail.com" className="text-colortext-primary underline"> cupidyhepta@gmail.com</a>. 
+              We love hearing from you and appreciate your feedback!
+            </p>
+          </div>
+        </section>
+      </div>
     </motion.div>
-  )
-}
+  );
+};
 
-export default About
+export default About;

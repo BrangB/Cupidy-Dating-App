@@ -58,14 +58,30 @@ const Navbar = () => {
               <IoIosArrowUp className={`font-bold text-lg ${showAbout ? 'rotate-180' : 'rotate-0'} duration-300`}/>
             </div>
           </Link>
-          <div className={`subfolder overflow-hidden mb-2 translate-x-8 ${showAbout ? 'h-[55px]' : 'h-0'} duration-300 flex flex-col items-start justify-center gap-2`}>
-            <a href='#illegal' className='flex cursor-pointer px-4 gap-2'>
+          <div className={`subfolder overflow-hidden mb-2 translate-x-8 ${showAbout ? 'h-[180px]' : 'h-0'} duration-300 flex flex-col items-start justify-center gap-2`}>
+            <a href='#purpose' className='flex cursor-pointer px-4 gap-2'>
               <TbBorderCornerPill className={`${showAbout ? '-rotate-90' : 'rotate-0'} duration-300`}/>
-              Website
+              App Purpose
             </a>
-            <a href='#fraud' className='flex cursor-pointer px-4 gap-2'>
+            <a href='#planning' className='flex cursor-pointer px-4 gap-2'>
               <TbBorderCornerPill className={`${showAbout ? '-rotate-90' : 'rotate-0'} duration-300`}/>
-              Team Members
+              Planning
+            </a>
+            <a href='#safety' className='flex cursor-pointer px-4 gap-2'>
+              <TbBorderCornerPill className={`${showAbout ? '-rotate-90' : 'rotate-0'} duration-300`}/>
+              Safety and Privacy
+            </a>
+            <a href='#team' className='flex cursor-pointer px-4 gap-2'>
+              <TbBorderCornerPill className={`${showAbout ? '-rotate-90' : 'rotate-0'} duration-300`}/>
+              Team
+            </a>
+            <a href='#faq' className='flex cursor-pointer px-4 gap-2'>
+              <TbBorderCornerPill className={`${showAbout ? '-rotate-90' : 'rotate-0'} duration-300`}/>
+              FAQ
+            </a>
+            <a href='#contact' className='flex cursor-pointer px-4 gap-2'>
+              <TbBorderCornerPill className={`${showAbout ? '-rotate-90' : 'rotate-0'} duration-300`}/>
+              Contact
             </a>
           </div>
         </div>
