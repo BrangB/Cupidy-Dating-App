@@ -166,6 +166,10 @@ body{
   font-family: "Roboto", sans-serif;
 }
 
+.testing{
+  fill: var(--btn-primary-color);
+}
+
 .fade-enter {
   opacity: 0;
   transform: scale(0.9);
@@ -199,4 +203,16 @@ body{
   /* You can adjust the duration and easing function as needed */
 }
 
+.section-title-01{
+  font-weight: 900;
+  background: linear-gradient(to top, transparent 0%, var(--text-primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: .6;
+}
+
+.text-stroke {
+  -webkit-text-stroke: 1px #d3d3d3; /* Adjust the stroke width and color as needed */
+  color: transparent; /* This makes the fill color transparent, showing only the stroke */
+}
 
