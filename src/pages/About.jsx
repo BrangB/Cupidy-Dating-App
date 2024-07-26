@@ -27,7 +27,7 @@ const About = () => {
           <div className="w-full flex items-center justify-start md:justify-center">
             <Reveal>
               <div className="header flex items-start md:items-center justify-center flex-col">
-                <h2 className="section-title-01 text-[45px] leading-10 md:text-[55px] -mb-2 md:-mb-8">App Purpose</h2>
+                <h2 className="section-title-01 text-[45px] leading-10 md:text-[50px] -mb-2 md:-mb-4">App Purpose</h2>
                 <h2 className="font-extrabold text-xl md:text-3xl text-colortext-primary">
                   App Purpose
                 </h2>
@@ -178,11 +178,11 @@ const About = () => {
               </div>
             </Reveal>
           </div>
-          <div className="goals p-4 flex flex-col gap-12">
-            <div className="flex items-center justify-start w-full">
+          <div className="goals p-4 flex flex-col gap-12 mt-5">
+            <div className="flex items-center justify-start md:justify-center w-full">
               <Reveal>
                 <div className="header flex items-start md:items-center justify-center flex-col">
-                  <h2 className="section-title-01 leading-10 text-[55px] -mb-2 md:-mb-8">Goals</h2>
+                  <h2 className="section-title-01 leading-10 text-[50px] -mb-2 md:-mb-4">Goals</h2>
                   <h2 className="font-extrabold text-xl md:text-3xl text-colortext-primary">
                     Goals
                   </h2>
@@ -215,7 +215,7 @@ const About = () => {
         <section className="features-overview flex flex-col items-center justify-center gap-6 p-8 px-4 md:px-8 ">
           <Reveal>
             <div className="header w-full flex items-start md:items-center justify-center flex-col">
-                <h2 className="section-title-01 text-[40px] leading-10 md:text-[55px] -mb-2 md:-mb-8">Overview of Features</h2>
+                <h2 className="section-title-01 text-[40px] leading-10 md:text-[50px] -mb-2 md:-mb-4">Overview of Features</h2>
                 <h2 className="font-extrabold text-xl md:text-2xl text-colortext-primary">
                   Features
                 </h2>
@@ -293,14 +293,14 @@ const About = () => {
           </Reveal>
         </section>
 
-        <section className="get-started-planning py-16" id="planning">
-          <div className="w-full flex items-center justify-center">
+        <section className="get-started-planning py-16 " id="planning">
+          <div className="w-full flex items-center justify-center ">
               <Reveal>
-                <div className="flex items-start md:items-center justify-center flex-col">
-                  <h2 className="section-title-01 text-[40px] leading-10 md:text-[55px] -mb-2 md:-mb-8">
+                <div className="flex items-start md:items-center justify-center flex-col ">
+                  <h2 className="section-title-01 text-[40px] leading-10 md:text-[50px] overflow-visible -mb-2 md:-mb-4">
                     Get Started & Planning
                   </h2>
-                  <h2 className="font-extrabold text-xl md:text-2xl text-colortext-primary">
+                  <h2 className="font-extrabold text-xl md:text-2xl text-colortext-primary ">
                     Get Started & Planning
                   </h2>
                 </div>

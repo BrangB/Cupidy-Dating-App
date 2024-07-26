@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useLanguage } from '../providers/LanguageProvider'
+import QRCode from "react-qr-code";
+import { useLocation } from 'react-router-dom';
+import defaultImage from '../assets/zodiac_pic/aqua1.png'
 
 const UserProfile = () => {
     const [userData, setUserData] = useState(JSON.parse(localStorage.getItem("detailInfo")) ||{})
 
     const {languageData} = useLanguage();
+    const pathname = useLocation();
   
     useEffect(() => {
       setUserData(JSON.parse(localStorage.getItem("detailInfo")))
-      console.log(userData)
     }, [])
     return (
-      <div className='p-6 w-full flex flex-col gap-6'>
+      <div className='p-6 w-full flex flex-col gap-6 pb-36 md:pb-0'>
         <motion.div
           initial={{opacity: 0 }}
             animate={{opacity: 1}}
@@ -31,7 +34,7 @@ const UserProfile = () => {
                     animate={{ opacity: 1}}
                     transition={{duration: 1}}
                   >
-                    <img src={userData.profilePhoto[0].url} alt="profile" className='w-[100px] h-[100px] md:w-[120px] md:h-[120px] object-cover rounded-full' />
+                    <img src={defaultImage} alt="profile" className='w-[100px] h-[100px] md:w-[120px] md:h-[120px] object-cover rounded-full' />
                   </motion.div>
                     <motion.div
                       initial={{ x: '-100px', opacity: 0 }}
@@ -89,6 +92,14 @@ const UserProfile = () => {
               </div>
               </motion.div>
   
+            </div>
+            <div>
+              <QRCode
+                size={300}
+                style={{ height: "auto", width: "150px" }}
+                value={'https://cupidy-dating.vercel.app/userProfile'}
+                viewBox={`0 0 256 256`}
+              />
             </div>
           </div>
         </motion.div>

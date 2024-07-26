@@ -216,3 +216,8 @@ body{
   color: transparent; /* This makes the fill color transparent, showing only the stroke */
 }
 
+.dotted{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
