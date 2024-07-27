@@ -15,6 +15,7 @@ import Match from '../pages/Match';
 import ForgetPassword from '../pages/auth/ForgetPassword/ForgetPassword';
 import ResetPassword from '../pages/auth/ResetPassword/ResetPassword';
 import ResetPwAuth from './ResetPwAuth';
+import SharedProfile from '../pages/SharedProfile';
 
 const RoutePath = () => {
   return (
@@ -32,6 +33,7 @@ const RoutePath = () => {
       <Route path='/collect-data/*' element={<CollectUserData />} />
       <Route path='/policy' element={<PrivacyPolicy />} />
       <Route path='/userProfile' element={<UserProfile />} />
+      <Route path='/sharedProfile/*' element={<SharedProfile />} />
     </Routes>
   );
 };
