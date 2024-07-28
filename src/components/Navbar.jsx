@@ -16,7 +16,7 @@ const Navbar = () => {
   const [showAbout, setShowAbout] = useState(false);
 
   return (
-    <div className='min-w-[200px] bg-colorbg-third text-colortext-third h-full hidden md:flex flex-col gap-3 items-center justify-between bg-primary-300 duration-300'>
+    <div className='min-w-[210px] bg-colorbg-third text-colortext-third h-full hidden md:flex flex-col gap-3 items-center justify-between bg-primary-300 duration-300'>
       <div className="mainLink w-full flex flex-col items-center justify-center py-6">
         <Link className='w-full flex flex-col items-center justify-start text-white text-xl font-bold italic'>
           <p><span className='text-3xl'>C</span>upidy</p>
@@ -34,18 +34,18 @@ const Navbar = () => {
           <div className='flex w-full gap-2 items-center justify-start'>
             <div onClick={() => setShowMatch(!showMatch)} className='w-full px-8 py-3 cursor-pointer flex gap-2 items-center justify-start hover:bg-[#ffffffc9] hover:text-colortext-primary duration-300 overflow-hidden text-ellipsis whitespace-nowrap'>
               <BsSearchHeart className='text-lg'/>
-              Match
-              <IoIosArrowUp className={`font-bold text-lg ${showMatch ? 'rotate-180' : 'rotate-0'} duration-300`}/>
+              {languageData.navbar.match}
+              <IoIosArrowUp className={`font-bold text-lg ${showMatch ? 'rotate-0' : 'rotate-180'} duration-300`}/>
             </div>
           </div>
           <div className={`subfolder overflow-hidden mb-2 translate-x-10 ${showMatch ? 'h-[55px]' : 'h-0'} duration-300 flex flex-col items-start justify-center gap-2`}>
             <Link to={'/match'} className='flex cursor-pointer gap-2'>
               <TbBorderCornerPill className={`${showMatch ? '-rotate-90' : 'rotate-0'} duration-300`}/>
-              Auto
+              {languageData.navbar.subNav.match.auto}
             </Link>
             <Link to={'/match'} className='flex cursor-pointer gap-2'>
               <TbBorderCornerPill className={`${showMatch ? '-rotate-90' : 'rotate-0'} duration-300`}/>
-              Customize
+              {languageData.navbar.subNav.match.customize}
             </Link>
           </div>
         </div>
@@ -54,33 +54,33 @@ const Navbar = () => {
             <div onClick={() => setShowAbout(!showAbout)} className='capitalize w-full px-8 py-3 cursor-pointer flex gap-2 items-center justify-start hover:bg-[#ffffffc9] hover:text-colortext-primary duration-300 overflow-hidden text-ellipsis whitespace-nowrap'>
               <RiTeamFill className='text-lg'/>
               {languageData.navbar.about}
-              <IoIosArrowUp className={`font-bold text-lg ${showAbout ? 'rotate-180' : 'rotate-0'} duration-300`}/>
+              <IoIosArrowUp className={`font-bold text-lg ${showAbout ? 'rotate-0' : 'rotate-180'} duration-300`}/>
             </div>
           </Link>
-          <div className={`subfolder overflow-hidden mb-2 translate-x-10 ${showAbout ? 'h-[180px]' : 'h-0'} duration-300 flex flex-col items-start justify-center gap-2`}>
+          <div className={`subfolder overflow-hidden mb-2 w-[80%] translate-x-10 ${showAbout ? 'h-[210px]' : 'h-0'} duration-300 flex flex-col items-start justify-center gap-2`}>
             <a href='#purpose' className='flex cursor-pointer gap-2'>
               <TbBorderCornerPill className={`${showAbout ? '-rotate-90' : 'rotate-0'} duration-300`}/>
-              App Purpose
+              {languageData.navbar.subNav.about.purpose}
             </a>
             <a href='#planning' className='flex cursor-pointer gap-2'>
               <TbBorderCornerPill className={`${showAbout ? '-rotate-90' : 'rotate-0'} duration-300`}/>
-              Planning
+              {languageData.navbar.subNav.about.planning}
             </a>
-            <a href='#safety' className='flex cursor-pointer gap-2 dotted'>
+            <a href='#safety' className='flex cursor-pointer gap-2'>
               <TbBorderCornerPill className={`${showAbout ? '-rotate-90' : 'rotate-0'} duration-300`}/>
-              Safety and Privacy
+              {languageData.navbar.subNav.about.safety}
             </a>
             <a href='#team' className='flex cursor-pointer gap-2'>
               <TbBorderCornerPill className={`${showAbout ? '-rotate-90' : 'rotate-0'} duration-300`}/>
-              Team
+              {languageData.navbar.subNav.about.team}
             </a>
             <a href='#faq' className='flex cursor-pointer gap-2'>
               <TbBorderCornerPill className={`${showAbout ? '-rotate-90' : 'rotate-0'} duration-300`}/>
-              FAQ
+              {languageData.navbar.subNav.about.faqs}
             </a>
             <a href='#contact' className='flex cursor-pointer gap-2'>
               <TbBorderCornerPill className={`${showAbout ? '-rotate-90' : 'rotate-0'} duration-300`}/>
-              Contact
+              {languageData.navbar.subNav.about.contact}
             </a>
           </div>
         </div>
@@ -91,9 +91,9 @@ const Navbar = () => {
       </div>
       <div className='fixed bottom-0 p-4 bg-btnbg-primary border-t border-t-btnbg-hover'>
         <Link to="/setting" className='capitalize flex p-2 px-4 bg-white text-colortext-primary justify-center items-center gap-3 rounded-sm'>
-            <IoMdSettings className='flex items-center justify-center'/>
-            {languageData.navbar.setting}
-          </Link>
+          <IoMdSettings className='flex items-center justify-center'/>
+          {languageData.navbar.setting}
+        </Link>
       </div>
     </div>
   );

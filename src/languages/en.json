@@ -1,22 +1,70 @@
 {
-    "navbar": {
-        "dashboard": "dashboard",
-        "about": "about",
-        "setting": "setting",
-        "chat": "chat",
-        "userProfile": "User Profile",
-        "match": "Match"
-    },
-    "profilePage": {
-        "header": "User Profile",
-        "interests": "Interests",
-        "address": "Address",
-        "birthDate": "Date of Birth"
-    },
-    "setting": {
-        "header": "Settings",
-        "language": "Language",
-        "theme": "Theme",
-        "logout": "LogOut"
+  "navbar": {
+    "dashboard": "dashboard",
+    "about": "about",
+    "setting": "setting",
+    "chat": "chat",
+    "userProfile": "User Profile",
+    "match": "Match",
+    "subNav": {
+      "match": {
+        "auto": "Auto",
+        "customize": "Customize"
+      },
+      "about": {
+        "purpose": "Purpose",
+        "planning": "Planning",
+        "safety": "Safety & Privacy",
+        "team": "Team",
+        "faqs": "FAQs",
+        "contact": "Contact"
+      }
     }
+  },
+  "profilePage": {
+    "header": "User Profile",
+    "interests": "Interests",
+    "address": "Address",
+    "birthDate": "Date of Birth"
+  },
+  "setting": {
+    "header": "Settings",
+    "language": "Language",
+    "theme": "Theme",
+    "logout": "LogOut"
+  },
+  "about": {
+    "header": {
+      "main": "Cupidy - Find Your Perfect Match",
+      "subtitle": "Where Hearts Connect!"
+    },
+    "purpose": {
+      "header": "App Purpose",
+      "card": {
+        "title": "Mission Statement",
+        "body": "At Cupidy our mission is to bring people together to form genuine and lasting relationships. Whether you're searching for love, companionship, or friendship, Cupidy is the platform that helps you find your perfect match."
+      },
+      "goal": {
+        "header": "Goals",
+        "left": {
+          "title": "Create & Utilize",
+          "body": {
+            "create": "Create",
+            "utilize": "Utilize",
+            "creatbody": "- a safe and welcoming space for users to meet and interact.",
+            "utilizebody": "- cutting-edge technology to provide accurate and meaningful matches."
+          }
+        },
+        "right": {
+          "title": "Offer & Foster",
+          "body": {
+            "offer": "Offer",
+            "foster": "Foster",
+            "offerbody": "- a variety of interactive features to enhance the user experience.",
+            "fosterbody": "- a community where users can connect and grow together."
+          }
+        }
+      }
+    }
+  }
 }

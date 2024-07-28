@@ -1,10 +1,11 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import goal from "../assets/goals.svg";
 import Reveal from "../animations/about/Reveal";
+import { useLanguage } from "../providers/LanguageProvider";
 
 const About = () => {
-
+  const { languageData } = useLanguage();
 
   return (
     <motion.div
@@ -16,10 +17,10 @@ const About = () => {
       <div className="about-page flex flex-col gap-6">
         <header className="about-header">
           <h1 className="text-3xl font-bold text-colortext-primary">
-            Cupidy - Find Your Perfect Match
+            {languageData.about.header.main}
           </h1>
           <p className="tagline text-gray-600 italic">
-            "Where Hearts Connect!"
+            "{languageData.about.header.subtitle}"
           </p>
         </header>
 
@@ -27,9 +28,11 @@ const About = () => {
           <div className="w-full flex items-center justify-start md:justify-center">
             <Reveal>
               <div className="header flex items-start md:items-center justify-center flex-col">
-                <h2 className="section-title-01 text-[45px] leading-10 md:text-[50px] -mb-2 md:-mb-4">App Purpose</h2>
+                <h2 className="section-title-01 text-[45px] leading-10 md:text-[50px] -mb-2 md:-mb-4">
+                  {languageData.about.purpose.header}
+                </h2>
                 <h2 className="font-extrabold text-xl md:text-3xl text-colortext-primary">
-                  App Purpose
+                  {languageData.about.purpose.header}
                 </h2>
               </div>
             </Reveal>
@@ -78,9 +81,24 @@ const About = () => {
                       fill="#ccc"
                     />
                     <circle cx="20.95669" cy="346" r="18" fill="#e6e6e6" />
-                    <circle cx="108.27953" cy="124.67717" r="67" fill="#e6e6e6" />
-                    <circle cx="108.27953" cy="124.67717" r="67" fill="#e6e6e6" />
-                    <circle cx="108.27953" cy="124.67717" r="51" className="fill-btnbg-primary" />
+                    <circle
+                      cx="108.27953"
+                      cy="124.67717"
+                      r="67"
+                      fill="#e6e6e6"
+                    />
+                    <circle
+                      cx="108.27953"
+                      cy="124.67717"
+                      r="67"
+                      fill="#e6e6e6"
+                    />
+                    <circle
+                      cx="108.27953"
+                      cy="124.67717"
+                      r="51"
+                      className="fill-btnbg-primary"
+                    />
                     <path
                       d="M395.26365,356.0861c-3.30591-.0918-7.42029-.20654-10.59-2.522a8.13275,8.13275,0,0,1-3.20007-6.07276,5.47084,5.47084,0,0,1,1.86035-4.49315c1.65552-1.39893,4.073-1.72706,6.67823-.96143L387.313,322.3112l1.98144-.27149,3.17322,23.19-1.65466-.75928c-1.91834-.87988-4.55164-1.32764-6.188.05517a3.51516,3.51516,0,0,0-1.15271,2.89551,6.14684,6.14684,0,0,0,2.38122,4.52783c2.46668,1.80176,5.74622,2.03418,9.46582,2.13819Z"
                       transform="translate(-281.02165 -210)"
@@ -167,12 +185,11 @@ const About = () => {
                   </svg>
                 </div>
                 <div className="w-full md:w-2/3 card bg-white p-10 relative">
-                  <span className="bg-btnbg-primary p-2 px-3 text-sm w-2/3 md:w-auto flex items-center justify-center absolute -top-4 left-1/2 transform -translate-x-1/2 text-colortext-third">Mission Statement</span>
+                  <span className="bg-btnbg-primary p-2 px-3 text-sm w-2/3 md:w-auto flex items-center justify-center absolute -top-4 left-1/2 transform -translate-x-1/2 text-colortext-third">
+                    {languageData.about.purpose.card.title}
+                  </span>
                   <p className="text-justify text-gray-600">
-                    At <span className="text-colortext-primary font-semibold">Cupidy</span>, our mission is to bring people together to form genuine
-                    and lasting relationships. Whether you're searching for love,
-                    companionship, or friendship, Cupidy is the platform that helps
-                    you find your perfect match.
+                    {languageData.about.purpose.card.body}
                   </p>
                 </div>
               </div>
@@ -182,29 +199,63 @@ const About = () => {
             <div className="flex items-center justify-start md:justify-center w-full">
               <Reveal>
                 <div className="header flex items-start md:items-center justify-center flex-col">
-                  <h2 className="section-title-01 leading-10 text-[50px] -mb-2 md:-mb-4">Goals</h2>
+                  <h2 className="section-title-01 leading-10 text-[50px] -mb-2 md:-mb-4">
+                    {languageData.about.purpose.goal.header}
+                  </h2>
                   <h2 className="font-extrabold text-xl md:text-3xl text-colortext-primary">
-                    Goals
+                    {languageData.about.purpose.goal.header}
                   </h2>
                 </div>
               </Reveal>
             </div>
             <div className="w-full flex flex-col md:flex-row gap-12 md:gap-4 items-center justify-evenly">
               <div className="w-full md:w-[40%]">
-                <Reveal duration={1} hidden={{ opacity: 0, x: -300 }} visible={{ opacity: 1, x: 0 }}>
-                  <div className=" relative flex flex-col items-center justify-center bg-white p-6 shadow-md hover:shadow-lg">
-                    <span className="absolute -top-4 p-1 px-3 bg-btnbg-primary text-colortext-third uppercase text-sm font-semibold">Create & Utilize</span>
-                    <p className="text-justify"><span className="text-colortext-primary font-medium">Create</span> - a safe and welcoming space for users to meet and interact.</p>
-                    <p className="text-justify"><span className="text-colortext-primary font-medium">Utilize</span> - cutting-edge technology to provide accurate and meaningfulmatches.</p>
+                <Reveal
+                  duration={1}
+                  hidden={{ opacity: 0, x: -300 }}
+                  visible={{ opacity: 1, x: 0 }}
+                >
+                  <div className="relative flex flex-col items-center justify-center bg-white p-6 shadow-md hover:shadow-lg">
+                    <span className="absolute -top-4 p-1 px-3 bg-btnbg-primary text-colortext-third uppercase text-sm font-semibold">
+                      {languageData.about.purpose.goal.left.title}
+                    </span>
+                    <p className="text-justify">
+                      <span className="text-colortext-primary font-medium">
+                        {languageData.about.purpose.goal.left.body.create}
+                      </span>
+                      {languageData.about.purpose.goal.left.body.creatbody}
+                    </p>
+                    <p className="text-justify">
+                      <span className="text-colortext-primary font-medium">
+                        {languageData.about.purpose.goal.left.body.utilize}
+                      </span>
+                      {languageData.about.purpose.goal.left.body.utilizebody}
+                    </p>
                   </div>
                 </Reveal>
               </div>
               <div className="w-full md:w-[40%]">
-                <Reveal duration={1} hidden={{ opacity: 0, x: 300 }} visible={{ opacity: 1, x: 0 }}>
+                <Reveal
+                  duration={1}
+                  hidden={{ opacity: 0, x: 300 }}
+                  visible={{ opacity: 1, x: 0 }}
+                >
                   <div className="relative flex flex-col items-center justify-center bg-white p-6 shadow-md hover:shadow-lg">
-                    <span className="absolute -top-4 p-1 px-3 bg-btnbg-primary text-colortext-third uppercase text-sm font-semibold">Offer & Foster</span>
-                    <p className="text-justify"><span className="text-colortext-primary font-medium">Offer</span> - a variety of interactive features to enhance the user experience.</p>
-                    <p className="text-justify"><span className="text-colortext-primary font-medium">Foster</span> - a community where users can connect and grow together.</p>
+                    <span className="absolute -top-4 p-1 px-3 bg-btnbg-primary text-colortext-third uppercase text-sm font-semibold">
+                      {languageData.about.purpose.goal.right.title}
+                    </span>
+                    <p className="text-justify">
+                      <span className="text-colortext-primary font-medium">
+                        {languageData.about.purpose.goal.right.body.offer}
+                      </span>
+                      {languageData.about.purpose.goal.right.body.offerbody}
+                    </p>
+                    <p className="text-justify">
+                      <span className="text-colortext-primary font-medium">
+                        {languageData.about.purpose.goal.right.body.foster}
+                      </span>
+                      {languageData.about.purpose.goal.right.body.fosterbody}
+                    </p>
                   </div>
                 </Reveal>
               </div>
@@ -215,11 +266,13 @@ const About = () => {
         <section className="features-overview flex flex-col items-center justify-center gap-6 p-8 px-4 md:px-8 ">
           <Reveal>
             <div className="header w-full flex items-start md:items-center justify-center flex-col">
-                <h2 className="section-title-01 text-[40px] leading-10 md:text-[50px] -mb-2 md:-mb-4">Overview of Features</h2>
-                <h2 className="font-extrabold text-xl md:text-2xl text-colortext-primary">
-                  Features
-                </h2>
-              </div>
+              <h2 className="section-title-01 text-[40px] leading-10 md:text-[50px] -mb-2 md:-mb-4">
+                Overview of Features
+              </h2>
+              <h2 className="font-extrabold text-xl md:text-2xl text-colortext-primary">
+                Features
+              </h2>
+            </div>
             <div className="features w-full py-8 md:p-6">
               <ul className="p-6 px-6 w-full bg-colorbg-secondary flex flex-col gap-2">
                 <li>
@@ -250,43 +303,59 @@ const About = () => {
           <Reveal>
             <ol className="px-2 md:px-6 w-full md:w-[700px] list-none flex flex-col gap-4">
               <li className="flex items-center justify-start gap-5">
-                <span className="w-10 h-10 bg-red-500 flex items-center justify-center text-lg font-bold text-colortext-third">1</span>
-                <p className="text-sm md:text-md">           
-                  <strong className="text-colortext-primary text-lg">Sign Up:</strong>{" "}
-                Create an account quickly using your email or social media.
+                <span className="w-10 h-10 bg-red-500 flex items-center justify-center text-lg font-bold text-colortext-third">
+                  1
+                </span>
+                <p className="text-sm md:text-md">
+                  <strong className="text-colortext-primary text-lg">
+                    Sign Up:
+                  </strong>{" "}
+                  Create an account quickly using your email or social media.
                 </p>
               </li>
               <li className="flex items-center justify-start gap-5">
-                <span className="w-10 h-10 bg-green-500 flex items-center justify-center text-lg font-bold text-colortext-third">2</span>
-                <p className="text-sm md:text-md">           
-                <strong className="text-colortext-primary text-lg">
-                  Build Your Profile:
-                </strong>{" "}
-                Add details about yourself and what you're looking for.
+                <span className="w-10 h-10 bg-green-500 flex items-center justify-center text-lg font-bold text-colortext-third">
+                  2
+                </span>
+                <p className="text-sm md:text-md">
+                  <strong className="text-colortext-primary text-lg">
+                    Build Your Profile:
+                  </strong>{" "}
+                  Add details about yourself and what you're looking for.
                 </p>
               </li>
               <li className="flex items-center justify-start gap-5">
-                <span className="w-10 h-10 bg-yellow-500 flex items-center justify-center text-lg font-bold text-colortext-third">3</span>
-                <p className="text-sm md:text-md">           
-                  <strong className="text-colortext-primary text-lg">Sign Up:</strong>{" "}
-                Create an account quickly using your email or social media.
+                <span className="w-10 h-10 bg-yellow-500 flex items-center justify-center text-lg font-bold text-colortext-third">
+                  3
+                </span>
+                <p className="text-sm md:text-md">
+                  <strong className="text-colortext-primary text-lg">
+                    Sign Up:
+                  </strong>{" "}
+                  Create an account quickly using your email or social media.
                 </p>
               </li>
               <li className="flex items-center justify-start gap-5">
-                <span className="w-10 h-10 bg-purple-500 flex items-center justify-center text-lg font-bold text-colortext-third">4</span>
-                <p className="text-sm md:text-md">           
-                <strong className="text-colortext-primary text-lg">Find Matches:</strong>{" "}
-                Browse profiles and use our matching algorithm to find the best
-                matches.
+                <span className="w-10 h-10 bg-purple-500 flex items-center justify-center text-lg font-bold text-colortext-third">
+                  4
+                </span>
+                <p className="text-sm md:text-md">
+                  <strong className="text-colortext-primary text-lg">
+                    Find Matches:
+                  </strong>{" "}
+                  Browse profiles and use our matching algorithm to find the
+                  best matches.
                 </p>
               </li>
               <li className="flex items-center justify-start gap-5">
-                <span className="w-10 h-10 bg-pink-500 flex items-center justify-center text-lg font-bold text-colortext-third">5</span>
-                <p className="text-sm md:text-md">           
-                <strong className="text-colortext-primary text-lg">
-                  Chat and Connect:
-                </strong>{" "}
-                Start conversations with your matches.
+                <span className="w-10 h-10 bg-pink-500 flex items-center justify-center text-lg font-bold text-colortext-third">
+                  5
+                </span>
+                <p className="text-sm md:text-md">
+                  <strong className="text-colortext-primary text-lg">
+                    Chat and Connect:
+                  </strong>{" "}
+                  Start conversations with your matches.
                 </p>
               </li>
             </ol>
@@ -295,17 +364,17 @@ const About = () => {
 
         <section className="get-started-planning py-16 " id="planning">
           <div className="w-full flex items-center justify-center ">
-              <Reveal>
-                <div className="flex items-start md:items-center justify-center flex-col ">
-                  <h2 className="section-title-01 text-[40px] leading-10 md:text-[50px] overflow-visible -mb-2 md:-mb-4">
-                    Get Started & Planning
-                  </h2>
-                  <h2 className="font-extrabold text-xl md:text-2xl text-colortext-primary ">
-                    Get Started & Planning
-                  </h2>
-                </div>
-              </Reveal>
-            </div>
+            <Reveal>
+              <div className="flex items-start md:items-center justify-center flex-col ">
+                <h2 className="section-title-01 text-[40px] leading-10 md:text-[50px] overflow-visible -mb-2 md:-mb-4">
+                  Get Started & Planning
+                </h2>
+                <h2 className="font-extrabold text-xl md:text-2xl text-colortext-primary ">
+                  Get Started & Planning
+                </h2>
+              </div>
+            </Reveal>
+          </div>
           <Reveal>
             <div className="sdlc px-4 p-8">
               <h3 className="text-lg font-semibold">SDLC: Agile Model</h3>
@@ -323,8 +392,8 @@ const About = () => {
                     </li>
                     <li>Collect user data and create user profiles.</li>
                     <li>
-                      Develop matching algorithms to connect users based on their
-                      preferences.
+                      Develop matching algorithms to connect users based on
+                      their preferences.
                     </li>
                   </ul>
                 </div>

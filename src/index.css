@@ -126,6 +126,75 @@
 
 }
 
+[data-theme='rose-of-sharon']{
+
+  /* 'rose-of-sharon': {
+    '50': '#fffbeb',
+    '100': '#fef3c7',
+    '200': '#fde58a',
+    '300': '#fbd24e',
+    '400': '#fabe25',
+    '500': '#f49d0c',
+    '600': '#d87607',
+    '700': '#bc560a',
+    '800': '#923f0e',
+    '900': '#78340f',
+    '950': '#451a03',
+  }, */
+
+  /* 50 */
+  --primary-bg-color: #fffbeb;
+  /* white */
+  --secondary-bg-color: #fff;
+  /* 400 */
+  --third-bg-color: #fabe25;
+
+  /* 400 */
+  --btn-primary-color: #fabe25; 
+  /* 500 */
+  --btn-primary-color-hover: #f49d0c;
+
+  /* 500 */
+  --text-primary: #f49d0c;
+  /* 900 */
+  --text-secondary: #78340f;
+  /* 50 */
+  --text-third: #fffbeb;
+
+}
+
+
+
+/* 'chestnut': {
+  '50': '#fcf5f4',
+  '100': '#fae8e6',
+  '200': '#f6d5d2',
+  '300': '#efb7b2',
+  '400': '#e48d85',
+  '500': '#d6675d',
+  '600': '#c4544a',
+  '700': '#a23c33',
+  '800': '#86352e',
+  '900': '#70322c',
+  '950': '#3c1613',
+}, */
+[data-theme='chestnut']{
+  --primary-bg-color: #fcf5f4;
+  --secondary-bg-color: #fff;
+  --third-bg-color: #e48d85;
+
+  --btn-primary-color: #e48d85; 
+  --btn-primary-color-hover: #d6675d;
+
+  /* 500 */
+  --text-primary: #d6675d;
+  /* 900 */
+  --text-secondary: #70322c;
+  /* 50 */
+  --text-third: #fcf5f4;
+}
+
+
 [data-theme="mantis"] {
 
   /* 'mantis': {
