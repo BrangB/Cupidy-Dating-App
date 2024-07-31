@@ -3,8 +3,10 @@ import { useDetailInfo } from "../../providers/DetailInfoProvider";
 import defaultPhoto from '../../assets/defaultPhoto.png';
 import FadeCard from "../../animations/collectdata/FadeCard";
 import supabase from "../../utils/supabase";
+import { put } from '@vercel/blob';
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const ProfilePhoto = () => {
   const { detailInfo, setDetailInfo } = useDetailInfo();
@@ -14,50 +16,136 @@ const ProfilePhoto = () => {
     inputRefs.current[index].current.click();
   };
 
+      //       if (file) {
+    //   // Generate a unique file name with folder path
+    //   const folderName = detailInfo.fullName.replace(/\s+/g, '_');
+    //   const fileName = `${folderName}/${index}_${Date.now()}.${file.name.split('.').pop()}`;
+    //   console.log(fileName);
+
+    //   toast.promise(
+    //     supabase.storage
+    //       .from('cupidyImg')
+    //       .upload(fileName, file)
+    //       .then(({ error }) => {
+    //         if (error) throw error;
+
+    //         // Construct the public URL manually
+    //         const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+    //         const publicUrl = `${supabaseUrl}/storage/v1/object/public/cupidyImg/${fileName}`;
+
+    //         // Update the profilePhoto array with the new URL
+    //         const updatedProfilePhoto = [...detailInfo.profilePhoto];
+    //         updatedProfilePhoto[index].url = publicUrl;
+
+    //         setDetailInfo({
+    //           ...detailInfo,
+    //           profilePhoto: updatedProfilePhoto
+    //         });
+    //         console.log(JSON.stringify(detailInfo));
+
+    //         return "File uploaded successfully!";
+    //       })
+    //       .catch((error) => {
+    //         throw new Error(`Error: ${error.message}`);
+    //       }),
+    //     {
+    //       loading: 'Uploading file...',
+    //       success: 'File uploaded successfully!',
+    //       error: 'Error uploading file.'
+    //     }
+    //   );
+    // }
+
   const navigate = useNavigate();
 
   const handleChange = async (index, event) => {
-    const file = event.target.files[0];
-    if (file) {
-      // Generate a unique file name with folder path
-      const folderName = detailInfo.fullName.replace(/\s+/g, '_');
-      const fileName = `${folderName}/${index}_${Date.now()}.${file.name.split('.').pop()}`;
-      console.log(fileName);
+    const file = event.target.files[0]; // img file
 
-      toast.promise(
-        supabase.storage
-          .from('cupidyImg')
-          .upload(fileName, file)
-          .then(({ error }) => {
-            if (error) throw error;
+  
+    if(file){
 
-            // Construct the public URL manually
-            const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-            const publicUrl = `${supabaseUrl}/storage/v1/object/public/cupidyImg/${fileName}`;
+      // toast.promise(
+      //   supabase.storage
+      //     .from('cupidyImg')
+      //     .upload(fileName, file)
+      //     .then(({ error }) => {
+      //       if (error) throw error;
 
-            // Update the profilePhoto array with the new URL
+      //       // Construct the public URL manually
+      //       const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+      //       const publicUrl = `${supabaseUrl}/storage/v1/object/public/cupidyImg/${fileName}`;
+
+      //       // Update the profilePhoto array with the new URL
+      //       const updatedProfilePhoto = [...detailInfo.profilePhoto];
+      //       updatedProfilePhoto[index].url = publicUrl;
+
+      //       setDetailInfo({
+      //         ...detailInfo,
+      //         profilePhoto: updatedProfilePhoto
+      //       });
+      //       console.log(JSON.stringify(detailInfo));
+
+      //       return "File uploaded successfully!";
+      //     })
+      //     .catch((error) => {
+      //       throw new Error(`Error: ${error.message}`);
+      //     }),
+      //   {
+      //     loading: 'Uploading file...',
+      //     success: 'File uploaded successfully!',
+      //     error: 'Error uploading file.'
+      //   }
+      // );
+
+      const formData = new FormData();
+      formData.append('file', file);
+
+      const username = detailInfo.fullName.replace(/\s+/g, '');
+      formData.append('username', username); // Append the username
+
+      const uploadPhoto = async() => {
+        try {
+          // Send the file data directly to the backend using fetch
+          const response = await fetch("http://localhost:3000/test", {
+            method: 'POST',
+            body: formData,
+          });
+      
+          // Check if the response is successful
+          if (response.ok) {
+            const result = await response.json();
             const updatedProfilePhoto = [...detailInfo.profilePhoto];
-            updatedProfilePhoto[index].url = publicUrl;
+            updatedProfilePhoto[index].url = result.blobUrl;
 
             setDetailInfo({
               ...detailInfo,
               profilePhoto: updatedProfilePhoto
             });
-            console.log(JSON.stringify(detailInfo));
 
             return "File uploaded successfully!";
-          })
-          .catch((error) => {
-            throw new Error(`Error: ${error.message}`);
-          }),
-        {
+          } else {
+            console.error('Error uploading file:', response.statusText);
+          }
+        } catch (error) {
+          console.error('Error uploading file:', error);
+        }
+      }
+
+      toast.promise(
+        uploadPhoto(), {
           loading: 'Uploading file...',
           success: 'File uploaded successfully!',
           error: 'Error uploading file.'
         }
-      );
+      )
     }
+
+
+    
   };
+  
+  
+  
 
   const handleForm = () => {
 

@@ -24,9 +24,9 @@ const Login = () => {
 
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
+    const backendhosturl = import.meta.env.VITE_BACKEND_HOST_URL
 
-
-    const handleLogin = () => {
+    const handleLogin = async () => {
         if (inputData.email === '') {
             toast.error('Please enter your email!');
             emailRef.current && emailRef.current.focus();
@@ -35,41 +35,80 @@ const Login = () => {
             passwordRef.current && passwordRef.current.focus();
         } else {
             setLoading(true);
-            toast.promise(
-                fetchData(),
-                {
-                    loading: 'Loading...',
-                    success:
-                        ({ info }) => {
+    
+            try {
+                const { info } = await toast.promise(
+                    fetchData(),
+                    {
+                        loading: 'Loading...',
+                        success: ({ info }) => {
                             setData(info);
                             setError(null);
-                            setLoading(false);
-                            console.log({
-                                email: inputData.email,
-                                password: inputData.password,
-                            })
-                            localStorage.setItem("user", JSON.stringify({ user: "Brang" }))
-                            setUser(JSON.parse(localStorage.getItem("user")))
-                            return <Navigate to="/dashboard" />
+                            localStorage.setItem("user", JSON.stringify({ user: "Brang" }));
+                            setUser(JSON.parse(localStorage.getItem("user")));
+    
+                            // Navigate to the dashboard after successful login
+                            return <Navigate to={"/dashboard"} />
+    
+                            return 'Login successful!';
                         },
-                    error: (err) => {
-                        setLoading(false);
-                        setError(err.message || 'LogIn Fail! 😑');
-                        return 'LogIn Fail! 😑';
+                        error: (err) => {
+                            setError(err.message || 'LogIn Fail! 😑');
+                            return err.message || 'Login failed! 😑';
+                        }
                     }
-                }
-            );
+                );
+            } catch (err) {
+                console.error('Error:', err);
+                setError(err.message || 'LogIn Fail! 😑');
+            } finally {
+                setLoading(false); 
+            }
         }
-    }
+    };
 
+    
     const fetchData = async () => {
         try {
-            const res = await axios.get('https://fakestoreapi.com/products');
-            return { info: res.data };
+            const response = await fetch(`${backendhosturl}/api/v1/user/signin`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: inputData.email,
+                    password: inputData.password
+                })
+            });
+    
+            if (!response.ok) {
+                const errorText = await response.text(); // Read error details
+                console.log('Error Response:', errorText);
+    
+                // Try to parse the error response
+                let errorMessage;
+                try {
+                    const errorData = JSON.parse(errorText);
+                    errorMessage = errorData.error || 'Unknown error occurred';
+                } catch {
+                    errorMessage = 'Error parsing error response';
+                }
+    
+                throw new Error(errorMessage);
+            }
+    
+            const data = await response.json();
+            return { info: data };
         } catch (err) {
+            console.error('Fetch Error:', err);
             throw err;
         }
     };
+    
+    
+    
+    
+    
 
     if (user) return <Navigate to="/dashboard" />
 

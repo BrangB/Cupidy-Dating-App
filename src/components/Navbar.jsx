@@ -9,6 +9,8 @@ import { RiTeamFill } from "react-icons/ri";
 import { CgProfile } from "react-icons/cg";
 import { IoIosArrowUp } from "react-icons/io";
 import { TbBorderCornerPill } from "react-icons/tb";
+import HeartNav from './HeartNav';
+
 
 const Navbar = () => {
   const {languageData} = useLanguage();
@@ -22,20 +24,23 @@ const Navbar = () => {
           <p><span className='text-3xl'>C</span>upidy</p>
           <hr className='w-24 h-1 m-4'/>
         </Link>
-        <Link to="/dashboard" className='capitalize w-full flex gap-2 items-center justify-start px-8 py-3 hover:bg-[#ffffffc9] hover:text-colortext-primary duration-300 overflow-hidden text-ellipsis whitespace-nowrap'>
+        <Link to="/dashboard" className='capitalize relative w-full flex gap-2 items-center justify-start px-8 py-3 hover:bg-[#ffffffc9] hover:text-colortext-primary duration-300 overflow-hidden text-ellipsis whitespace-nowrap'>
           <MdOutlineSpaceDashboard className='text-lg'/>
           {languageData.navbar.dashboard}
+          <HeartNav name={"/dashboard"}/>
         </Link>
-        <Link to="/chat" className='capitalize w-full flex gap-2 items-center justify-start px-8 py-3 hover:bg-[#ffffffc9] hover:text-colortext-primary duration-300 overflow-hidden text-ellipsis whitespace-nowrap'>
+        <Link to="/chat" className='capitalize w-full relative flex gap-2 items-center justify-start px-8 py-3 hover:bg-[#ffffffc9] hover:text-colortext-primary duration-300 overflow-hidden text-ellipsis whitespace-nowrap'>
           <BsChatHeart className='text-lg'/>
           {languageData.navbar.chat}
+          <HeartNav name={"/chat"}/>
         </Link>
         <div className="match w-full duration-300">
           <div className='flex w-full gap-2 items-center justify-start'>
-            <div onClick={() => setShowMatch(!showMatch)} className='w-full px-8 py-3 cursor-pointer flex gap-2 items-center justify-start hover:bg-[#ffffffc9] hover:text-colortext-primary duration-300 overflow-hidden text-ellipsis whitespace-nowrap'>
+            <div onClick={() => setShowMatch(!showMatch)} className='w-full relative px-8 py-3 cursor-pointer flex gap-2 items-center justify-start hover:bg-[#ffffffc9] hover:text-colortext-primary duration-300 overflow-hidden text-ellipsis whitespace-nowrap'>
               <BsSearchHeart className='text-lg'/>
               {languageData.navbar.match}
               <IoIosArrowUp className={`font-bold text-lg ${showMatch ? 'rotate-0' : 'rotate-180'} duration-300`}/>
+              <HeartNav name={"/match"}/>
             </div>
           </div>
           <div className={`subfolder overflow-hidden mb-2 translate-x-10 ${showMatch ? 'h-[55px]' : 'h-0'} duration-300 flex flex-col items-start justify-center gap-2`}>
@@ -51,13 +56,14 @@ const Navbar = () => {
         </div>
         <div className="about w-full duration-300">
           <Link to={'/about'} className='flex w-full gap-2 items-center justify-start'>
-            <div onClick={() => setShowAbout(!showAbout)} className='capitalize w-full px-8 py-3 cursor-pointer flex gap-2 items-center justify-start hover:bg-[#ffffffc9] hover:text-colortext-primary duration-300 overflow-hidden text-ellipsis whitespace-nowrap'>
+            <div onClick={() => setShowAbout(!showAbout)} className='capitalize relative w-full px-8 py-3 cursor-pointer flex gap-2 items-center justify-start hover:bg-[#ffffffc9] hover:text-colortext-primary duration-300 overflow-hidden text-ellipsis whitespace-nowrap'>
               <RiTeamFill className='text-lg'/>
               {languageData.navbar.about}
               <IoIosArrowUp className={`font-bold text-lg ${showAbout ? 'rotate-0' : 'rotate-180'} duration-300`}/>
+              <HeartNav name={"/about"}/>
             </div>
           </Link>
-          <div className={`subfolder overflow-hidden mb-2 w-[80%] translate-x-10 ${showAbout ? 'h-[210px]' : 'h-0'} duration-300 flex flex-col items-start justify-center gap-2`}>
+          <div className={`subfolder overflow-hidden mb-2 w-[80%] translate-x-10 ${showAbout ? 'h-[200px]' : 'h-0'} duration-300 flex flex-col items-start justify-start gap-2`}>
             <a href='#purpose' className='flex cursor-pointer gap-2'>
               <TbBorderCornerPill className={`${showAbout ? '-rotate-90' : 'rotate-0'} duration-300`}/>
               {languageData.navbar.subNav.about.purpose}
@@ -84,9 +90,10 @@ const Navbar = () => {
             </a>
           </div>
         </div>
-        <Link to="/userProfile" className='capitalize w-full flex gap-2 items-center justify-start px-8 py-3 hover:bg-[#ffffffc9] hover:text-colortext-primary duration-300 overflow-hidden text-ellipsis whitespace-nowrap'>
+        <Link to="/userProfile" className='capitalize relative w-full flex gap-2 items-center justify-start px-8 py-3 hover:bg-[#ffffffc9] hover:text-colortext-primary duration-300 overflow-hidden text-ellipsis whitespace-nowrap'>
           <CgProfile className='text-lg'/>
           {languageData.navbar.userProfile}
+          <HeartNav name={"/userProfile"}/>
         </Link>
       </div>
       <div className='fixed bottom-0 p-4 bg-btnbg-primary border-t border-t-btnbg-hover'>
