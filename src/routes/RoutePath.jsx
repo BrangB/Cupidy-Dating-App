@@ -27,7 +27,7 @@ const RoutePath = () => {
       <Route path='/dashboard' element={<Authentication><Dashboard /></Authentication>} />
       <Route path='/chat' element={<Authentication><Chat /></Authentication>} />
       <Route path='/about/*' element={<Authentication><About /></Authentication>} />
-      <Route path='/match' element={<Authentication><Match /></Authentication>} />
+      <Route path='/match/*' element={<Authentication><Match /></Authentication>} />
       <Route path='/' element={<Landing />} />
       <Route path='/setting' element={<Authentication><Settings /></Authentication>} />
       <Route path='/collect-data/*' element={<CollectUserData />} />

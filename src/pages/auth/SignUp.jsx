@@ -24,6 +24,7 @@ const SignUp = () => {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const confirmPasswordRef = useRef(null);
+  const backendhosturl = import.meta.env.VITE_BACKEND_HOST_URL
 
   const navigate = useNavigate();
 
@@ -55,12 +56,7 @@ const SignUp = () => {
               setData(info);
               setError(null);
               setLoading(false);
-              console.log({
-                email: inputData.email,
-                password: inputData.password,
-                allowPrivacyPolicy: inputData.allowPrivacyPolicy
-              })
-              localStorage.setItem("user", JSON.stringify({ user: "Brang" }))
+              localStorage.setItem("user", JSON.stringify(info))
               setUser(JSON.parse(localStorage.getItem("user")))
               navigate('/collect-data/welcome')
             },
@@ -76,12 +72,45 @@ const SignUp = () => {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get('https://fakestoreapi.com/products');
-      return { info: res.data };
+        const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiam9obmRvZSIsImFnZSI6MTIsImV4cCI6MTcyMzI2MDMxMn0.viBjFVSrmUn1yOBCRZUxfGJ25KokcylGfJigp-MuKjU'; // Replace with your actual token
+
+        const response = await fetch(`${backendhosturl}/api/v1/user/signup`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+              email: inputData.email,
+              password: inputData.password,
+              allow_privacy_policy: inputData.allowPrivacyPolicy
+            })
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text(); // Read error details
+            console.log('Error Response:', errorText);
+
+            // Try to parse the error response
+            let errorMessage;
+            try {
+                const errorData = JSON.parse(errorText);
+                errorMessage = errorData.error || 'Unknown error occurred';
+            } catch {
+                errorMessage = 'Error parsing error response';
+            }
+
+            throw new Error(errorMessage);
+        }
+
+        const data = await response.json();
+        return { info: data };
     } catch (err) {
-      throw err;
+        console.error('Fetch Error:', err);
+        throw err;
     }
-  };
+};
+
 
   if (user) return <Navigate to="/dashboard" />
 

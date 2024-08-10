@@ -8,7 +8,6 @@ import { FaEye } from "react-icons/fa"
 import { FaEyeSlash } from "react-icons/fa";
 import toast from 'react-hot-toast';
 import BtnLogin from '../../animations/animateIcons/BtnLogin';
-import axios from 'axios';
 
 const Login = () => {
 

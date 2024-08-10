@@ -48,7 +48,7 @@ const Navbar = () => {
               <TbBorderCornerPill className={`${showMatch ? '-rotate-90' : 'rotate-0'} duration-300`}/>
               {languageData.navbar.subNav.match.auto}
             </Link>
-            <Link to={'/match'} className='flex cursor-pointer gap-2'>
+            <Link to={'/match/customize'} className='flex cursor-pointer gap-2'>
               <TbBorderCornerPill className={`${showMatch ? '-rotate-90' : 'rotate-0'} duration-300`}/>
               {languageData.navbar.subNav.match.customize}
             </Link>
