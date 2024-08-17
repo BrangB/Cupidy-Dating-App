@@ -8,7 +8,7 @@ const Match = () => {
 
   return (
     <MatchTransition>
-      <div className="card w-full p-6 min-h-[500px] relative flex flex-col items-center justify-center">
+      <div className="card w-full p-6 relative flex flex-col items-center justify-center">
         <Routes>
           <Route path='/' element={<AutoMatch />} />
           <Route path="customize" element={<CustomMatch />} />

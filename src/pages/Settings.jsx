@@ -12,7 +12,7 @@ const Settings = () => {
     const {setUser} = useAuth();
 
     const logout = () => {
-      localStorage.removeItem("user")
+      localStorage.removeItem("jwt")
       setUser(null)
       return <Navigate to="/login" />
     }

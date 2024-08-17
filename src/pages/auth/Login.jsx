@@ -34,7 +34,6 @@ const Login = () => {
             passwordRef.current && passwordRef.current.focus();
         } else {
             setLoading(true);
-    
             try {
                 const { info } = await toast.promise(
                     fetchData(),
@@ -43,13 +42,13 @@ const Login = () => {
                         success: ({ info }) => {
                             setData(info);
                             setError(null);
-                            localStorage.setItem("user", JSON.stringify({ user: "Brang" }));
-                            setUser(JSON.parse(localStorage.getItem("user")));
+                            localStorage.setItem( "jwt", JSON.stringify(info));
+                            setUser(JSON.parse(localStorage.getItem("jwt")));
     
                             // Navigate to the dashboard after successful login
                             return <Navigate to={"/dashboard"} />
-    
                             return 'Login successful!';
+
                         },
                         error: (err) => {
                             setError(err.message || 'LogIn Fail! 😑');
@@ -107,9 +106,11 @@ const Login = () => {
     
     
     
-    
 
-    if (user) return <Navigate to="/dashboard" />
+    if (user){
+        console.log(user.access_token)
+        return <Navigate to="/dashboard" />
+    }
 
     return (
             <SlideLeftMotion>

@@ -14,11 +14,11 @@ const DetailInfoProvider = ({children}) => {
       zodiacSign: '',
       mbti: '',
       profilePhoto: [
-        {title: 'photo1', url: ''},
-        {title: 'photo2', url: ''},
-        {title: 'photo3', url: ''},
-        {title: 'photo4', url: ''},
-        {title: 'photo5', url: ''},
+        {title: 'photo1', url: '', type: "profile"},
+        {title: 'photo2', url: '', type: "coverPhoto"},
+        {title: 'photo3', url: '', type: "gallery"},
+        {title: 'photo4', url: '', type: "gallery"},
+        {title: 'photo5', url: '', type: "gallery"},
       ]
     };
 

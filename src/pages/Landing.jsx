@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Landing = () => {
+
+
   return (
     <div className='bg-primary-50 px-6'>
       <nav className="navbar fixed px-8 p-5 bg-btnbg-primary text-colortext-third top-0 left-0 w-screen flex items-center justify-between duration-300">

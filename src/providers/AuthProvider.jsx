@@ -8,7 +8,7 @@ const AuthProvider = ({children}) => {
     const [resetPassword, setResetPassword] = useState(false)
 
     useEffect(() => {
-        setUser(JSON.parse(localStorage.getItem("user")))
+        setUser(JSON.parse(localStorage.getItem("jwt")))
     }, [])
 
   return (

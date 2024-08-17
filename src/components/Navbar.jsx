@@ -11,7 +11,6 @@ import { IoIosArrowUp } from "react-icons/io";
 import { TbBorderCornerPill } from "react-icons/tb";
 import HeartNav from './HeartNav';
 
-
 const Navbar = () => {
   const {languageData} = useLanguage();
   const [showMatch, setShowMatch] = useState(false);
@@ -56,14 +55,14 @@ const Navbar = () => {
         </div>
         <div className="about w-full duration-300">
           <Link to={'/about'} className='flex w-full gap-2 items-center justify-start'>
-            <div onClick={() => setShowAbout(!showAbout)} className='capitalize relative w-full px-8 py-3 cursor-pointer flex gap-2 items-center justify-start hover:bg-[#ffffffc9] hover:text-colortext-primary duration-300 overflow-hidden text-ellipsis whitespace-nowrap'>
-              <RiTeamFill className='text-lg'/>
-              {languageData.navbar.about}
-              <IoIosArrowUp className={`font-bold text-lg ${showAbout ? 'rotate-0' : 'rotate-180'} duration-300`}/>
-              <HeartNav name={"/about"}/>
-            </div>
+              <div onClick={() => setShowAbout(!showAbout)} className='capitalize relative w-full px-8 py-3 cursor-pointer flex gap-2 items-center justify-start hover:bg-[#ffffffc9] hover:text-colortext-primary duration-300 overflow-hidden text-ellipsis whitespace-nowrap'>
+                <RiTeamFill className='text-lg'/>
+                {languageData.navbar.about}
+                <IoIosArrowUp className={`font-bold text-lg ${showAbout ? 'rotate-0' : 'rotate-180'} duration-300`}/>
+                <HeartNav name={"/about"}/>
+              </div>
           </Link>
-          <div className={`subfolder overflow-hidden mb-2 w-[80%] translate-x-10 ${showAbout ? 'h-[200px]' : 'h-0'} duration-300 flex flex-col items-start justify-start gap-2`}>
+          <div className={`subfolder overflow-hidden w-[80%] translate-x-10 ${showAbout ? 'h-[190px]' : 'h-0'} duration-300 flex flex-col items-start justify-start gap-2`}>
             <a href='#purpose' className='flex cursor-pointer gap-2'>
               <TbBorderCornerPill className={`${showAbout ? '-rotate-90' : 'rotate-0'} duration-300`}/>
               {languageData.navbar.subNav.about.purpose}

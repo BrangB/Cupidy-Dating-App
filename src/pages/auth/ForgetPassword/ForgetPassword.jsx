@@ -12,6 +12,7 @@ const ForgetPassword = () => {
     const [otpCode, setOtpCode] = useState('');
 
     const { setResetPassword } = useAuth();
+    const backendhosturl = import.meta.env.VITE_BACKEND_HOST_URL
 
     const validateEmail = (email) => {
         // Regular expression to validate email format
@@ -26,7 +27,7 @@ const ForgetPassword = () => {
         if (email) {
             if (validateEmail(email)) {
                 toast.promise(
-                    axios.get('https://fakestoreapi.com/products'),
+                    axios.post(`${backendhosturl}/api/v1/user/otp-request`, {email: email}),
                     {
                         loading: 'Sending OTP...',
                         success: 'OTP code sent to your email!',
@@ -50,7 +51,7 @@ const ForgetPassword = () => {
     useEffect(() => {
         if (otpCode.length === 4) {
             toast.promise(
-                axios.post('https://fakestoreapi.com/products', { otp: otpCode }),
+                axios.post(`${backendhosturl}/api/v1/user/otp-validate`, { "otp": otpCode }),
                 {
                     loading: 'Verifying OTP...',
                     success: 'OTP verified successfully!',
@@ -98,7 +99,7 @@ const ForgetPassword = () => {
                         </button>
                     </div>
                     <input 
-                        type="number" 
+                        type="text" 
                         value={otpCode}
                         onChange={handleOtpChange} 
                         className='bg-transparent border-btnbg-primary border w-[170px] h-[45px] outline-none p-2' 

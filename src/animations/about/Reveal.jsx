@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 
 const Reveal = ({
@@ -11,17 +11,14 @@ const Reveal = ({
 }) => {
   const ref = useRef(null);
   const mainControls = useAnimation();
-  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           mainControls.start("visible");
-          setIsVisible(true);
         } else {
           mainControls.start("hidden");
-          setIsVisible(false);
         }
       },
       { threshold: 0.1 }
@@ -38,8 +35,15 @@ const Reveal = ({
     };
   }, [mainControls]);
 
+  useEffect(() => {
+    // Call animation control only after the component has mounted
+    if (ref.current) {
+      mainControls.start("hidden"); // Ensures initial hidden state
+    }
+  }, [mainControls]);
+
   return (
-    <div ref={ref} style={{ position: "relative", width, }}>
+    <div ref={ref} style={{ position: "relative", width }}>
       <motion.div
         variants={{
           hidden,
@@ -48,7 +52,7 @@ const Reveal = ({
         initial="hidden"
         animate={mainControls}
         transition={{ duration, delay }}
-        className='w-full h-full'
+        className="w-full h-full"
       >
         {children}
       </motion.div>

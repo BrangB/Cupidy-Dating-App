@@ -2,15 +2,15 @@ import React, { useRef } from "react";
 import { useDetailInfo } from "../../providers/DetailInfoProvider";
 import defaultPhoto from '../../assets/defaultPhoto.png';
 import FadeCard from "../../animations/collectdata/FadeCard";
-import supabase from "../../utils/supabase";
-import { put } from '@vercel/blob';
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useAuth } from "../../providers/AuthProvider";
 
 const ProfilePhoto = () => {
   const { detailInfo, setDetailInfo } = useDetailInfo();
+  const {user, setUser} = useAuth();
   const inputRefs = useRef([...Array(5)].map(() => React.createRef())); // Array of 5 refs for file inputs
+  const backendhosturl = import.meta.env.VITE_BACKEND_HOST_URL
 
   const handleClick = (index) => () => {
     inputRefs.current[index].current.click();
@@ -144,7 +144,14 @@ const ProfilePhoto = () => {
     
   };
   
-  
+
+  const getTokenAndSet = async() => {
+    const response = await fetch(`${backendhosturl}/api/v1/auth/login`);
+    const data = await response.json();
+    localStorage.setItem( "jwt", JSON.stringify(data));
+    setUser(JSON.parse(localStorage.getItem("jwt")));
+    console.log(data)
+  }
   
 
   const handleForm = () => {
@@ -157,8 +164,9 @@ const ProfilePhoto = () => {
       return null 
     })
     if(addPhoto != 0){
-      navigate("/dashboard");
       console.log(detailInfo);
+      getTokenAndSet();
+      // navigate("/dashboard");
     }else{
       toast.error("Please add at least one photo.");
     }
@@ -223,3 +231,6 @@ const ProfilePhoto = () => {
 };
 
 export default ProfilePhoto;
+
+
+

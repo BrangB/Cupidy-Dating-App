@@ -17,7 +17,7 @@ const SharedProfile = () => {
 
     setLoading(true);
     setTimeout(() => {
-        axios.get('https://fakestoreapi.com/products/')
+        axios.get('https://fakestoreapi.com/products/') // api/v1/shareProfile?userId=12
         .then(response => {
           setUserData(response.data);
         })
@@ -50,7 +50,7 @@ const SharedProfile = () => {
             {userData && <h1 className="text-xl">This is Brang</h1>}
             {userId && <p>User ID: {userId}</p>}
             <div className="placeholder flex flex-col md:flex-row gap-4">
-                <div class="border border-blue-300 shadow rounded-md p-4 max-w-sm w-[200px] mx-auto">
+                <div className="border border-blue-300 shadow rounded-md p-4 max-w-sm w-[200px] mx-auto">
                 <div class="animate-pulse flex space-x-4">
                     <div class="rounded-full bg-slate-200 h-10 w-10"></div>
                     <div class="flex-1 space-y-6 py-1">
@@ -65,7 +65,7 @@ const SharedProfile = () => {
                     </div>
                 </div>
                 </div>
-                <div class="border border-blue-300 shadow rounded-md p-4 max-w-sm w-[200px] mx-auto">
+                <div className="border border-blue-300 shadow rounded-md p-4 max-w-sm w-[200px] mx-auto">
                 <div class="animate-pulse flex space-x-4">
                     <div class="rounded-full bg-slate-200 h-10 w-10"></div>
                     <div class="flex-1 space-y-6 py-1">

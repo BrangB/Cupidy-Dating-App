@@ -72,13 +72,12 @@ const SignUp = () => {
 
   const fetchData = async () => {
     try {
-        const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiam9obmRvZSIsImFnZSI6MTIsImV4cCI6MTcyMzI2MDMxMn0.viBjFVSrmUn1yOBCRZUxfGJ25KokcylGfJigp-MuKjU'; // Replace with your actual token
 
         const response = await fetch(`${backendhosturl}/api/v1/user/signup`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                // 'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({
               email: inputData.email,
@@ -88,7 +87,7 @@ const SignUp = () => {
         });
 
         if (!response.ok) {
-            const errorText = await response.text(); // Read error details
+            const errorText = await response.text();
             console.log('Error Response:', errorText);
 
             // Try to parse the error response
