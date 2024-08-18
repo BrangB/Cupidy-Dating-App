@@ -20,9 +20,10 @@ const UserProfile = () => {
       setUserData(JSON.parse(storedDetailInfo));
     }
 
-    if (user?.access_token) {
+    if (user.access_token) {
       try {
         const decodedToken = jwtDecode(user.access_token);
+        console.log(decodedToken)
         setUserId(decodedToken.user_id);
       } catch (error) {
         console.error("Error decoding token:", error);
@@ -32,7 +33,7 @@ const UserProfile = () => {
       // Redirect to login if no access token
       <Navigate to="/login" replace />;
     }
-  }, [user]);
+  }, []);
 
   if (!user) {
     return <Navigate to="/login" replace />;

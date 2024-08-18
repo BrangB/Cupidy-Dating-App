@@ -5,6 +5,7 @@ import FadeCard from "../../animations/collectdata/FadeCard";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../providers/AuthProvider";
+import { jwtDecode } from "jwt-decode";
 
 const ProfilePhoto = () => {
   const { detailInfo, setDetailInfo } = useDetailInfo();
@@ -16,45 +17,6 @@ const ProfilePhoto = () => {
     inputRefs.current[index].current.click();
   };
 
-      //       if (file) {
-    //   // Generate a unique file name with folder path
-    //   const folderName = detailInfo.fullName.replace(/\s+/g, '_');
-    //   const fileName = `${folderName}/${index}_${Date.now()}.${file.name.split('.').pop()}`;
-    //   console.log(fileName);
-
-    //   toast.promise(
-    //     supabase.storage
-    //       .from('cupidyImg')
-    //       .upload(fileName, file)
-    //       .then(({ error }) => {
-    //         if (error) throw error;
-
-    //         // Construct the public URL manually
-    //         const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-    //         const publicUrl = `${supabaseUrl}/storage/v1/object/public/cupidyImg/${fileName}`;
-
-    //         // Update the profilePhoto array with the new URL
-    //         const updatedProfilePhoto = [...detailInfo.profilePhoto];
-    //         updatedProfilePhoto[index].url = publicUrl;
-
-    //         setDetailInfo({
-    //           ...detailInfo,
-    //           profilePhoto: updatedProfilePhoto
-    //         });
-    //         console.log(JSON.stringify(detailInfo));
-
-    //         return "File uploaded successfully!";
-    //       })
-    //       .catch((error) => {
-    //         throw new Error(`Error: ${error.message}`);
-    //       }),
-    //     {
-    //       loading: 'Uploading file...',
-    //       success: 'File uploaded successfully!',
-    //       error: 'Error uploading file.'
-    //     }
-    //   );
-    // }
 
   const navigate = useNavigate();
 
@@ -114,6 +76,7 @@ const ProfilePhoto = () => {
           // Check if the response is successful
           if (response.ok) {
             const result = await response.json();
+            console.log(result)
             const updatedProfilePhoto = [...detailInfo.profilePhoto];
             updatedProfilePhoto[index].url = result.blobUrl;
 
@@ -134,7 +97,9 @@ const ProfilePhoto = () => {
       toast.promise(
         uploadPhoto(), {
           loading: 'Uploading file...',
-          success: 'File uploaded successfully!',
+          success: () => {
+            return 'File uploaded successfully!'
+          },
           error: 'Error uploading file.'
         }
       )
@@ -143,34 +108,119 @@ const ProfilePhoto = () => {
 
     
   };
-  
 
-  const getTokenAndSet = async() => {
-    const response = await fetch(`${backendhosturl}/api/v1/auth/login`);
-    const data = await response.json();
-    localStorage.setItem( "jwt", JSON.stringify(data));
-    setUser(JSON.parse(localStorage.getItem("jwt")));
-    console.log(data)
+  const uploadPhoto = async(token) => {
+    try {
+      const response = await fetch(`${backendhosturl}/api/v1/user/upload_photos`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token.access_token}`
+        },
+        body: JSON.stringify({
+          "user_id": detailInfo.user_id,
+          "photos": detailInfo.profilePhoto
+        })
+      });
+  
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Upload failed: ${errorText}`);
+      }
+  
+      const result = await response.json();
+      return result; // Return the result if needed
+    } catch (error) {
+      console.error('Error uploading photo:', error);
+      throw error; // thow the error to be caught in insertData
+    }
   }
   
-
-  const handleForm = () => {
-
-    let addPhoto = 0;
-    detailInfo.profilePhoto.map(item => {
-      if(item.url != ''){
-        addPhoto += 1;
+  const insertData = async () => {
+    const token = JSON.parse(localStorage.getItem("jwt"));
+  
+    if (token) {
+      const decodedToken = jwtDecode(token.access_token);
+      setDetailInfo({...detailInfo, user_id: decodedToken.user_id});
+      console.log(decodedToken);
+  
+      try {
+        // Wait for photo upload to complete
+        await uploadPhoto(token);
+  
+        // Proceed with the next API call after the photo is uploaded
+        const response = await fetch(`${backendhosturl}/api/v1/user/detailinfo`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token.access_token}`
+          },
+          body: JSON.stringify({
+            user_id: detailInfo.user_id,
+            full_name: detailInfo.fullName,
+            birthdate: detailInfo.birthdate,
+            gender: detailInfo.gender,
+            interested_in: detailInfo.interestedIn,
+            interests: detailInfo.interests,
+            zodiac_sign: detailInfo.zodiacSign,
+            mbti: detailInfo.mbti,
+            country_name: detailInfo.location.countryName,
+            city: detailInfo.location.city,
+            locality: detailInfo.location.locality
+          })
+        });
+  
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.log('Error Response:', errorText);
+  
+          let errorMessage;
+          try {
+            const errorData = JSON.parse(errorText);
+            errorMessage = errorData.error || 'Unknown error occurred';
+          } catch {
+            errorMessage = 'Error parsing error response';
+          }
+  
+          throw new Error(errorMessage);
+        }
+  
+        const data = await response.json();
+        console.log(data);
+        return { info: data };
+  
+      } catch (err) {
+        console.error('Fetch Error:', err);
+        throw err;
       }
-      return null 
-    })
-    if(addPhoto != 0){
-      console.log(detailInfo);
-      getTokenAndSet();
-      // navigate("/dashboard");
-    }else{
-      toast.error("Please add at least one photo.");
     }
   };
+
+const handleForm = () => {
+    let addPhoto = 0;
+    detailInfo.profilePhoto.map(item => {
+        if (item.url !== '') {
+            addPhoto += 1;
+        }
+        return null;
+    });
+
+    if (addPhoto == 5) {
+        toast.promise(
+            insertData(),
+            {
+                loading: 'Saving your data...',
+                success: ()=>{
+                  navigate('/dashboard');
+                  return 'Data saved successfully!'
+                },
+                error: (err) => `Error: ${err.message}`
+            }
+        );
+    } else {
+        toast.error("Please upload all photos.");
+    }
+};
 
   return (
     <FadeCard>

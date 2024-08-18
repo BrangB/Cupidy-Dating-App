@@ -6,7 +6,6 @@ import SlideLeftMotion from '../../animations/loginAndSignup/SlideLeftMotion';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import toast from 'react-hot-toast';
 import BtnLogin from '../../animations/animateIcons/BtnLogin';
-import axios from 'axios';
 
 const SignUp = () => {
   const { user, setUser } = useAuth();
@@ -56,9 +55,10 @@ const SignUp = () => {
               setData(info);
               setError(null);
               setLoading(false);
-              localStorage.setItem("user", JSON.stringify(info))
-              setUser(JSON.parse(localStorage.getItem("user")))
+              localStorage.setItem("jwt", JSON.stringify(info))
+              setUser(JSON.parse(localStorage.getItem("jwt")))
               navigate('/collect-data/welcome')
+              return "Register account successfully!!!"
             },
           error: (err) => {
             setLoading(false);

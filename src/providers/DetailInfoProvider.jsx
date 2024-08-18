@@ -5,6 +5,7 @@ const DetailInfoContext = createContext();
 const DetailInfoProvider = ({children}) => {
 
     const initialDetailInfo = {
+      user_id: '',
       fullName: '',
       birthdate: '',
       gender: '',

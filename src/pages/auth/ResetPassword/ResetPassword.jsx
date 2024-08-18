@@ -4,16 +4,18 @@ import toast from 'react-hot-toast';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../providers/AuthProvider";
+import { useDetailInfo } from "../../../providers/DetailInfoProvider";
 
 const ResetPassword = () => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const { detailInfo, setDetailInfo } = useDetailInfo();
   
-  const navigate = useNavigate()
-  const { setResetPassword } = useAuth();
+  const navigate = useNavigate();
+  const { user, setResetPassword } = useAuth();
+  const backendhosturl = import.meta.env.VITE_BACKEND_HOST_URL;
 
   const validatePassword = () => {
-    // Check if the passwords meet the criteria
     if (newPassword.length < 6) {
       toast.error("Password must be at least 6 characters long.");
       return false;
@@ -25,25 +27,28 @@ const ResetPassword = () => {
     return true;
   };
 
-  const handleChangePassword = () => {
+  const handleChangePassword = async () => {
     if (validatePassword()) {
-      // Call the API to change the password
-      toast.promise(
-        axios.get('https://fakestoreapi.com/products'),
-        {
-          loading: 'Changing password...',
-          success: 'Password changed successfully!',
-          error: 'Failed to change password, please try again.',
-        }
-      )
-      .then(response => {
+      try {
+        const response = await toast.promise(
+          axios.post(`${backendhosturl}/api/v1/user/password-reset`, {
+            new_password: newPassword,
+            user_id: 13,
+          }),
+          {
+            loading: 'Changing password...',
+            success: 'Password changed successfully!',
+            error: 'Failed to change password, please try again.',
+          }
+        );
+
         console.log(response.data);
-        setResetPassword(false)
-        navigate('/login')
-      })
-      .catch(error => {
+        setResetPassword(false);
+        navigate('/login');
+      } catch (error) {
         console.error(error);
-      });
+        toast.error("An error occurred while changing the password.");
+      }
     }
   };
 

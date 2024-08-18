@@ -1,0 +1,28 @@
+[
+    {
+        "user_id": 1,
+        "full_name": "John Doe",
+        "birthdate": "1995-08-17",
+        "gender": "male",
+        "interested_in": "female",
+        "interests": ["music", "sports", "music", "music", "music"], 
+        "zodiac_sign": "Leo",
+        "mbti": "INTJ",
+        "country_name": "USA",
+        "city": "New York",
+        "locality": "Manhattan"
+    },
+    {
+        "user_id": 2,
+        "full_name": "John Doe",
+        "birthdate": "1995-08-17",
+        "gender": "male",
+        "interested_in": "female",
+        "interests": ["music", "sports", "music", "music", "music"],
+        "zodiac_sign": "Leo",
+        "mbti": "INTJ",
+        "country_name": "USA",
+        "city": "New York",
+        "locality": "Manhattan"
+    }
+]
