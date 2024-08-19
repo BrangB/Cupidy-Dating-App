@@ -14,7 +14,6 @@ const UserProfile = () => {
   const [userId, setUserId] = useState(null);
   const { user, setUser } = useAuth();
   const { languageData } = useLanguage();
-  const location = useLocation();
   const [userImg, setUserImg] = useState(null);
   const backendhosturl = import.meta.env.VITE_BACKEND_HOST_URL;
   const navigate = useNavigate();
@@ -120,6 +119,7 @@ const UserProfile = () => {
     return <Navigate to="/login" replace />;
   }
 
+
   const sharedProfile = (id) => {
     navigate(`/sharedProfile/${id}`)
   }
@@ -167,7 +167,7 @@ const UserProfile = () => {
                     value={`https://cupidy-dating.vercel.app/sharedProfile/${userId}`}
                     viewBox={`0 0 256 256`}
                   />
-                  <button className='cursor-pointer' onClick={() => sharedProfile(userId)}>Public</button>
+                  <button className='cursor-pointer p-2 px-3 mt-3 text-colortext-third bg-btnbg-primary' onClick={() => sharedProfile(userId)}>Public</button>
                 </div>
               )}
             </div>

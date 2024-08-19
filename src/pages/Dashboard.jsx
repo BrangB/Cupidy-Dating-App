@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
-import { useAuth } from '../providers/AuthProvider'
+import PaperArrow from '../animations/animateIcons/PaperArrow'
 
 
 const Dashboard = () => {
 
 
   return (
-    <div className='duration-300'>
-      <h1 className=''>Dashboard</h1>
+    <div className='duration-300 w-full h-screen flex items-center justify-center'>
+      <PaperArrow />
     </div>
   )
 }

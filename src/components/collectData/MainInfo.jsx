@@ -122,8 +122,8 @@ const MainInfo = () => {
                             onChange={(e) => setDetailInfo({ ...detailInfo, interestedIn: e.target.value })}
                         >
                             <option value="">Select interest...</option>
-                            <option value="woman">Woman</option>
-                            <option value="man">Man</option>
+                            <option value="female">Woman</option>
+                            <option value="male">Man</option>
                         </select>
                     </div>
                     <div className="flex w-full gap-4 mt-3 items-center">
