@@ -1,19 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import toast from 'react-hot-toast';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../providers/AuthProvider";
-import { useDetailInfo } from "../../../providers/DetailInfoProvider";
 
 const ResetPassword = () => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const { detailInfo, setDetailInfo } = useDetailInfo();
+  const [email, setEmail] = useState(null);
   
   const navigate = useNavigate();
   const { user, setResetPassword } = useAuth();
   const backendhosturl = import.meta.env.VITE_BACKEND_HOST_URL;
+
+  useEffect(() => {
+    setEmail(localStorage.getItem("email"))
+  }, [])
+  
 
   const validatePassword = () => {
     if (newPassword.length < 6) {
@@ -33,11 +37,14 @@ const ResetPassword = () => {
         const response = await toast.promise(
           axios.post(`${backendhosturl}/api/v1/user/password-reset`, {
             new_password: newPassword,
-            user_id: 13,
+            user_email: email,
           }),
           {
             loading: 'Changing password...',
-            success: 'Password changed successfully!',
+            success: () => {
+              localStorage.removeItem("email");
+              return 'Password changed successfully!'
+            },
             error: 'Failed to change password, please try again.',
           }
         );

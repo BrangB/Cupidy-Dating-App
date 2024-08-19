@@ -30,8 +30,23 @@ const ForgetPassword = () => {
                     axios.post(`${backendhosturl}/api/v1/user/otp-request`, {email: email}),
                     {
                         loading: 'Sending OTP...',
-                        success: 'OTP code sent to your email!',
-                        error: 'Failed to send OTP, please try again.',
+                        success: () => {
+                            localStorage.setItem("email", email)
+                            return 'OTP code sent to your email!'
+                        },
+                        error: (err) => {
+                            // Handle various types of error responses
+                            if (err.response) {
+                                // Server responded with a status other than 200 range
+                                return err.response.data.message || 'Failed to send OTP. Please try again.';
+                            } else if (err.request) {
+                                // Request was made but no response was received
+                                return 'No response from server. Please check your connection.';
+                            } else {
+                                // Something happened in setting up the request
+                                return err.message || 'An error occurred while sending OTP.';
+                            }
+                        },
                     }
                 )
                 .then(response => {

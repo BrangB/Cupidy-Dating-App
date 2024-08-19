@@ -1,23 +1,51 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Navigate } from "react-router-dom";
 import axios from "axios";
+import QRCode from "react-qr-code";
+import defaultImage from '../assets/zodiac_pic/aqua1.png'; 
+import { useAuth } from "../providers/AuthProvider";
+import { useLanguage } from "../providers/LanguageProvider";
+import { motion } from "framer-motion";
 
 const SharedProfile = () => {
   const location = useLocation();
   const [userId, setUserId] = useState(null);
-  const [userData, setUserData] = useState();
-  const [loading, setLoading] = useState(false);
+  const [userData, setUserData] = useState({});
+  const { user } = useAuth();
+  const { languageData } = useLanguage();
+  const [loading, setLoading] = useState(true);
+  const [userImg, setUserImg] = useState(null);
+  const backendhosturl = import.meta.env.VITE_BACKEND_HOST_URL;
 
   useEffect(() => {
     const pathParts = location.pathname.split("/");
     const id = pathParts[pathParts.length - 1];
     setUserId(id);
-    console.log(id);
-    // pathname: "/sharedProfile/2342"
 
-    setLoading(true);
-    setTimeout(() => {
-        axios.get('https://fakestoreapi.com/products/') // api/v1/shareProfile?userId=12
+    const fetchPhoto = (userId) => {
+      axios.get(`${backendhosturl}/api/v1/user/users/${userId}/photos`, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${user.access_token}`
+        },
+      })
+      .then(res => {
+        setUserImg(res.data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
+
+    fetchPhoto(id)
+
+    if (id) {
+      axios.get(`${backendhosturl}/api/v1/user/detailInfo/${id}`, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${user.access_token}`
+        },
+      })
         .then(response => {
           setUserData(response.data);
         })
@@ -27,63 +55,121 @@ const SharedProfile = () => {
         .finally(() => {
           setLoading(false);
         });
-    }, 1000);
-  }, [location]);
+    } else {
+      setLoading(false);
+    }
+  }, [location.pathname, user.access_token, backendhosturl]);
+
+  if (!user.access_token) {
+    return <Navigate to="/login" replace />;
+  }
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
-    <div className="w-full">
-      {loading && (
-        <div className="loading w-screen h-screen flex items-center justify-center bg-colorbg-primary fixed top-0 left-0">
-          <h1 className="text-[30px] md:text-[50px] italic loading-image text-colortext-primary">
-            <span className="text-[40px] md:text-[60px]">C</span>upidy
-          </h1>
-        </div>
-      )}
-      {userData && (
-        <div className="w-full p-12 flex items-center justify-center">
-          <div className="profile flex flex-col items-center justify-center gap-6">
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3QfljjXjMLEeF9r1n0DLeKHfvQVZ4SF6jNQ&s"
-              alt="profile Image"
-              className="w-36 h-36 object-cover rounded-full"
-            />
-            {userData && <h1 className="text-xl">This is Brang</h1>}
-            {userId && <p>User ID: {userId}</p>}
-            <div className="placeholder flex flex-col md:flex-row gap-4">
-                <div className="border border-blue-300 shadow rounded-md p-4 max-w-sm w-[200px] mx-auto">
-                <div class="animate-pulse flex space-x-4">
-                    <div class="rounded-full bg-slate-200 h-10 w-10"></div>
-                    <div class="flex-1 space-y-6 py-1">
-                    <div class="h-2 bg-slate-200 rounded"></div>
-                    <div class="space-y-3">
-                        <div class="grid grid-cols-3 gap-4">
-                        <div class="h-2 bg-slate-200 rounded col-span-2"></div>
-                        <div class="h-2 bg-slate-200 rounded col-span-1"></div>
-                        </div>
-                        <div class="h-2 bg-slate-200 rounded"></div>
-                    </div>
-                    </div>
+    <div className='p-0 md:p-6 w-full flex flex-col items-center gap-6 pb-36 md:pb-0'>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.9 }}
+        className="w-full md:w-[70%]"
+      >
+        <h1 className='font-bold text-2xl md:text-3xl relative translate-x-4 my-6 md:my-0'>
+          {languageData.profilePage.header}
+          <span className='w-32 md:w-40 h-1 bg-colorbg-third absolute -bottom-2 left-0'></span>
+        </h1>
+        <div className="card w-full bg-colorbg-secondary p-0 md:p-12 mt-6 flex flex-wrap flex-col md:flex-row items-center justify-center md:items-start md:justify-start gap-6 md:gap-12">
+          <div className="primary w-full flex flex-col md:flex-row">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1 }}
+            >
+              <div className="profile relative w-full md:w-[250px] h-[200px] md:rounded-3xl">
+                <img src={ userImg?.[1].url ||defaultImage} alt="coverphoto" className='md:rounded-3xl w-full h-full object-cover' />
+                <div className="overlay w-full h-full absolute bg-black top-0 left-0 opacity-40 md:rounded-3xl"></div>
+                <img src={ userImg?.[0].url ||defaultImage} alt="profile" className='w-[120px] h-[120px] outline-black outline-1 shadow-md  md:w-[120px] md:h-[120px] absolute left-7 -bottom-8 object-cover border-4 border-white rounded-full' />
+              </div>
+            </motion.div>
+            <div className='flex flex-col mt-3 md:flex-row gap-6 md:gap-2 w-full p-8 md:p-6 md:w-[70%] items-start md:items-center justify-evenly'>
+              <motion.div
+                initial={{ x: '-100px', opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.7 }}
+              >
+                <h1 className='font-bold text-black text-2xl mb-6'>{userData?.full_name}</h1>
+                <p className='text-md mt-1'>MBTI (<span className='text-colortext-primary font-bold mx-1'>{userData?.mbti}</span>)</p>
+                <p className='text-md mt-1'>Zodiac Sign (<span className='text-colortext-primary font-bold mx-1'>{userData?.zodiac_sign}</span>)</p>
+              </motion.div>
+              <hr className='bg-gray-300 w-[150px] h-[1px] md:w-[1px] md:h-[200px]' />
+              {userId && (
+                <div className="w-[100px] md:w-[150px]">
+                  <QRCode
+                    size={300}
+                    style={{ height: "auto", width: "100%" }}
+                    value={`https://cupidy-dating.vercel.app/sharedProfile/${userId}`}
+                    viewBox={`0 0 256 256`}
+                  />
                 </div>
-                </div>
-                <div className="border border-blue-300 shadow rounded-md p-4 max-w-sm w-[200px] mx-auto">
-                <div class="animate-pulse flex space-x-4">
-                    <div class="rounded-full bg-slate-200 h-10 w-10"></div>
-                    <div class="flex-1 space-y-6 py-1">
-                    <div class="h-2 bg-slate-200 rounded"></div>
-                    <div class="space-y-3">
-                        <div class="grid grid-cols-3 gap-4">
-                        <div class="h-2 bg-slate-200 rounded col-span-2"></div>
-                        <div class="h-2 bg-slate-200 rounded col-span-1"></div>
-                        </div>
-                        <div class="h-2 bg-slate-200 rounded"></div>
-                    </div>
-                    </div>
-                </div>
-                </div>
+              )}
+            </div>
+          </div>
+          <div className="line h-[4px] md:mt-2 bg-[#ebebeb] w-full"></div>
+          <div className="info w-full p-4 flex flex-col gap-2 md:gap-6">
+            <motion.div
+              initial={{ x: '-100px', opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.7 }}
+            >
+              <div className="interest flex flex-col gap-2">
+                <h1 className='font-semibold text-colortext-primary'>{languageData.profilePage.interests}</h1>
+                <ul className='flex flex-wrap gap-4'>
+                  {userData?.interests?.map(item => (
+                    <li className='bg-gray-100 p-2 px-3 rounded-md' key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ x: '-100px', opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.9 }}
+            >
+              <div className="location flex flex-col gap-2">
+                <h1 className='font-semibold text-colortext-primary'>{languageData.profilePage.address}</h1>
+                <p>{userData?.city}, {userData?.locality}, {userData?.country_name}</p>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ x: '-100px', opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 1.1 }}
+            >
+              <div className="dateOfBirth flex flex-col gap-2">
+                <h1 className='font-semibold text-colortext-primary'>{languageData.profilePage.birthDate}</h1>
+                <p>{userData?.birthdate}</p>
+              </div>
+            </motion.div>
+          </div>
+          <div className="post w-full p-4">
+            <h1 className='font-medium text-2xl relative'>
+              Posts
+              <span className='w-20 h-1 bg-colorbg-third absolute -bottom-2 left-0'></span>
+            </h1>
+            <div className="photos w-full flex flex-wrap gap-6 mt-8">
+              {
+                userImg && (
+                  userImg.map(img => {
+                    return <img src={img.url} alt={`${img.type}`} className="max-w-[400px] h-[200px] object-cover" />
+                  })
+                )
+              }
             </div>
           </div>
         </div>
-      )}
+      </motion.div>
     </div>
   );
 };

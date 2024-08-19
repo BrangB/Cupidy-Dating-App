@@ -5,14 +5,35 @@ import SettingTheme from '../components/SettingTheme';
 import { FiLogOut } from "react-icons/fi";
 import { Navigate } from 'react-router-dom'
 import { useAuth } from '../providers/AuthProvider';
+import { useDetailInfo } from '../providers/DetailInfoProvider';
 
 const Settings = () => {
 
     const {changeLanguage, languageData} = useLanguage();
+    const { detailInfo, setDetailInfo } = useDetailInfo();
     const {setUser} = useAuth();
 
     const logout = () => {
       localStorage.removeItem("jwt")
+      localStorage.removeItem("detailInfo")
+      setDetailInfo({
+        user_id: '',
+        fullName: '',
+        birthdate: '',
+        gender: '',
+        location: null,
+        interestedIn: '',
+        interests: [],
+        zodiacSign: '',
+        mbti: '',
+        profilePhoto: [
+          {title: 'photo1', url: '', type: "profile"},
+          {title: 'photo2', url: '', type: "coverPhoto"},
+          {title: 'photo3', url: '', type: "gallery"},
+          {title: 'photo4', url: '', type: "gallery"},
+          {title: 'photo5', url: '', type: "gallery"},
+        ]
+      })
       setUser(null)
       return <Navigate to="/login" />
     }

@@ -12,6 +12,7 @@ const ProfilePhoto = () => {
   const {user, setUser} = useAuth();
   const inputRefs = useRef([...Array(5)].map(() => React.createRef())); // Array of 5 refs for file inputs
   const backendhosturl = import.meta.env.VITE_BACKEND_HOST_URL
+  const uploadhosturl = import.meta.env.BACKEND_UPLOAD_URL
 
   const handleClick = (index) => () => {
     inputRefs.current[index].current.click();
@@ -68,7 +69,7 @@ const ProfilePhoto = () => {
       const uploadPhoto = async() => {
         try {
           // Send the file data directly to the backend using fetch
-          const response = await fetch("http://localhost:3000/test", {
+          const response = await fetch(`https://cupidy-vercel-blob.onrender.com/test`, {
             method: 'POST',
             body: formData,
           });
@@ -211,6 +212,25 @@ const handleForm = () => {
             {
                 loading: 'Saving your data...',
                 success: ()=>{
+                  localStorage.removeItem('detailInfo');
+                  setDetailInfo({
+                    user_id: '',
+                    fullName: '',
+                    birthdate: '',
+                    gender: '',
+                    location: null,
+                    interestedIn: '',
+                    interests: [],
+                    zodiacSign: '',
+                    mbti: '',
+                    profilePhoto: [
+                      {title: 'photo1', url: '', type: "profile"},
+                      {title: 'photo2', url: '', type: "coverPhoto"},
+                      {title: 'photo3', url: '', type: "gallery"},
+                      {title: 'photo4', url: '', type: "gallery"},
+                      {title: 'photo5', url: '', type: "gallery"},
+                    ]
+                  })
                   navigate('/dashboard');
                   return 'Data saved successfully!'
                 },

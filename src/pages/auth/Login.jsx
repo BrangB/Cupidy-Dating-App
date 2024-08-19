@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { useAuth } from '../../providers/AuthProvider'
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { MdOutlineEmail } from "react-icons/md";
 import { MdLockOutline } from "react-icons/md";
 import SlideLeftMotion from '../../animations/loginAndSignup/SlideLeftMotion';
@@ -20,6 +20,7 @@ const Login = () => {
         email: "",
         password: ""
     })
+    const navigate = useNavigate();
 
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
@@ -46,7 +47,7 @@ const Login = () => {
                             setUser(JSON.parse(localStorage.getItem("jwt")));
     
                             // Navigate to the dashboard after successful login
-                            return <Navigate to={"/dashboard"} />
+                            navigate('/dashboard')
                             return 'Login successful!';
 
                         },
