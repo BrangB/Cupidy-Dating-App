@@ -66,7 +66,7 @@ const ProfilePhoto = () => {
       const username = detailInfo.fullName.replace(/\s+/g, '');
       formData.append('username', username); // Append the username
 
-      const uploadPhoto = async() => {
+      const uploadPhotos = async() => {
         try {
           // Send the file data directly to the backend using fetch
           const response = await fetch(`https://cupidy-vercel-blob.onrender.com/test`, {
@@ -96,7 +96,7 @@ const ProfilePhoto = () => {
       }
 
       toast.promise(
-        uploadPhoto(), {
+        uploadPhotos(), {
           loading: 'Uploading file...',
           success: () => {
             return 'File uploaded successfully!'
@@ -143,7 +143,6 @@ const ProfilePhoto = () => {
     if (token) {
       const decodedToken = jwtDecode(token.access_token);
       setDetailInfo({...detailInfo, user_id: decodedToken.user_id});
-      console.log(decodedToken);
   
       try {
         // Wait for photo upload to complete

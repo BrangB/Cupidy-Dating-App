@@ -3,9 +3,91 @@ import { motion } from "framer-motion";
 import goal from "../assets/goals.svg";
 import Reveal from "../animations/about/Reveal";
 import { useLanguage } from "../providers/LanguageProvider";
+import defaultImg from "../assets/defaultPhoto.png"
+import brang from '../assets/members/brang.jpg'
+import moeyan from '../assets/members/moeyan.jpg'
+import thinesther from '../assets/members/thinesther.jpg'
+import linpyae from '../assets/members/linpyae.jpg'
+import helen from '../assets/members/helen.jpg'
+import daniel from '../assets/members/daniel.jpg'
+import { FaFacebook } from "react-icons/fa6";
+import { BsInstagram } from "react-icons/bs";
 
 const About = () => {
   const { languageData } = useLanguage();
+
+  const teamMembers = [
+    {
+      name: "Moe Yan",
+      role: "Project Manager",
+      description: "Leading the project with expertise and vision, ensuring everything runs smoothly.",
+      image: moeyan,
+      socialMedia: {
+        facebook: "https://www.facebook.com/oggy.sullivan.3?mibextid=ZbWKwL",
+        instagram: "link_to_instagram",
+      },
+    },
+    {
+      name: "Thin Esther",
+      role: "Data Collector",
+      description: "Responsible for gathering and analyzing user data to improve the app's performance and user experience.",
+      image: thinesther,
+      socialMedia: {
+        facebook: "https://www.facebook.com/profile.php?id=100038074699967&mibextid=ZbWKwL",
+        instagram: "link_to_instagram",
+      },
+    },
+    {
+      name: "Helen",
+      role: "Frontend Developer",
+      description: "Creating beautiful and functional user interfaces for an engaging user experience.",
+      image: helen,
+      socialMedia: {
+        facebook: "https://www.facebook.com/su.t.maung.338?mibextid=ZbWKwL",
+        instagram: "link_to_instagram",
+      },
+    },
+    {
+      name: "Arkar",
+      role: "Frontend Developer",
+      description: "Collaborating on the design and implementation of the app's frontend features.",
+      image: daniel,
+      socialMedia: {
+        facebook: "https://www.facebook.com/profile.php?id=100034868821532&mibextid=ZbWKwL",
+        instagram: "link_to_instagram",
+      },
+    },
+    {
+      name: "Brang Tsawm Aung",
+      role: "Frontend Developer",
+      description: "Enhancing the app's look and feel, ensuring a seamless user experience.",
+      image: brang,
+      socialMedia: {
+        facebook: "https://www.facebook.com/ba.fa.7771?mibextid=ZbWKwL",
+        instagram: "link_to_instagram",
+      },
+    },
+    {
+      name: "Shine Bo Bo",
+      role: "Backend Developer",
+      description: "Developing the server-side logic, database management, and ensuring the app's scalability.",
+      image: defaultImg,
+      socialMedia: {
+        facebook: "https://www.facebook.com/profile.php?id=100091415164259&mibextid=ZbWKwL",
+        instagram: "link_to_instagram",
+      },
+    },
+    {
+      name: "Lin Pyae Aung",
+      role: "Backend Developer",
+      description: "Working on backend functionalities to support the app's core features and performance.",
+      image: linpyae,
+      socialMedia: {
+        facebook: "https://www.facebook.com/lin.pyae.3139?mibextid=ZbWKwL",
+        instagram: "link_to_instagram",
+      },
+    },
+  ];
 
   return (
     <motion.div
@@ -427,6 +509,61 @@ const About = () => {
           </Reveal>
         </section>
 
+        <section className="team" id="team">
+          <div className="header w-full flex items-center justify-center flex-col">
+            <h2 className="section-title-01 text-[55px] -mb-8">Cupidy Team</h2>
+            <h2 className="font-extrabold text-3xl text-colortext-primary">
+              Cupidy Team
+            </h2>
+          </div>
+          <div className="team-members mt-12 p-4 flex flex-wrap w-full items-start justify-center gap-6">
+            {teamMembers.map((member, index) => (
+               <Reveal
+                duration={1}
+                delay={ .1 * index}
+                hidden={{ opacity: 0, x: 300 }}
+                visible={{ opacity: 1, x: 0 }}
+              >
+              <div
+                key={index}
+                className="member w-[230px] mb-4 bg-white p-3 py-8 flex flex-col gap-3 items-center justify-center"
+              >
+                {member.image && (
+                  <img
+                    src={member.image}
+                    className="w-[120px]  h-[120px] rounded-full object-cover"
+                    alt={member.name}
+                  />
+                )}
+                <h3 className="text-lg font-semibold">{member.name}</h3>
+                <p>{member.role}</p>
+                {/* <p className="text-center text-sm">{member.description}</p> */}
+                <div className="socialMediaIcon flex gap-6 mt-2">
+                {member.socialMedia?.facebook && (
+                  <a 
+                    href={member.socialMedia.facebook} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    <FaFacebook className="text-[#1862eb] text-2xl cursor-pointer" />
+                  </a>
+                )}
+                {member.socialMedia?.instagram && (
+                  <a 
+                    href={member.socialMedia.instagram} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    <BsInstagram className="text-[#ff672b] text-2xl cursor-pointer" />
+                  </a>
+                )}
+                </div>
+              </div>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+
         <section className="safety-privacy" id="safety">
           <div className="header w-full flex items-center justify-center flex-col">
             <h2 className="section-title-01 text-[55px] -mb-8">
@@ -462,80 +599,6 @@ const About = () => {
                 Read our full Privacy Policy here.
               </a>
             </p>
-          </div>
-        </section>
-
-        <section className="team" id="team">
-          <div className="header w-full flex items-center justify-center flex-col">
-            <h2 className="section-title-01 text-[55px] -mb-8">Cupidy Team</h2>
-            <h2 className="font-extrabold text-3xl text-colortext-primary">
-              Cupidy Team
-            </h2>
-          </div>
-          <div className="team-members p-4">
-            <div className="member mb-4">
-              <h3 className="text-lg font-semibold">
-                Moe Yan: Project Manager
-              </h3>
-              <p>
-                Leading the project with expertise and vision, ensuring
-                everything runs smoothly.
-              </p>
-            </div>
-            <div className="member mb-4">
-              <h3 className="text-lg font-semibold">
-                Thin Esther: Data Collector
-              </h3>
-              <p>
-                Responsible for gathering and analyzing user data to improve the
-                app's performance and user experience.
-              </p>
-            </div>
-            <div className="member mb-4">
-              <h3 className="text-lg font-semibold">
-                Helen: Frontend Developer
-              </h3>
-              <p>
-                Creating beautiful and functional user interfaces for an
-                engaging user experience.
-              </p>
-            </div>
-            <div className="member mb-4">
-              <h3 className="text-lg font-semibold">
-                Arkar: Frontend Developer
-              </h3>
-              <p>
-                Collaborating on the design and implementation of the app's
-                frontend features.
-              </p>
-            </div>
-            <div className="member mb-4">
-              <h3 className="text-lg font-semibold">
-                Brang: Frontend Developer
-              </h3>
-              <p>
-                Enhancing the app's look and feel, ensuring a seamless user
-                experience.
-              </p>
-            </div>
-            <div className="member mb-4">
-              <h3 className="text-lg font-semibold">
-                Shine Bo Bo: Backend Developer
-              </h3>
-              <p>
-                Developing the server-side logic, database management, and
-                ensuring the app's scalability.
-              </p>
-            </div>
-            <div className="member mb-4">
-              <h3 className="text-lg font-semibold">
-                Lin Pyae: Backend Developer
-              </h3>
-              <p>
-                Working on backend functionalities to support the app's core
-                features and performance.
-              </p>
-            </div>
           </div>
         </section>
 

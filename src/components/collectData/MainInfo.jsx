@@ -4,9 +4,12 @@ import toast from 'react-hot-toast';
 import FadeCard from '../../animations/collectdata/FadeCard';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDetailInfo } from '../../providers/DetailInfoProvider';
+import { useAuth } from '../../providers/AuthProvider';
+import { jwtDecode } from 'jwt-decode';
 
 const MainInfo = () => {
     const [btnLoading, setBtnLoading] = useState(false);
+    const {user, setUser} = useAuth();
 
     const { detailInfo, setDetailInfo } = useDetailInfo();
 
@@ -20,6 +23,11 @@ const MainInfo = () => {
             toast.error('Geolocation is not supported by this browser.');
         }
     };
+
+    if(!detailInfo.user_id){
+        const decodedToken = jwtDecode(user.access_token)
+        setDetailInfo({...detailInfo, user_id: decodedToken.user_id})
+    }
 
     const showPosition = (position) => {
         const lat = position.coords.latitude;
