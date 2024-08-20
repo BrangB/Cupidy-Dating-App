@@ -10,6 +10,7 @@ import thinesther from '../assets/members/thinesther.jpg'
 import linpyae from '../assets/members/linpyae.jpg'
 import helen from '../assets/members/helen.jpg'
 import daniel from '../assets/members/daniel.jpg'
+import shine from '../assets/members/shine.jpg'
 import { FaFacebook } from "react-icons/fa6";
 import { BsInstagram } from "react-icons/bs";
 
@@ -71,7 +72,7 @@ const About = () => {
       name: "Shine Bo Bo",
       role: "Backend Developer",
       description: "Developing the server-side logic, database management, and ensuring the app's scalability.",
-      image: defaultImg,
+      image: shine,
       socialMedia: {
         facebook: "https://www.facebook.com/profile.php?id=100091415164259&mibextid=ZbWKwL",
         instagram: "link_to_instagram",

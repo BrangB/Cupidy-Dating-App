@@ -26,40 +26,6 @@ const ProfilePhoto = () => {
 
   
     if(file){
-
-      // toast.promise(
-      //   supabase.storage
-      //     .from('cupidyImg')
-      //     .upload(fileName, file)
-      //     .then(({ error }) => {
-      //       if (error) throw error;
-
-      //       // Construct the public URL manually
-      //       const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-      //       const publicUrl = `${supabaseUrl}/storage/v1/object/public/cupidyImg/${fileName}`;
-
-      //       // Update the profilePhoto array with the new URL
-      //       const updatedProfilePhoto = [...detailInfo.profilePhoto];
-      //       updatedProfilePhoto[index].url = publicUrl;
-
-      //       setDetailInfo({
-      //         ...detailInfo,
-      //         profilePhoto: updatedProfilePhoto
-      //       });
-      //       console.log(JSON.stringify(detailInfo));
-
-      //       return "File uploaded successfully!";
-      //     })
-      //     .catch((error) => {
-      //       throw new Error(`Error: ${error.message}`);
-      //     }),
-      //   {
-      //     loading: 'Uploading file...',
-      //     success: 'File uploaded successfully!',
-      //     error: 'Error uploading file.'
-      //   }
-      // );
-
       const formData = new FormData();
       formData.append('file', file);
 

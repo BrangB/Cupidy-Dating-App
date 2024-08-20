@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { IoLocationOutline } from "react-icons/io5";
 import FindUser from '../../animations/animateIcons/FindUser';
+import PapperArrow from '../../animations/animateIcons/PaperArrow';
 import { useAuth } from '../../providers/AuthProvider';
 import {jwtDecode} from 'jwt-decode';
 
@@ -59,7 +60,7 @@ const AutoMatch = () => {
 
   return (
     <>
-      {loading && <div className="loading"><FindUser /></div>}
+      {loading && <div className="loading w-full h-screen flex items-center justify-center"><PapperArrow /></div>}
       {!loading &&
         <div className="w-full p-6">
           <button className='bg-btnbg-primary text-colortext-third p-2 rounded-md' onClick={refreshUser}>Refresh</button>
