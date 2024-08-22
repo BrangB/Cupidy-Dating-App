@@ -23,12 +23,7 @@ const SharedProfile = () => {
     setUserId(id);
 
     const fetchPhoto = (userId) => {
-      axios.get(`${backendhosturl}/api/v1/user/users/${userId}/photos`, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${user.access_token}`
-        },
-      })
+      axios.get(`${backendhosturl}/api/v1/user/users/${userId}/photos`)
       .then(res => {
         setUserImg(res.data)
       })
@@ -40,12 +35,7 @@ const SharedProfile = () => {
     fetchPhoto(id)
 
     if (id) {
-      axios.get(`${backendhosturl}/api/v1/user/detailInfo/${id}`, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${user.access_token}`
-        },
-      })
+      axios.get(`${backendhosturl}/api/v1/user/detailInfo/${id}`)
         .then(response => {
           setUserData(response.data);
         })
