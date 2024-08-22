@@ -52,7 +52,7 @@ const SharedProfile = () => {
 
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="loading w-full h-screen flex items-center justify-center text-3xl text-colortext-primary loading-image">Cupidy</div>;
   }
 
   return (

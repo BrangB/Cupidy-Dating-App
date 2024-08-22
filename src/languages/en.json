@@ -25,7 +25,8 @@
     "header": "User Profile",
     "interests": "Interests",
     "address": "Address",
-    "birthDate": "Date of Birth"
+    "birthDate": "Date of Birth",
+    "post": "Posts"
   },
   "setting": {
     "header": "Settings",
@@ -149,5 +150,10 @@
     "contact": {
       "header": "Contact Information"
     }
+  },
+  "chat": {
+    "message": "Messages",
+    "noMessage": "No Message Yet!",
+    "searchName": "Search Name"
   }
 }

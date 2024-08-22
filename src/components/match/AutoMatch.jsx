@@ -10,6 +10,7 @@ const AutoMatch = () => {
   const [profiles, setProfiles] = useState([]);
   const [userId, setUserId] = useState(null);
   const { user, setUser } = useAuth();
+  const backendhosturl = import.meta.env.VITE_BACKEND_HOST_URL;
 
   useEffect(() => {
     // If user is available in the context, decode the token to get user ID
@@ -32,7 +33,7 @@ const AutoMatch = () => {
 
     setLoading(true);
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/v1/user/match/${userId}`, {
+      const response = await fetch(`${backendhosturl}/api/v1/user/match/${userId}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
