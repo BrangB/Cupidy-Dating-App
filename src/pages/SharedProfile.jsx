@@ -38,6 +38,7 @@ const SharedProfile = () => {
       axios.get(`${backendhosturl}/api/v1/user/detailInfo/${id}`)
         .then(response => {
           setUserData(response.data);
+          console.log(response.data)
         })
         .catch(error => {
           console.error("There was an error fetching the data!", error);
