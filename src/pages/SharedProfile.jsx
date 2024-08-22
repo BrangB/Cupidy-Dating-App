@@ -11,7 +11,6 @@ const SharedProfile = () => {
   const location = useLocation();
   const [userId, setUserId] = useState(null);
   const [userData, setUserData] = useState({});
-  const { user } = useAuth();
   const { languageData } = useLanguage();
   const [loading, setLoading] = useState(true);
   const [userImg, setUserImg] = useState(null);
@@ -49,11 +48,8 @@ const SharedProfile = () => {
     } else {
       setLoading(false);
     }
-  }, [location.pathname, user.access_token, backendhosturl]);
+  }, []);
 
-  if (!user.access_token) {
-    return <Navigate to="/login" replace />;
-  }
 
   if (loading) {
     return <div>Loading...</div>;
