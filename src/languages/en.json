@@ -65,6 +65,89 @@
           }
         }
       }
+    },
+    "feature": {
+      "header": "Overview of Features",
+      "header1": "Features",
+       "features": {
+        "text1" : "Smart Matching Algorithm: Our advanced algorithm matches you with users who share your interests and values.",
+        "text2" : "Secure Chat: Private messaging to help you get to know your matches better.",
+        "text3" : "Customizable Profiles: Showcase your personality and preferences.",
+        "text4" : "Advanced Search Filters: Find potential matches based on location, age, interests, and more."
+       },
+       "header2": "How It Works",
+       "howItWork": [
+          {"number": "1", "title" :"Signup:", "text" : "Create an account quickly using your email or social media."},
+          {"number": "2", "title" :"Build Your Profile:", "text" : "Add details about yourself and what you're looking for."},
+          {"number": "3", "title" :"Sign Up:", "text" : "Create an account quickly using your email or social media."},
+          {"number": "4", "title" :"Find Matches:", "text" : "Browse profiles and use our matching algorithm to find the best matches."},
+          {"number": "5", "title" :"Chat and Connect:", "text" : "Start conversations with your matches."}
+       ]
+    },
+    "planning": {
+      "header": "Get Started & Planning",
+      "header2": "SDLC: Agile Model",
+      "description": "We follow the Agile development model, which allows us to continuously improve and quickly deliver new features. Our development is divided into four iterations:",
+      "firstIteration": {
+        "header": "First Iteration:",
+        "step1": "Implement Login, Sign-in, and Sign-up functionalities.",
+        "step2": "Collect user data and create user profiles.",
+        "step3": "Develop matching algorithms to connect users based on their preferences."
+      },
+      "secondIteration": {
+        "header": "Second Iteration:",
+        "step1": "Create the Admin Dashboard for better management.",
+        "step2": "Implement other mini features to enhance user experience."
+      },
+      "thirdIteration": {
+        "header": "Third Iteration:",
+        "step1": "Develop the Chatting Workspace to enable users to communicate with each other."
+      },
+      "fourthIteration": {
+        "header": "Fourth Iteration:",
+        "step1": "Set up Website Settings.",
+        "step2": "Create the About Us page."
+      }
+    },
+    "teamMember": {
+      "header": "Cupidy Team"
+    },
+    "safety": {
+      "header": "Safety and Privacy",
+      "safetlyTips": {
+        "title": "Safety Tips",
+        "tip1": "Do not share personal information like your home address or financial details.",
+        "tip2": "Always meet in public places for your initial dates.",
+        "tip3": "Trust your instincts and report any suspicious behavior."
+      },
+      "privacy": {
+        "title": "Privacy Policy",
+        "text1": "At Cupidy, your privacy is our priority. We are committed to safeguarding your personal data.",
+        "link": "Read our full Privacy Policy here."
+      }
+    },
+    "faq": {
+      "header": "FAQ",
+      "subtitle": "Frequently Asked Questions",
+      "question1": {
+        "question": "How do I create an account?",
+        "answer": "Sign up with your email and follow the prompts to build your profile."
+      },
+      "question2": {
+        "question": "Is Cupidy free to use?",
+        "answer": "Yes, Cupidy offers basic features for free. Premium features are available through subscription plans."
+      },
+      "question3": {
+        "question": "How can I report a user?",
+        "answer": "For now, use the email from contact page or contact our support team."
+      },
+      "question4": {
+        "question": "What if I forget my password?",
+        "answer": "Click on 'Forgot Password' on the login page and follow the instructions to reset it."
+      }
+    },
+    "contact": {
+      "header": "Contact Information"
     }
   }
 }

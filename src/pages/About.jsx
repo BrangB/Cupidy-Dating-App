@@ -350,29 +350,25 @@ const About = () => {
           <Reveal>
             <div className="header w-full flex items-start md:items-center justify-center flex-col">
               <h2 className="section-title-01 text-[40px] leading-10 md:text-[50px] -mb-2 md:-mb-4">
-                Overview of Features
+                {languageData.about.feature.header}
               </h2>
               <h2 className="font-extrabold text-xl md:text-2xl text-colortext-primary">
-                Features
+              {languageData.about.feature.header1}
               </h2>
             </div>
             <div className="features w-full py-8 md:p-6">
               <ul className="p-6 px-6 w-full bg-colorbg-secondary flex flex-col gap-2">
                 <li>
-                  Smart Matching Algorithm: Our advanced algorithm matches you
-                  with users who share your interests and values.
+                  {languageData.about.feature.features.text1}
                 </li>
                 <li>
-                  Secure Chat: Private messaging to help you get to know your
-                  matches better.
+                  {languageData.about.feature.features.text2}
                 </li>
                 <li>
-                  Customizable Profiles: Showcase your personality and
-                  preferences.
+                  {languageData.about.feature.features.text3}
                 </li>
                 <li>
-                  Advanced Search Filters: Find potential matches based on
-                  location, age, interests, and more.
+                  {languageData.about.feature.features.text4}
                 </li>
               </ul>
             </div>
@@ -381,64 +377,63 @@ const About = () => {
 
         <section className="how-it-works flex flex-col items-center justify-center gap-6 p-0 md:p-6">
           <h2 className="text-2xl font-semibold text-colortext-primary w-full flex items-center justify-center">
-            How It Works
+            {languageData.about.feature.header2}
           </h2>
           <Reveal>
             <ol className="px-2 md:px-6 w-full md:w-[700px] list-none flex flex-col gap-4">
               <li className="flex items-center justify-start gap-5">
                 <span className="w-10 h-10 bg-red-500 flex items-center justify-center text-lg font-bold text-colortext-third">
-                  1
+                  {languageData.about.feature.howItWork[0].number}
                 </span>
                 <p className="text-sm md:text-md">
                   <strong className="text-colortext-primary text-lg">
-                    Sign Up:
+                    {languageData.about.feature.howItWork[0].title}
                   </strong>{" "}
-                  Create an account quickly using your email or social media.
+                    {languageData.about.feature.howItWork[0].text}
                 </p>
               </li>
               <li className="flex items-center justify-start gap-5">
                 <span className="w-10 h-10 bg-green-500 flex items-center justify-center text-lg font-bold text-colortext-third">
-                  2
+                {languageData.about.feature.howItWork[1].number}
                 </span>
                 <p className="text-sm md:text-md">
                   <strong className="text-colortext-primary text-lg">
-                    Build Your Profile:
+                  {languageData.about.feature.howItWork[1].title}
                   </strong>{" "}
-                  Add details about yourself and what you're looking for.
+                  {languageData.about.feature.howItWork[1].text}
                 </p>
               </li>
               <li className="flex items-center justify-start gap-5">
                 <span className="w-10 h-10 bg-yellow-500 flex items-center justify-center text-lg font-bold text-colortext-third">
-                  3
+                {languageData.about.feature.howItWork[2].number}
                 </span>
                 <p className="text-sm md:text-md">
                   <strong className="text-colortext-primary text-lg">
-                    Sign Up:
+                  {languageData.about.feature.howItWork[2].title}
                   </strong>{" "}
-                  Create an account quickly using your email or social media.
+                  {languageData.about.feature.howItWork[2].text}
                 </p>
               </li>
               <li className="flex items-center justify-start gap-5">
                 <span className="w-10 h-10 bg-purple-500 flex items-center justify-center text-lg font-bold text-colortext-third">
-                  4
+                {languageData.about.feature.howItWork[3].number}
                 </span>
                 <p className="text-sm md:text-md">
                   <strong className="text-colortext-primary text-lg">
-                    Find Matches:
+                  {languageData.about.feature.howItWork[3].title}
                   </strong>{" "}
-                  Browse profiles and use our matching algorithm to find the
-                  best matches.
+                  {languageData.about.feature.howItWork[3].text}
                 </p>
               </li>
               <li className="flex items-center justify-start gap-5">
                 <span className="w-10 h-10 bg-pink-500 flex items-center justify-center text-lg font-bold text-colortext-third">
-                  5
+                {languageData.about.feature.howItWork[4].number}
                 </span>
                 <p className="text-sm md:text-md">
                   <strong className="text-colortext-primary text-lg">
-                    Chat and Connect:
+                  {languageData.about.feature.howItWork[4].title}
                   </strong>{" "}
-                  Start conversations with your matches.
+                  {languageData.about.feature.howItWork[4].text}
                 </p>
               </li>
             </ol>
@@ -450,59 +445,55 @@ const About = () => {
             <Reveal>
               <div className="flex items-start md:items-center justify-center flex-col ">
                 <h2 className="section-title-01 text-[40px] leading-10 md:text-[50px] overflow-visible -mb-2 md:-mb-4">
-                  Get Started & Planning
+                  {languageData.about.planning.header}
                 </h2>
                 <h2 className="font-extrabold text-xl md:text-2xl text-colortext-primary ">
-                  Get Started & Planning
+                  {languageData.about.planning.header}
                 </h2>
               </div>
             </Reveal>
           </div>
           <Reveal>
             <div className="sdlc px-4 p-8">
-              <h3 className="text-lg font-semibold">SDLC: Agile Model</h3>
+              <h3 className="text-lg font-semibold">{languageData.about.planning.header2}</h3>
               <p>
-                We follow the Agile development model, which allows us to
-                continuously improve and quickly deliver new features. Our
-                development is divided into four iterations:
+                {languageData.about.planning.description}
               </p>
               <div className="iterations p-4">
                 <div className="iteration mb-4">
-                  <h4 className="text-lg font-semibold">First Iteration:</h4>
+                  <h4 className="text-lg font-semibold">{languageData.about.planning.firstIteration.header}</h4>
                   <ul className="list-disc pl-4">
                     <li>
-                      Implement Login, Sign-in, and Sign-up functionalities.
+                      {languageData.about.planning.firstIteration.step1}
                     </li>
-                    <li>Collect user data and create user profiles.</li>
+                    <li>{languageData.about.planning.firstIteration.step2}</li>
                     <li>
-                      Develop matching algorithms to connect users based on
-                      their preferences.
-                    </li>
-                  </ul>
-                </div>
-                <div className="iteration mb-4">
-                  <h4 className="text-lg font-semibold">Second Iteration:</h4>
-                  <ul className="list-disc pl-4">
-                    <li>Create the Admin Dashboard for better management.</li>
-                    <li>
-                      Implement other mini features to enhance user experience.
+                      {languageData.about.planning.firstIteration.step3}
                     </li>
                   </ul>
                 </div>
                 <div className="iteration mb-4">
-                  <h4 className="text-lg font-semibold">Third Iteration:</h4>
+                  <h4 className="text-lg font-semibold">{languageData.about.planning.secondIteration.header}</h4>
                   <ul className="list-disc pl-4">
+                    <li>{languageData.about.planning.secondIteration.step1}</li>
                     <li>
-                      Develop the Chatting Workspace to enable users to
-                      communicate with each other.
+                    {languageData.about.planning.secondIteration.step2}
                     </li>
                   </ul>
                 </div>
                 <div className="iteration mb-4">
-                  <h4 className="text-lg font-semibold">Fourth Iteration:</h4>
+                  <h4 className="text-lg font-semibold">{languageData.about.planning.thirdIteration.header}</h4>
                   <ul className="list-disc pl-4">
-                    <li>Set up Website Settings.</li>
-                    <li>Create the About Us page.</li>
+                    <li>
+                    {languageData.about.planning.thirdIteration.step1}
+                    </li>
+                  </ul>
+                </div>
+                <div className="iteration mb-4">
+                  <h4 className="text-lg font-semibold">{languageData.about.planning.fourthIteration.header}</h4>
+                  <ul className="list-disc pl-4">
+                    <li>{languageData.about.planning.fourthIteration.step1}</li>
+                    <li>{languageData.about.planning.fourthIteration.step2}</li>
                   </ul>
                 </div>
               </div>
@@ -512,9 +503,9 @@ const About = () => {
 
         <section className="team" id="team">
           <div className="header w-full flex items-center justify-center flex-col">
-            <h2 className="section-title-01 text-[55px] -mb-8">Cupidy Team</h2>
+            <h2 className="section-title-01 text-[55px] -mb-8">{languageData.about.teamMember.header}</h2>
             <h2 className="font-extrabold text-3xl text-colortext-primary">
-              Cupidy Team
+              {languageData.about.teamMember.header}
             </h2>
           </div>
           <div className="team-members mt-12 p-4 flex flex-wrap w-full items-start justify-center gap-6">
@@ -524,6 +515,7 @@ const About = () => {
                 delay={ .1 * index}
                 hidden={{ opacity: 0, x: 300 }}
                 visible={{ opacity: 1, x: 0 }}
+                key={index}
               >
               <div
                 key={index}
@@ -568,36 +560,31 @@ const About = () => {
         <section className="safety-privacy" id="safety">
           <div className="header w-full flex items-center justify-center flex-col">
             <h2 className="section-title-01 text-[55px] -mb-8">
-              Safety and Privacy
+              {languageData.about.safety.header}
             </h2>
             <h2 className="font-extrabold text-3xl text-colortext-primary">
-              Safety and Privacy
+              {languageData.about.safety.header}
             </h2>
           </div>
-          <h2 className="text-xl text-colortext-primary font-semibold">
-            Safety and Privacy
-          </h2>
           <div className="safety-tips p-4">
-            <h3 className="text-lg font-semibold">Safety Tips</h3>
+            <h3 className="text-lg font-semibold">{languageData.about.safety.safetlyTips.title}</h3>
             <ul className="list-disc pl-4">
               <li>
-                Do not share personal information like your home address or
-                financial details.
+              {languageData.about.safety.safetlyTips.tip1}
               </li>
-              <li>Always meet in public places for your initial dates.</li>
-              <li>Trust your instincts and report any suspicious behavior.</li>
+              <li>{languageData.about.safety.safetlyTips.tip2}</li>
+              <li>{languageData.about.safety.safetlyTips.tip3}</li>
             </ul>
           </div>
           <div className="privacy-policy p-4">
-            <h3 className="text-lg font-semibold">Privacy Policy</h3>
+            <h3 className="text-lg font-semibold">{languageData.about.safety.privacy.title}</h3>
             <p>
-              At Cupidy, your privacy is our priority. We are committed to
-              safeguarding your personal data.
+              {languageData.about.safety.privacy.text1}
               <a
                 href="/privacy-policy"
                 className="text-colortext-primary underline"
               >
-                Read our full Privacy Policy here.
+                {languageData.about.safety.privacy.link}
               </a>
             </p>
           </div>
@@ -605,47 +592,45 @@ const About = () => {
 
         <section className="faqs" id="faq">
           <div className="header w-full flex items-center justify-center flex-col">
-            <h2 className="section-title-01 text-[55px] -mb-8">FAQ</h2>
+            <h2 className="section-title-01 text-[55px] -mb-8">{languageData.about.faq.header}</h2>
             <h2 className="font-extrabold text-3xl text-colortext-primary">
-              FAQ
+            {languageData.about.faq.header}
             </h2>
           </div>
           <h2 className="text-xl text-colortext-primary font-semibold">
-            Frequently Asked Questions
+          {languageData.about.faq.subtitle}
           </h2>
           <div className="faq-items p-4">
             <div className="faq-item mb-4">
               <h3 className="text-lg font-semibold">
-                How do I create an account?
+                {languageData.about.faq.question1.question}
               </h3>
               <p>
-                Sign up with your email or social media account and follow the
-                prompts to build your profile.
-              </p>
-            </div>
-            <div className="faq-item mb-4">
-              <h3 className="text-lg font-semibold">Is Cupidy free to use?</h3>
-              <p>
-                Yes, Cupidy offers basic features for free. Premium features are
-                available through subscription plans.
+              {languageData.about.faq.question1.answer}
               </p>
             </div>
             <div className="faq-item mb-4">
               <h3 className="text-lg font-semibold">
-                How can I report a user?
+                  {languageData.about.faq.question2.question}
+                </h3>
+                <p>
+                {languageData.about.faq.question2.answer}
+                </p>
+            </div>
+            <div className="faq-item mb-4">
+              <h3 className="text-lg font-semibold">
+                {languageData.about.faq.question3.question}
               </h3>
               <p>
-                Use the 'Report' button on the user's profile or contact our
-                support team.
+              {languageData.about.faq.question3.answer}
               </p>
             </div>
             <div className="faq-item mb-4">
               <h3 className="text-lg font-semibold">
-                What if I forget my password?
+                {languageData.about.faq.question4.question}
               </h3>
               <p>
-                Click on 'Forgot Password' on the login page and follow the
-                instructions to reset it.
+              {languageData.about.faq.question4.answer}
               </p>
             </div>
           </div>
@@ -654,10 +639,10 @@ const About = () => {
         <section className="contact-information" id="contact">
           <div className="header w-full flex items-center justify-center flex-col">
             <h2 className="section-title-01 text-[55px] -mb-8">
-              Contact Information
+            {languageData.about.contact.header}
             </h2>
             <h2 className="font-extrabold text-3xl text-colortext-primary">
-              Contact Information
+            {languageData.about.contact.header}
             </h2>
           </div>
           <div className="support-feedback p-4">

@@ -23,12 +23,12 @@ const Navbar = () => {
           <p><span className='text-3xl'>C</span>upidy</p>
           <hr className='w-24 h-1 m-4'/>
         </Link>
-        <Link to="/dashboard" className='capitalize relative w-full flex gap-2 items-center justify-start px-8 py-3 hover:bg-[#ffffffc9] hover:text-colortext-primary duration-300 overflow-hidden text-ellipsis whitespace-nowrap'>
+        <Link to="/dashboard" id='dashboard' className='capitalize relative w-full flex gap-2 items-center justify-start px-8 py-3 hover:bg-[#ffffffc9] hover:text-colortext-primary duration-300 overflow-hidden text-ellipsis whitespace-nowrap'>
           <MdOutlineSpaceDashboard className='text-lg'/>
           {languageData.navbar.dashboard}
           <HeartNav name={"/dashboard"}/>
         </Link>
-        <Link to="/chat" className='capitalize w-full relative flex gap-2 items-center justify-start px-8 py-3 hover:bg-[#ffffffc9] hover:text-colortext-primary duration-300 overflow-hidden text-ellipsis whitespace-nowrap'>
+        <Link to="/chat" id='chat' className='capitalize w-full relative flex gap-2 items-center justify-start px-8 py-3 hover:bg-[#ffffffc9] hover:text-colortext-primary duration-300 overflow-hidden text-ellipsis whitespace-nowrap'>
           <BsChatHeart className='text-lg'/>
           {languageData.navbar.chat}
           <HeartNav name={"/chat"}/>
@@ -54,7 +54,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className="about w-full duration-300">
-          <Link to={'/about'} className='flex w-full gap-2 items-center justify-start'>
+          <Link to={'/about'} id='about' className='flex w-full gap-2 items-center justify-start'>
               <div onClick={() => setShowAbout(!showAbout)} className='capitalize relative w-full px-8 py-3 cursor-pointer flex gap-2 items-center justify-start hover:bg-[#ffffffc9] hover:text-colortext-primary duration-300 overflow-hidden text-ellipsis whitespace-nowrap'>
                 <RiTeamFill className='text-lg'/>
                 {languageData.navbar.about}
@@ -89,7 +89,7 @@ const Navbar = () => {
             </a>
           </div>
         </div>
-        <Link to="/userProfile" className='capitalize relative w-full flex gap-2 items-center justify-start px-8 py-3 hover:bg-[#ffffffc9] hover:text-colortext-primary duration-300 overflow-hidden text-ellipsis whitespace-nowrap'>
+        <Link to="/userProfile" id='userProfile' className='capitalize relative w-full flex gap-2 items-center justify-start px-8 py-3 hover:bg-[#ffffffc9] hover:text-colortext-primary duration-300 overflow-hidden text-ellipsis whitespace-nowrap'>
           <CgProfile className='text-lg'/>
           {languageData.navbar.userProfile}
           <HeartNav name={"/userProfile"}/>
