@@ -51,14 +51,14 @@ const Settings = () => {
             <span className='w-32 h-1 bg-colorbg-third absolute -bottom-2 left-0'></span>
           </h1>
           <div className="mainSetting mt-7 flex flex-col gap-8">
-            <div className="language flex flex-col gap-4">
+            <div className="language flex flex-col gap-4" id='language'>
               <h1 className='font-semibold text-colortext-secondary'>{languageData.setting.language}</h1>
               <div className="languages flex gap-6">
                 <button onClick={() => changeLanguage("en")} className='p-2 px-3 flex items-center justify-center gap-2 bg-gray-100 rounded-lg'><span className='font-extrabold text-xl text-colortext-primary'>ABC</span>(English)</button>
                 <button onClick={() => changeLanguage("mm")} className='p-2 px-3 flex items-center justify-center gap-2 bg-gray-100 rounded-lg'><span className='font-extrabold text-xl text-colortext-primary'>ကခဂ</span>(Burmese)</button>
               </div>
             </div>
-            <div className="theme flex flex-col gap-4">
+            <div className="theme flex flex-col gap-4" id='theme'>
               <h1 className='font-semibold text-colortext-secondary'>{languageData.setting.theme}</h1>
               <SettingTheme />
             </div>

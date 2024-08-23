@@ -13,6 +13,22 @@ import "driver.js/dist/driver.css";
 function App() {
   const location = useLocation();
 
+  const getGuideStep = () => {
+    if(location.pathname === "/dashboard"){
+      return [
+        { element: '#dashboard', popover: { title: 'Dashboard', description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed quae, dolor excepturi incidunt consequatur quia dolore voluptates quaerat rem, error modi, inventore nostrum veritatis culpa laboriosam quisquam aliquam corporis tempore?' } },
+        { element: '#chat', popover: { title: 'Chat', description: 'Description' } },
+        { element: '#about', popover: { title: 'About Us', description: 'Description' } },
+        { element: '#userProfile', popover: { title: 'User Profile', description: 'Description' } },
+      ]
+    }else{
+      return [
+        { element: '#language', popover: { title: 'Language', description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed quae, dolor excepturi incidunt consequatur quia dolore voluptates quaerat rem, error modi, inventore nostrum veritatis culpa laboriosam quisquam aliquam corporis tempore?' } },
+        { element: '#theme', popover: { title: 'Theme', description: 'Description' } },
+      ]
+    }
+  }
+
   const driverObj = driver({
     popoverClass: 'driverjs-theme',
     showProgress: true,
@@ -20,13 +36,9 @@ function App() {
     prevBtnText: "Prev",
     nextBtnText: "Next",
     showButtons: ['next', 'previous', 'close'],
-    steps: [
-      { element: '#dashboard', popover: { title: 'Dashboard', description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed quae, dolor excepturi incidunt consequatur quia dolore voluptates quaerat rem, error modi, inventore nostrum veritatis culpa laboriosam quisquam aliquam corporis tempore?' } },
-      { element: '#chat', popover: { title: 'Chat', description: 'Description' } },
-      { element: '#about', popover: { title: 'About Us', description: 'Description' } },
-      { element: '#userProfile', popover: { title: 'User Profile', description: 'Description' } },
-    ]
+    steps: getGuideStep()
   });
+  
 
   // Use useMemo to memoize the result and avoid unnecessary calculations
   const hideNavbar = useMemo(() => {
@@ -40,6 +52,7 @@ function App() {
 
   const guide = () => {
     driverObj.drive();
+    console.log(location.pathname)
   }
 
 

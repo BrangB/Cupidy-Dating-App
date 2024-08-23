@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { IoLocationOutline } from "react-icons/io5";
-import FindUser from '../../animations/animateIcons/FindUser';
 import PapperArrow from '../../animations/animateIcons/PaperArrow';
 import { useAuth } from '../../providers/AuthProvider';
 import {jwtDecode} from 'jwt-decode';
