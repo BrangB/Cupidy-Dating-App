@@ -110,7 +110,7 @@ const About = () => {
         <section className="app-purpose py-8" id="purpose">
           <div className="w-full flex items-center justify-start md:justify-center">
             <Reveal>
-              <div className="header flex items-start md:items-center justify-center flex-col">
+              <div className="header flex items-start md:items-center justify-center flex-col" id="purposeGuide">
                 <h2 className="section-title-01 text-[45px] leading-10 md:text-[50px] -mb-2 md:-mb-4">
                   {languageData.about.purpose.header}
                 </h2>
@@ -346,7 +346,7 @@ const About = () => {
           </div>
         </section>
 
-        <section className="features-overview flex flex-col items-center justify-center gap-6 p-8 px-4 md:px-8 ">
+        <section className="features-overview flex flex-col items-center justify-center gap-6 p-8 px-4 md:px-8" id="featureGuide">
           <Reveal>
             <div className="header w-full flex items-start md:items-center justify-center flex-col">
               <h2 className="section-title-01 text-[40px] leading-10 md:text-[50px] -mb-2 md:-mb-4">
@@ -441,9 +441,9 @@ const About = () => {
         </section>
 
         <section className="get-started-planning py-16 " id="planning">
-          <div className="w-full flex items-center justify-center ">
+          <div className="w-full flex items-center justify-center" id="planningGuide">
             <Reveal>
-              <div className="flex items-start md:items-center justify-center flex-col ">
+              <div className="flex items-start md:items-center justify-center flex-col " >
                 <h2 className="section-title-01 text-[40px] leading-10 md:text-[50px] overflow-visible -mb-2 md:-mb-4">
                   {languageData.about.planning.header}
                 </h2>
