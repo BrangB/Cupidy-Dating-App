@@ -69,7 +69,7 @@ function App() {
 
   return (
     <div className="App w-screen h-screen overflow-hidden flex bg-colorbg-primary relative duration-300 z-10">
-      {!hideNavbar && <div className="absolute z-20 w-[50px] h-[50px] p-2 rounded-full bg-[#dbdbdb] shadow-2xl top-6 right-5 animate-bounce cursor-pointer" onClick={guide}><img src={captain} alt="Guide" className="w-full h-full object-cover" /></div>}
+      {!hideNavbar && <div className="absolute hidden md:flex z-20 w-[50px] h-[50px] p-2 rounded-full bg-[#dbdbdb] shadow-2xl top-6 right-5 animate-bounce cursor-pointer" onClick={guide}><img src={captain} alt="Guide" className="w-full h-full object-cover" /></div>}
       {!hideNavbar && <Navbar />}
       <div className={`w-full h-full overflow-hidden overflow-y-scroll scroll-smooth`}>
         <RoutePath />

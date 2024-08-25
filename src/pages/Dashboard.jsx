@@ -7,9 +7,14 @@ import { FaHeart } from "react-icons/fa";
 import loveConnnection from '../assets/loveconnection.png';
 import toast from 'react-hot-toast';
 import { FiMenu } from "react-icons/fi";
+import { FaHandHoldingHeart } from "react-icons/fa";
+import { RiUserHeartFill } from "react-icons/ri";
 
 const Dashboard = () => {
   const [loading, setLoading] = useState(false);
+  const [showMatchUserLoading, setShowMatchUserLoading] = useState(false);
+  const [totalLikeGet, setTotalLikeGet] = useState(null)
+  const [totalLikesGive, setTotalLikesGive] = useState(null)
   const [profiles, setProfiles] = useState([]);
   const [matchProfile, setMatchProfile] = useState([]);  // Initialized as an empty array
   const [userId, setUserId] = useState(null);
@@ -89,7 +94,10 @@ const Dashboard = () => {
       })(),
       {
         loading: 'Liking person...',
-        success: 'Person liked successfully!',
+        success: () => {
+          setTotalLikesGive(totalLikesGive + 1)
+          return 'Person liked successfully!'
+        },
         error: (err) => {
           if (err.message === 'You have already liked this user') {
             return 'You have already liked this user';
@@ -102,25 +110,33 @@ const Dashboard = () => {
 
   const getMatchUser = async () => {
     if (!userId) return;
-
-    return fetch(`${backendhosturl}/api/v1/user/matches/${userId}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${user?.access_token}`
-      }
-    }).then(async (response) => {
+    setShowMatchUserLoading(true);
+    try {
+      const response = await fetch(`${backendhosturl}/api/v1/user/matches/${userId}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${user?.access_token}`,
+        },
+      });
+  
       if (!response.ok) {
-        throw new Error('Failed to fetch match users');
+        throw new Error('Unable to Retrieve Matches');
       }
+  
       const data = await response.json();
-      setMatchProfile(data.matches || []);  // Safely access data.match or default to an empty array
+      setTotalLikeGet(data.totalLikes_get)
+      setTotalLikesGive(data.totalLikes_give)
+      setMatchProfile(data.matches || []); // Safely access data.matches or default to an empty array
       console.log(data);
-    }).catch((error) => {
+    } catch (error) {
       console.error(error);
-      setMatchProfile([]);  // Ensure matchProfile is set even if an error occurs
-    });
+      setMatchProfile([]); // Ensure matchProfile is set even if an error occurs
+    } finally {
+      setShowMatchUserLoading(false); // Hide loading indicator regardless of success or failure
+    }
   };
+  
 
   const handleMatchFetch = () => {
     toast.promise(
@@ -139,13 +155,20 @@ const Dashboard = () => {
     }
   }, [userId]);
 
+  const refreshMatch = () =>  {
+    getMatchUser()
+  }
+
   return (
     <>
       <div className='p-4 rounded-full bg-btnbg-primary flex md:hidden items-center justify-center absolute top-4 right-4 z-50'><FiMenu className='text-white text-lg' onClick={() => setShowMobileMatch(!showMobileMatch)}/></div>
-      <div className={`mobileMatchUser  flex md:hidden z-50 absolute w-screen h-screen top-0 ${showMobileMatch ? "left-0 bg-[#0000005e] backdrop-blur-md" : "-left-full"} duration-300`} onClick={() => setShowMobileMatch(!showMobileMatch)}>
+      <div className={`mobileMatchUser flex md:hidden z-50 absolute w-screen h-screen top-0 ${showMobileMatch ? "left-0 bg-[#0000005e] backdrop-blur-md" : "-left-full"} duration-300`} onClick={() => setShowMobileMatch(!showMobileMatch)}>
           <div className="mainContainer h-full w-[75%]" >
             <div className="matchContainer gap-4 bg-colorbg-secondary py-6 w-full h-full flex flex-col items-center justify-start">
-              <h1 className='text-xl w-full text-left px-6'>Match User</h1>
+              <h1 className='font-bold text-xl w-full relative translate-x-4 my-6 md:my-0 '>
+                  Match User
+                <span className='w-20 md:w-20 h-1 bg-colorbg-third absolute -bottom-2 left-0'></span>
+              </h1>
               {!loading && matchProfile.length > 0 && 
               <div className="matchContainer w-full h-full bg-colorbg-secondary overflow-y-scroll custom-scrollbar">
                 {matchProfile.map((profile) => (
@@ -164,11 +187,28 @@ const Dashboard = () => {
             {!loading && matchProfile.length === 0 && <div className='w-full text-center text-colortext-primary'>No matched users found</div>}
             </div>
           </div>
+          <div className='totalMatch absolute bottom-0 left-0 w-[70%] h-[90px] bg-colorbg-secondary p-3 flex md:hidden items-center justify-center'>
+            {totalLikeGet && totalLikesGive && (
+              <div>
+                <div className='flex items-center justify-start gap-4'>
+                  <RiUserHeartFill className='text-xl text-colortext-primary'/>
+                  <p className='likeGetAndGive flex gap-3 items-center justify-start'><span className='font-medium text-colortext-primary'>Likes Given:</span> <span className='text-xl'>{totalLikesGive}</span></p>
+                </div>
+                <div className='flex items-center justify-start gap-4'>
+                  <FaHandHoldingHeart className='text-xl text-colortext-primary'/>
+                  <p className='likeGetAndGive flex gap-3 items-center justify-start'><span className='font-medium text-colortext-primary'>Likes Received:</span> <span className='text-xl'>{totalLikeGet}</span></p>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       <div className={`mainContainer relative flex items-start p-4 md:p-8 justify-between `}>
         <div className={`w-full ${showMobileMatch ? "overflow-hidden h-screen" : ""} md:w-[62%] flex flex-col items-start justify-center flex-wrap gap-5 `} id='typePerson'>
-          <div className="profiles bg-colorbg-secondary min-h-[500px] custom-scrollbar p-2 md:p-4 py-10 w-full flex flex-wrap gap-6 items-start justify-center">
-            <h1 className='text-xl w-full text-left px-6'>Your Type</h1>
+          <div className="profiles bg-colorbg-secondary min-h-[500px] custom-scrollbar p-2 md:p-6 py-10 w-full flex flex-wrap gap-8  items-start justify-center">
+            <h1 className='font-bold text-xl md:text-xl w-full relative translate-x-4 mt-0 my-6 md:my-0 '>
+                Your Match Preferences
+              <span className='w-32 md:w-40 h-1 bg-colorbg-third absolute -bottom-2 left-0'></span>
+            </h1>
             <div className='w-full flex gap-6 flex-wrap items-start justify-center'>
               {loading && <div className='w-full loading-image text-colortext-primary flex items-center justify-center'>Finding Match User...</div>}
               {!loading && profiles.length > 0 && profiles.map((profile) => {
@@ -204,8 +244,15 @@ const Dashboard = () => {
 
         <div className="matchPeople hidden w-[35%] md:flex flex-col items-start justify-center gap-5" id='matchPerson'>
           <div className="matchContainer gap-4 bg-colorbg-secondary py-6 w-full h-[400px] flex flex-col items-center justify-start">
-            <h1 className='text-xl w-full text-left px-6'>Match User</h1>
-            {!loading && matchProfile.length > 0 && 
+            <h1 className='font-bold text-lg md:text-xl w-full relative translate-x-4 my-6 md:my-0 '>
+                Match User
+              <span className='w-32 md:w-20 h-1 bg-colorbg-third absolute -bottom-2 left-0'></span>
+            </h1>
+            <div className="refreshMatchUser w-full flex items-center justify-end mr-6  text-white">
+              <div className='w-20 bg-btnbg-primary flex items-center justify-center py-1 cursor-pointer hover:bg-btnbg-hover duration-200' onClick={refreshMatch}>Refresh</div>
+            </div>
+            {showMatchUserLoading && <div className='w-full h-full loading-image text-colortext-primary flex items-center justify-center'>Fetching Your Matches...</div>}
+            {!showMatchUserLoading && matchProfile.length > 0 && 
             <div className="matchContainer w-full h-full bg-colorbg-secondary overflow-y-scroll custom-scrollbar">
               {matchProfile.map((profile) => (
                   <div className="matchPerson flex justify-between px-6 items-center gap-3 p-4" key={profile.user_id}>
@@ -220,10 +267,22 @@ const Dashboard = () => {
               <hr />
             </div>
           }
-          {!loading && matchProfile.length === 0 && <div className='w-full text-center text-colortext-primary'>No matched users found</div>}
+          {!loading && matchProfile.length === 0 && <div className='w-full mt-6 text-center text-colortext-primary'>No matched users found</div>}
           </div>
-
-          <div className='totalMatch w-full h-[130px] bg-[#d1d1d1]'></div>
+          <div className='totalMatch w-full h-[90px] bg-colorbg-secondary p-3 flex items-center justify-center'>
+            {totalLikeGet && totalLikesGive && (
+              <div>
+                <div className='flex items-center justify-start gap-4'>
+                  <RiUserHeartFill className='text-xl text-colortext-primary'/>
+                  <p className='likeGetAndGive flex gap-3 items-center justify-start'><span className='font-medium text-colortext-primary'>Likes Given:</span> <span className='text-xl'>{totalLikesGive}</span></p>
+                </div>
+                <div className='flex items-center justify-start gap-4'>
+                  <FaHandHoldingHeart className='text-xl text-colortext-primary'/>
+                  <p className='likeGetAndGive flex gap-3 items-center justify-start'><span className='font-medium text-colortext-primary'>Likes Received:</span> <span className='text-xl'>{totalLikeGet}</span></p>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </>

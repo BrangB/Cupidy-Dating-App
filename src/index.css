@@ -348,6 +348,19 @@ body{
   border: 3px;
 }
 
+.profile:hover .desc {
+  width: 220%;
+  height: 250%;
+  padding: 10px;
+}
+
+/* For small screens, reduce the width on hover */
+@media only screen and (max-width: 600px) {
+  .profile:hover .desc {
+    width: 190%; /* Adjust this value as needed */
+  }
+}
+
 /* Apply the animation to the desired element */
 .shake {
   animation: shake .8s ease-in-out;
@@ -423,5 +436,8 @@ body{
 }
 
 .likePerson{
+  font-family: "Pacifico", cursive;
+}
+.likeGetAndGive{
   font-family: "Pacifico", cursive;
 }

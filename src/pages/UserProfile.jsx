@@ -156,12 +156,12 @@ const UserProfile = () => {
           <span className='w-32 md:w-40 h-1 bg-colorbg-third absolute -bottom-2 left-0'></span>
         </h1>
         <div className="card w-full bg-colorbg-secondary p-0 md:p-12 mt-6 flex flex-wrap flex-col md:flex-row items-center justify-center md:items-start md:justify-start gap-6 md:gap-12">
-          <div className="primary w-full flex items-center justify-center flex-col md:flex-row">
+          <div className="primary w-full flex items-center justify-center  flex-col md:flex-row">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
-              className="w-full"
+              className="w-full md:w-auto "
             >
               <div className="profile relative w-full md:w-[250px] h-[200px] md:rounded-3xl">
                 <img src={ userImg?.[1].url ||defaultImage} alt="coverphoto" className='md:rounded-3xl w-full h-full object-cover' />
@@ -169,7 +169,7 @@ const UserProfile = () => {
                 <img src={ userImg?.[0].url ||defaultImage} alt="profile" className='w-[120px] h-[120px] outline-black outline-1 shadow-md  md:w-[120px] md:h-[120px] absolute left-7 -bottom-8 object-cover border-4 border-white rounded-full' />
               </div>
             </motion.div>
-            <div className='flex flex-col mt-3 md:flex-row gap-6 md:gap-2 w-full p-8 md:p-6 md:w-[70%] items-start md:items-center justify-evenly'>
+            <div className='flex flex-col mt-3 md:flex-row gap-6 md:gap-2 w-full p-8 md:p-6 md:w-[70%] items-start  md:items-center justify-evenly'>
               <motion.div
                 initial={{ x: '-100px', opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
