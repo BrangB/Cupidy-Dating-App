@@ -63,7 +63,7 @@ const Settings = () => {
               <SettingTheme />
             </div>
           </div>
-          <button onClick={logout} className='p-2 px-3 flex gap-2 items-center justify-center mt-8 text-colortext-third bg-btnbg-primary rounded-md duration-200'>
+          <button onClick={logout} id='logout' className='p-2 px-3 flex gap-2 items-center justify-center mt-8 text-colortext-third bg-btnbg-primary rounded-md duration-200'>
             <FiLogOut className='text-lg'/>
             <span>{languageData.setting.logout}</span>
           </button>

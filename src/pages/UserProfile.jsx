@@ -156,7 +156,7 @@ const UserProfile = () => {
           <span className='w-32 md:w-40 h-1 bg-colorbg-third absolute -bottom-2 left-0'></span>
         </h1>
         <div className="card w-full bg-colorbg-secondary p-0 md:p-12 mt-6 flex flex-wrap flex-col md:flex-row items-center justify-center md:items-start md:justify-start gap-6 md:gap-12">
-          <div className="primary w-full flex items-center justify-center  flex-col md:flex-row">
+          <div className="primary w-full flex items-center justify-center  flex-col md:flex-row" id="profilePhoto">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -181,20 +181,20 @@ const UserProfile = () => {
               </motion.div>
               <hr className='bg-gray-300 w-[150px] h-[1px] md:w-[1px] md:h-[200px]' />
               {userId && (
-                <div className="flex flex-col w-[100px] md:w-[150px]">
+                <div className="flex flex-col w-[100px] md:w-[150px]" id="qr">
                   <QRCode
                     size={300}
                     style={{ height: "auto", width: "100%" }}
                     value={`https://cupidy-dating.vercel.app/sharedProfile/${userId}`}
                     viewBox={`0 0 256 256`}
                   />
-                  <div className="openScan text-white mt-2 text-center uppercase cursor-pointer font-semibold bg-btnbg-primary p-2 px-3" onClick={() => setOpenQr(!openQr)}>Scan</div>
+                  <div className="openScan text-white mt-2 text-center uppercase cursor-pointer font-semibold bg-btnbg-primary p-2 px-3" onClick={() => setOpenQr(!openQr)}>{languageData.profilePage.scan}</div>
                 </div>
               )}
             </div>
           </div>
           <div className="line h-[4px] md:mt-2 bg-[#ebebeb] w-full"></div>
-          <div className="info w-full p-4 flex flex-col gap-2 md:gap-6">
+          <div className="info w-full p-4 flex flex-col gap-2 md:gap-6" id="detailInfo">
             <motion.div
               initial={{ x: '-100px', opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
@@ -230,9 +230,9 @@ const UserProfile = () => {
               </div>
             </motion.div>
           </div>
-          <div className="post w-full p-4">
+          <div className="post w-full p-4" id="post">
             <h1 className='font-medium text-2xl relative'>
-              Posts
+            {languageData.profilePage.post}
               <span className='w-20 h-1 bg-colorbg-third absolute -bottom-2 left-0'></span>
             </h1>
             <div className="photos w-full flex flex-wrap gap-6 mt-8">

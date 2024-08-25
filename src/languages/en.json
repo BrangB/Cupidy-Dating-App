@@ -26,7 +26,8 @@
     "interests": "Interests",
     "address": "Address",
     "birthDate": "Date of Birth",
-    "post": "Posts"
+    "post": "Posts",
+    "scan": "Scan"
   },
   "setting": {
     "header": "Settings",
@@ -155,5 +156,84 @@
     "message": "Messages",
     "noMessage": "No Message Yet!",
     "searchName": "Search Name"
+  },
+  "dashboard": {
+    "matchP": "Your Match Preferences",
+    "findMatchUser": "Finding Match User...",
+    "noFoundUser": "No profiles found",
+    "matchUser": "Match User",
+    "refresh" : "Refresh",
+    "findMatches": "Fetching Your Matches...",
+    "noMatchUser": "No matched users found",
+    "giveLike": "Likes Given:",
+    "likeReceive": "Likes Received:"
+  },
+  "guide": {
+    "dashboard": {
+    "mainDashboard": {
+      "title": "Main Dashboard",
+      "description": "The central hub for your activities, offering a quick overview of your account, latest updates, and personalized insights."
+    },
+    "messagingCenter": {
+      "title": "Messaging Center",
+      "description": "Connect with others in real-time, exchange messages, and stay in touch with your connections seamlessly."
+    },
+    "aboutPlatform": {
+      "title": "About Our Platform",
+      "description": "Learn more about our mission, values, and the team that’s dedicated to providing the best experience for you."
+    },
+    "yourProfile": {
+      "title": "Your Profile",
+      "description": "View and share your personal information, preferences, and account settings to tailor your experience."
+    },
+    "setting": {
+      "title": "Setting",
+      "description": "You can adjust the theme color & toggle the language between English and Burmese. You can also logout account."
+    },
+    "personalityType": {
+      "title": "Personality Type",
+      "description": "Explore and identify personality types that align with your traits, helping you connect with like-minded individuals."
+    },
+    "findMatch": {
+      "title": "Find Your Match",
+      "description": "Discover potential matches based on your preferences and interests, and take the first step towards meaningful connections."
+    },
+    "totalLikes": {
+      "title": "Total Likes Received",
+      "description": "Track the number of likes you’ve received from others, a quick indicator of your profile’s popularity."
+    }
+  },
+  "userProfile": {
+    "profilePhoto": {
+      "title": "Profile Information",
+      "description": "Manage your profile picture and other key details that represent your online persona. Keep it updated to reflect your best self."
+    },
+    "qrCode": {
+      "title": "QR Code for Sharing",
+      "description": "Easily share your profile with others by scanning or sharing this QR code, enabling quick connections."
+    },
+    "detailedInfo": {
+      "title": "Detailed Information",
+      "description": "View and update your location, interests, and birth date to make your profile more personalized and informative."
+    },
+    "userPosts": {
+      "title": "User Posts",
+      "description": "Browse through your posted images and content. Keep your followers engaged by sharing updates regularly."
+    }
+  },
+  "settings": {
+    "languageSettings": {
+      "title": "Language Settings",
+      "description": "Easily switch between English and Burmese to navigate the app in your preferred language."
+    },
+    "themeSelection": {
+      "title": "Theme Selection",
+      "description": "Customize your app experience by choosing from four main color themes. Pick the one that suits your style best."
+    },
+    "signOut": {
+      "title": "Sign Out",
+      "description": "Click here to securely log out of your account and end your session."
+    }
+  }
   }
 }

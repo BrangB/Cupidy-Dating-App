@@ -33,7 +33,7 @@ const Navbar = () => {
           {languageData.navbar.chat}
           <HeartNav name={"/chat"}/>
         </Link>
-        <div className="match w-full duration-300">
+        {/* <div className="match w-full duration-300">
           <div className='flex w-full gap-2 items-center justify-start'>
             <div onClick={() => setShowMatch(!showMatch)} className='w-full relative px-8 py-3 cursor-pointer flex gap-2 items-center justify-start hover:bg-[#ffffffc9] hover:text-colortext-primary duration-300 overflow-hidden text-ellipsis whitespace-nowrap'>
               <BsSearchHeart className='text-lg'/>
@@ -52,7 +52,7 @@ const Navbar = () => {
               {languageData.navbar.subNav.match.customize}
             </Link>
           </div>
-        </div>
+        </div> */}
         <div className="about w-full duration-300">
           <Link to={'/about'} id='about' className='flex w-full gap-2 items-center justify-start'>
               <div onClick={() => setShowAbout(!showAbout)} className='capitalize relative w-full px-8 py-3 cursor-pointer flex gap-2 items-center justify-start hover:bg-[#ffffffc9] hover:text-colortext-primary duration-300 overflow-hidden text-ellipsis whitespace-nowrap'>
@@ -95,7 +95,7 @@ const Navbar = () => {
           <HeartNav name={"/userProfile"}/>
         </Link>
       </div>
-      <div className='fixed bottom-0 p-4 bg-btnbg-primary border-t border-t-btnbg-hover'>
+      <div className='fixed bottom-0 p-4 bg-btnbg-primary border-t border-t-btnbg-hover' id='setting'>
         <Link to="/setting" className='capitalize flex p-2 px-4 bg-white text-colortext-primary justify-center items-center gap-3 rounded-sm'>
           <IoMdSettings className='flex items-center justify-center'/>
           {languageData.navbar.setting}

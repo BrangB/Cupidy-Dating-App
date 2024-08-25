@@ -1,20 +1,18 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../providers/LanguageProvider";
-import { IoHome } from "react-icons/io5";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { FaUserAlt } from "react-icons/fa";
 import { IoSettingsSharp } from "react-icons/io5";
 import { GoPlus } from "react-icons/go";
 import { BsFillChatHeartFill } from "react-icons/bs";
 import { RiTeamFill } from "react-icons/ri";
-import { BsSearchHeart } from "react-icons/bs";
 import { FaGlobe } from "react-icons/fa";
 import { MdOutlineSecurity } from "react-icons/md";
 import { FaQuestionCircle } from "react-icons/fa";
-import { HiOutlineAdjustments } from "react-icons/hi";
-import { TbHeartSearch } from "react-icons/tb";
 import GuideImg from '../assets/captainLogo.png'
+import { driver } from "driver.js";
+import "driver.js/dist/driver.css";
 
 const BottomMenu = () => {
   const { languageData } = useLanguage();
@@ -28,12 +26,49 @@ const BottomMenu = () => {
     setShowAbout(false)
   }
 
+  const getGuideStep = () => {
+    return [
+      { 
+        element: '#settingMobile', 
+        popover: { 
+          title: languageData.guide.dashboard.mainDashboard.title, 
+          description: languageData.guide.dashboard.mainDashboard.description
+        } 
+      },
+      { 
+        element: '#chatMobile', 
+        popover: { 
+          title: languageData.guide.dashboard.messagingCenter.title, 
+          description: languageData.guide.dashboard.messagingCenter.description
+        } 
+      },
+      { 
+        element: '#aboutMobile', 
+        popover: { 
+          title: languageData.guide.dashboard.aboutPlatform.title, 
+          description: languageData.guide.dashboard.aboutPlatform.description
+        } 
+      },
+    ];
+  }
+
+
+  const driverObjMobile = driver({
+    popoverClass: 'driverjs-theme',
+    showProgress: true,
+    animate: true,
+    prevBtnText: "Prev",
+    nextBtnText: "Next",
+    showButtons: ['next', 'previous', 'close'],
+    steps: getGuideStep()
+  });
+
   const Guide = () => {
-    setOpenMenu(false)
+    driverObjMobile.drive();
   }
 
   return (
-    <div className="w-full h-[80px] bg-white fixed bottom-0 flex md:hidden items-center justify-end gap-3 rounded-t-3xl p-6 shadow-2xl">
+    <div className="w-full h-[80px] bg-white fixed bottom-0 flex md:hidden items-center justify-end gap-6 rounded-t-3xl p-6 shadow-2xl">
       <div
         className={`overlay w-screen h-screen bg-[#69696921] fixed top-0 left-0 ${
           openMenu ? "opacity-100 z-40 " : "opacity-0 pointer-events-none"
@@ -42,7 +77,7 @@ const BottomMenu = () => {
       ></div>
       <Link
         to="/dashboard"
-        className="capitalize w-24 text-[#3f3f3f] h-16 rounded-full flex flex-col items-center justify-center"
+        className="capitalize text-[#3f3f3f] h-16 rounded-full flex flex-col items-center justify-center"
       >
         <MdOutlineSpaceDashboard className="text-xl" />
         <p>{languageData.navbar.dashboard}</p>
@@ -66,6 +101,7 @@ const BottomMenu = () => {
           to="/setting"
           className={`capitalize ${openMenu ? 'scale-100' : 'scale-0'} duration-300 w-14 h-14 z-50 rounded-full relative bg-btnbg-primary flex items-center justify-center`}
           onClick={closeAllMenu}
+          id="settingMobile"
         >
           <IoSettingsSharp
             className={`text-white text-2xl ${
@@ -112,6 +148,7 @@ const BottomMenu = () => {
         </div>
         <Link
           to="/chat"
+          id="chatMobile"
           className={`capitalize ${openMenu ? 'scale-100' : 'scale-0'} duration-300 w-14 h-14 z-50 rounded-full relative bg-btnbg-primary flex items-center justify-center`}
           onClick={closeAllMenu}
         >
@@ -126,6 +163,7 @@ const BottomMenu = () => {
           to={'/about'}
             className={`capitalize ${openMenu ? 'scale-100' : 'scale-0'} duration-300  z-50 rounded-full w-full h-full bg-btnbg-primary flex items-center justify-center`}
             onClick={() => setShowAbout(!showAbout)}
+            id="aboutMobile"
           >
             <RiTeamFill
               className={`text-white text-2xl ${
@@ -172,10 +210,10 @@ const BottomMenu = () => {
       </div>
       <Link
         to="/userProfile"
-        className="capitalize w-24 text-[#3f3f3f] h-16 rounded-full flex flex-col items-center justify-center"
+        className="capitalize text-[#3f3f3f] h-16 rounded-full flex flex-col items-center justify-center"
       >
         <FaUserAlt className="text-xl" />
-        {languageData.navbar.userProfile}
+        <p className="text-center">{languageData.navbar.userProfile}</p>
       </Link>
     </div>
   );

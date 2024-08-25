@@ -9,6 +9,7 @@ import toast from 'react-hot-toast';
 import { FiMenu } from "react-icons/fi";
 import { FaHandHoldingHeart } from "react-icons/fa";
 import { RiUserHeartFill } from "react-icons/ri";
+import { useLanguage } from "../providers/LanguageProvider";
 
 const Dashboard = () => {
   const [loading, setLoading] = useState(false);
@@ -19,6 +20,7 @@ const Dashboard = () => {
   const [matchProfile, setMatchProfile] = useState([]);  // Initialized as an empty array
   const [userId, setUserId] = useState(null);
   const { user, setUser } = useAuth();
+  const { languageData } = useLanguage();
   const [showMobileMatch, setShowMobileMatch] = useState(false);
   const backendhosturl = import.meta.env.VITE_BACKEND_HOST_URL;
 
@@ -166,7 +168,7 @@ const Dashboard = () => {
           <div className="mainContainer h-full w-[75%]" >
             <div className="matchContainer gap-4 bg-colorbg-secondary py-6 w-full h-full flex flex-col items-center justify-start">
               <h1 className='font-bold text-xl w-full relative translate-x-4 my-6 md:my-0 '>
-                  Match User
+                  {languageData.dashboard.matchUser}
                 <span className='w-20 md:w-20 h-1 bg-colorbg-third absolute -bottom-2 left-0'></span>
               </h1>
               {!loading && matchProfile.length > 0 && 
@@ -184,7 +186,7 @@ const Dashboard = () => {
                 <hr />
               </div>
             }
-            {!loading && matchProfile.length === 0 && <div className='w-full text-center text-colortext-primary'>No matched users found</div>}
+            {!loading && matchProfile.length === 0 && <div className='w-full text-center text-colortext-primary'>{languageData.dashboard.noMatchUser}</div>}
             </div>
           </div>
           <div className='totalMatch absolute bottom-0 left-0 w-[70%] h-[90px] bg-colorbg-secondary p-3 flex md:hidden items-center justify-center'>
@@ -192,11 +194,11 @@ const Dashboard = () => {
               <div>
                 <div className='flex items-center justify-start gap-4'>
                   <RiUserHeartFill className='text-xl text-colortext-primary'/>
-                  <p className='likeGetAndGive flex gap-3 items-center justify-start'><span className='font-medium text-colortext-primary'>Likes Given:</span> <span className='text-xl'>{totalLikesGive}</span></p>
+                  <p className='likeGetAndGive flex gap-3 items-center justify-start'><span className='font-medium text-colortext-primary'>{languageData.dashboard.giveLike}</span> <span className='text-xl'>{totalLikesGive}</span></p>
                 </div>
                 <div className='flex items-center justify-start gap-4'>
                   <FaHandHoldingHeart className='text-xl text-colortext-primary'/>
-                  <p className='likeGetAndGive flex gap-3 items-center justify-start'><span className='font-medium text-colortext-primary'>Likes Received:</span> <span className='text-xl'>{totalLikeGet}</span></p>
+                  <p className='likeGetAndGive flex gap-3 items-center justify-start'><span className='font-medium text-colortext-primary'>{languageData.dashboard.likeReceive}</span> <span className='text-xl'>{totalLikeGet}</span></p>
                 </div>
               </div>
             )}
@@ -206,11 +208,11 @@ const Dashboard = () => {
         <div className={`w-full ${showMobileMatch ? "overflow-hidden h-screen" : ""} md:w-[62%] flex flex-col items-start justify-center flex-wrap gap-5 `} id='typePerson'>
           <div className="profiles bg-colorbg-secondary min-h-[500px] custom-scrollbar p-2 md:p-6 py-10 w-full flex flex-wrap gap-8  items-start justify-center">
             <h1 className='font-bold text-xl md:text-xl w-full relative translate-x-4 mt-0 my-6 md:my-0 '>
-                Your Match Preferences
+                {languageData.dashboard.matchP}
               <span className='w-32 md:w-40 h-1 bg-colorbg-third absolute -bottom-2 left-0'></span>
             </h1>
             <div className='w-full flex gap-6 flex-wrap items-start justify-center'>
-              {loading && <div className='w-full loading-image text-colortext-primary flex items-center justify-center'>Finding Match User...</div>}
+              {loading && <div className='w-full loading-image text-colortext-primary flex items-center justify-center'>{languageData.dashboard.findMatchUser}</div>}
               {!loading && profiles.length > 0 && profiles.map((profile) => {
                 return (
                   <div key={profile.user_id} className=' w-[120px] h-[120px] md:w-[130px] md:h-[130px] rounded-xl profile relative bg-[#dbdbdb]'>
@@ -237,7 +239,7 @@ const Dashboard = () => {
                   </div>
                 )
               })}
-              {!loading && profiles.length === 0 && <div className='w-full text-center text-black'>No profiles found</div>}
+              {!loading && profiles.length === 0 && <div className='w-full text-center text-black'>{languageData.dashboard.noFoundUser}</div>}
             </div>
           </div>
         </div>
@@ -245,13 +247,13 @@ const Dashboard = () => {
         <div className="matchPeople hidden w-[35%] md:flex flex-col items-start justify-center gap-5" id='matchPerson'>
           <div className="matchContainer gap-4 bg-colorbg-secondary py-6 w-full h-[400px] flex flex-col items-center justify-start">
             <h1 className='font-bold text-lg md:text-xl w-full relative translate-x-4 my-6 md:my-0 '>
-                Match User
+                {languageData.dashboard.matchUser}
               <span className='w-32 md:w-20 h-1 bg-colorbg-third absolute -bottom-2 left-0'></span>
             </h1>
             <div className="refreshMatchUser w-full flex items-center justify-end mr-6  text-white">
-              <div className='w-20 bg-btnbg-primary flex items-center justify-center py-1 cursor-pointer hover:bg-btnbg-hover duration-200' onClick={refreshMatch}>Refresh</div>
+              <div className='w-auto px-2 bg-btnbg-primary flex items-center justify-center py-1 cursor-pointer hover:bg-btnbg-hover duration-200' onClick={refreshMatch}>{languageData.dashboard.refresh}</div>
             </div>
-            {showMatchUserLoading && <div className='w-full h-full loading-image text-colortext-primary flex items-center justify-center'>Fetching Your Matches...</div>}
+            {showMatchUserLoading && <div className='w-full h-full loading-image text-colortext-primary flex items-center justify-center'>{languageData.dashboard.findMatches}</div>}
             {!showMatchUserLoading && matchProfile.length > 0 && 
             <div className="matchContainer w-full h-full bg-colorbg-secondary overflow-y-scroll custom-scrollbar">
               {matchProfile.map((profile) => (
@@ -267,18 +269,18 @@ const Dashboard = () => {
               <hr />
             </div>
           }
-          {!loading && matchProfile.length === 0 && <div className='w-full mt-6 text-center text-colortext-primary'>No matched users found</div>}
+          {!loading && matchProfile.length === 0 && <div className='w-full mt-6 text-center text-colortext-primary'>{languageData.dashboard.noMatchUser}</div>}
           </div>
-          <div className='totalMatch w-full h-[90px] bg-colorbg-secondary p-3 flex items-center justify-center'>
+          <div className='totalMatch w-full h-[90px] bg-colorbg-secondary p-3 flex items-center justify-center' id='TotalLikes'>
             {totalLikeGet && totalLikesGive && (
               <div>
                 <div className='flex items-center justify-start gap-4'>
                   <RiUserHeartFill className='text-xl text-colortext-primary'/>
-                  <p className='likeGetAndGive flex gap-3 items-center justify-start'><span className='font-medium text-colortext-primary'>Likes Given:</span> <span className='text-xl'>{totalLikesGive}</span></p>
+                  <p className='likeGetAndGive flex gap-3 items-center justify-start'><span className='font-medium text-colortext-primary'>{languageData.dashboard.giveLike}</span> <span className='text-xl'>{totalLikesGive}</span></p>
                 </div>
                 <div className='flex items-center justify-start gap-4'>
                   <FaHandHoldingHeart className='text-xl text-colortext-primary'/>
-                  <p className='likeGetAndGive flex gap-3 items-center justify-start'><span className='font-medium text-colortext-primary'>Likes Received:</span> <span className='text-xl'>{totalLikeGet}</span></p>
+                  <p className='likeGetAndGive flex gap-3 items-center justify-start'><span className='font-medium text-colortext-primary'>{languageData.dashboard.likeReceive}</span> <span className='text-xl'>{totalLikeGet}</span></p>
                 </div>
               </div>
             )}
