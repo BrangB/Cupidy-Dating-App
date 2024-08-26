@@ -14,8 +14,8 @@ import { useLanguage } from "../providers/LanguageProvider";
 const Dashboard = () => {
   const [loading, setLoading] = useState(false);
   const [showMatchUserLoading, setShowMatchUserLoading] = useState(false);
-  const [totalLikeGet, setTotalLikeGet] = useState(null)
-  const [totalLikesGive, setTotalLikesGive] = useState(null)
+  const [totalLikeGet, setTotalLikeGet] = useState(0)
+  const [totalLikesGive, setTotalLikesGive] = useState(0)
   const [profiles, setProfiles] = useState([]);
   const [matchProfile, setMatchProfile] = useState([]);  // Initialized as an empty array
   const [userId, setUserId] = useState(null);
@@ -270,7 +270,18 @@ const Dashboard = () => {
           {!showMatchUserLoading && matchProfile.length === 0 && <div className='w-full mt-6 text-center text-colortext-primary'>{languageData.dashboard.noMatchUser}</div>}
           </div>
           <div className='totalMatch w-full h-[90px] bg-colorbg-secondary p-3 flex items-center justify-center' id='TotalLikes'>
-            {totalLikeGet && totalLikesGive && (
+            {(totalLikeGet == 0 && totalLikesGive == 0) ? (
+              <div>
+                <div className='flex items-center justify-start gap-4'>
+                  <RiUserHeartFill className='text-xl text-colortext-primary'/>
+                  <p className='likeGetAndGive flex gap-3 items-center justify-start'><span className='font-medium text-colortext-primary'>{languageData.dashboard.giveLike}</span> <span className='text-xl'>{totalLikesGive}</span></p>
+                </div>
+                <div className='flex items-center justify-start gap-4'>
+                  <FaHandHoldingHeart className='text-xl text-colortext-primary'/>
+                  <p className='likeGetAndGive flex gap-3 items-center justify-start'><span className='font-medium text-colortext-primary'>{languageData.dashboard.likeReceive}</span> <span className='text-xl'>{totalLikeGet}</span></p>
+                </div>
+              </div>
+            ): (
               <div>
                 <div className='flex items-center justify-start gap-4'>
                   <RiUserHeartFill className='text-xl text-colortext-primary'/>
