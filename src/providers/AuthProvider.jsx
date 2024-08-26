@@ -1,25 +1,25 @@
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, { createContext, useContext, useState } from 'react';
 
 const AuthContext = createContext();
 
 const AuthProvider = ({children}) => {
+    // Initialize user state directly from localStorage
+    const [user, setUser] = useState(() => {
+        const storedJwt = localStorage.getItem("jwt");
+        return storedJwt ? JSON.parse(storedJwt) : null;
+    });
 
-    const [user, setUser] = useState(null)
-    const [resetPassword, setResetPassword] = useState(false)
+    const [resetPassword, setResetPassword] = useState(false);
 
-    useEffect(() => {
-        setUser(JSON.parse(localStorage.getItem("jwt")))
-    }, [])
+    return (
+        <AuthContext.Provider value={{user, setUser, resetPassword, setResetPassword}}>
+            {children}
+        </AuthContext.Provider>
+    );
+};
 
-  return (
-    <AuthContext.Provider value={{user, setUser, resetPassword, setResetPassword}}>
-        {children}
-    </AuthContext.Provider>
-  )
-}
-
-export default AuthProvider
+export default AuthProvider;
 
 export const useAuth = () => {
-    return useContext(AuthContext)
-}
+    return useContext(AuthContext);
+};

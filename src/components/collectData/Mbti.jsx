@@ -74,7 +74,7 @@ const Mbti = () => {
                 className={`${detailInfo.mbti === item.value ? 'border-btnbg-primary border-4' : ''} w-[80px] h-[80px] md:w-[100px] md:h-[100px] rounded-full object-cover cursor-pointer duration-150`}
                 onClick={() => setDetailInfo({ ...detailInfo, mbti: item.value })}
                 onError={handleImageError}
-                loading='lazy'
+                loading="lazy"
               />
               <span className='text-colortext-secondary duration-200 font-medium p-1 px-3 cursor-pointer rounded-md'>
                 {item.label}

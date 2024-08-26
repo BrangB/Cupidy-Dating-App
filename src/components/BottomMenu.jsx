@@ -26,13 +26,13 @@ const BottomMenu = () => {
     setShowAbout(false)
   }
 
-  const getGuideStep = () => {
+  const getGuideStepMobile = () => {
     return [
       { 
         element: '#settingMobile', 
         popover: { 
-          title: languageData.guide.dashboard.mainDashboard.title, 
-          description: languageData.guide.dashboard.mainDashboard.description
+          title: languageData.guide.dashboard.setting.title, 
+          description: languageData.guide.dashboard.setting.description
         } 
       },
       { 
@@ -52,19 +52,19 @@ const BottomMenu = () => {
     ];
   }
 
-
-  const driverObjMobile = driver({
-    popoverClass: 'driverjs-theme',
-    showProgress: true,
-    animate: true,
-    prevBtnText: "Prev",
-    nextBtnText: "Next",
-    showButtons: ['next', 'previous', 'close'],
-    steps: getGuideStep()
-  });
-
   const Guide = () => {
-    driverObjMobile.drive();
+    if(openMenu){
+      var driverObjMobile = driver({
+        popoverClass: 'driverjs-theme',
+        showProgress: true,
+        animate: true,
+        prevBtnText: "Prev",
+        nextBtnText: "Next",
+        showButtons: ['next', 'previous', 'close'],
+        steps: getGuideStepMobile()
+      });
+    }
+    driverObjMobile?.drive();
   }
 
   return (

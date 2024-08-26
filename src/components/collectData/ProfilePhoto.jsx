@@ -11,8 +11,8 @@ const ProfilePhoto = () => {
   const { detailInfo, setDetailInfo } = useDetailInfo();
   const {user, setUser} = useAuth();
   const inputRefs = useRef([...Array(5)].map(() => React.createRef())); // Array of 5 refs for file inputs
-  const backendhosturl = import.meta.env.VITE_BACKEND_HOST_URL
-  const uploadhosturl = import.meta.env.BACKEND_UPLOAD_URL
+  const backendhosturl = import.meta.env.VITE_BACKEND_HOST_URL;
+  const uploadhosturl = import.meta.env.VITE_BACKEND_UPLOAD_URL;
 
   const handleClick = (index) => () => {
     inputRefs.current[index].current.click();
@@ -23,58 +23,54 @@ const ProfilePhoto = () => {
 
   const handleChange = async (index, event) => {
     const file = event.target.files[0]; // img file
-
-  
-    if(file){
+    
+    if (file) {
       const formData = new FormData();
       formData.append('file', file);
-
+  
       const username = detailInfo.fullName.replace(/\s+/g, '');
       formData.append('username', username); // Append the username
-
-      const uploadPhotos = async() => {
+  
+      const uploadPhotos = async () => {
         try {
           // Send the file data directly to the backend using fetch
-          const response = await fetch(`https://cupidy-vercel-blob.onrender.com/test`, {
+          const response = await fetch(`${uploadhosturl}/test`, {
             method: 'POST',
             body: formData,
           });
-      
+  
           // Check if the response is successful
           if (response.ok) {
             const result = await response.json();
-            console.log(result)
+            console.log(result);
             const updatedProfilePhoto = [...detailInfo.profilePhoto];
             updatedProfilePhoto[index].url = result.blobUrl;
 
+  
             setDetailInfo({
               ...detailInfo,
               profilePhoto: updatedProfilePhoto
             });
-
-            return "File uploaded successfully!";
           } else {
-            console.error('Error uploading file:', response.statusText);
+            throw new Error(`Error uploading files: ${response.statusText}`);
           }
         } catch (error) {
           console.error('Error uploading file:', error);
+          throw error; // Rethrow error for toast.promise to handle
         }
       }
-
+  
       toast.promise(
-        uploadPhotos(), {
+        uploadPhotos(), // Pass the function reference, not the invocation
+        {
           loading: 'Uploading file...',
-          success: () => {
-            return 'File uploaded successfully!'
-          },
-          error: 'Error uploading file.'
+          error: (error) => `Error uploading file: ${error.message}`,
+          success: 'File uploaded successfully!',
         }
-      )
+      );
     }
-
-
-    
   };
+  
 
   const uploadPhoto = async(token) => {
     try {

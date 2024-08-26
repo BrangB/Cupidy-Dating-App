@@ -172,21 +172,20 @@ const Dashboard = () => {
                 <span className='w-20 md:w-20 h-1 bg-colorbg-third absolute -bottom-2 left-0'></span>
               </h1>
               {!loading && matchProfile.length > 0 && 
-              <div className="matchContainer w-full h-full bg-colorbg-secondary overflow-y-scroll custom-scrollbar">
-                {matchProfile.map((profile) => (
-                    <div className="matchPerson flex justify-between px-6 items-center gap-3 p-4" key={profile.user_id}>
-                        <img src={profile.profile_photo} alt="profile" className='w-14 h-14 rounded-full object-cover' />
-                        <div className="heart flex flex-col items-center justify-center">
-                          <img src={loveConnnection} className='w-20' alt="" />
-                          <h1 className='text-[#636363] uppercase text-sm'>August, 9, 2024</h1>
-                        </div>
-                        <img src={profile.cover_photo} alt="profile" className='w-14 h-14 rounded-full object-cover' />
-                    </div>
-                ))}
-                <hr />
-              </div>
+              <div className="matchContainer w-full flex flex-col items-center justify-start h-full bg-colorbg-secondary overflow-y-scroll custom-scrollbar">
+              {matchProfile.map((profile) => (
+                  <div className="matchPerson flex justify-start px-6 items-center gap-6 p-4" key={profile.user_id}>
+                      <img src={profile.profile_photo} alt="profile" className='w-14 h-14 rounded-full object-cover' />
+                      <div className="heart flex flex-col items-center justify-center">
+                        <h1 className='text-[#636363] uppercase text-sm font-semibold'>{profile.name}</h1>
+                        <img src={loveConnnection} className='w-20' alt="" />
+                      </div>
+                  </div>
+              ))}
+              <hr className='w-[90%]'/>
+            </div>
             }
-            {!loading && matchProfile.length === 0 && <div className='w-full text-center text-colortext-primary'>{languageData.dashboard.noMatchUser}</div>}
+            {!showMatchUserLoading && matchProfile.length === 0 && <div className='w-full text-center text-colortext-primary'>{languageData.dashboard.noMatchUser}</div>}
             </div>
           </div>
           <div className='totalMatch absolute bottom-0 left-0 w-[70%] h-[90px] bg-colorbg-secondary p-3 flex md:hidden items-center justify-center'>
@@ -216,9 +215,9 @@ const Dashboard = () => {
               {!loading && profiles.length > 0 && profiles.map((profile) => {
                 return (
                   <div key={profile.user_id} className=' w-[120px] h-[120px] md:w-[130px] md:h-[130px] rounded-xl profile relative bg-[#dbdbdb]'>
-                    <img src={profile.profile_photo} alt="profile" className='w-full h-full rounded-xl object-cover' />
+                    <img src={profile.profile_photo} loading="lazy" alt="profile" className='w-full h-full rounded-xl object-cover' />
                     <div className="desc rounded-xl absolute -translate-x-10 p-0 flex flex-col gap-2 text-white top-0 left-0 w-0 h-0 bg-btnbg-primary z-20 bg-opacity-90 overflow-hidden transition-all duration-300">
-                      <img src={profile.cover_photo} alt="mini profile" className='miniProfile duration-300 w-0 h-0 border-0 border-white object-cover' />
+                      <img src={profile.cover_photo} loading="lazy" alt="mini profile" className='miniProfile duration-300 w-0 h-0 border-0 border-white object-cover' />
                       <h1 className='font-bold text-lg text-white px-3'>{profile.name}</h1>
                       <div className="location flex items-center gap-2 px-3">
                         <IoLocationOutline className='text-lg font-bold' />
@@ -255,21 +254,20 @@ const Dashboard = () => {
             </div>
             {showMatchUserLoading && <div className='w-full h-full loading-image text-colortext-primary flex items-center justify-center'>{languageData.dashboard.findMatches}</div>}
             {!showMatchUserLoading && matchProfile.length > 0 && 
-            <div className="matchContainer w-full h-full bg-colorbg-secondary overflow-y-scroll custom-scrollbar">
+            <div className="matchContainer w-full flex flex-col items-center justify-start h-full bg-colorbg-secondary overflow-y-scroll custom-scrollbar">
               {matchProfile.map((profile) => (
-                  <div className="matchPerson flex justify-between px-6 items-center gap-3 p-4" key={profile.user_id}>
+                  <div className="matchPerson flex justify-start px-6 items-center gap-6 p-4" key={profile.user_id}>
                       <img src={profile.profile_photo} alt="profile" className='w-14 h-14 rounded-full object-cover' />
                       <div className="heart flex flex-col items-center justify-center">
+                        <h1 className='text-[#636363] uppercase text-sm font-semibold'>{profile.name}</h1>
                         <img src={loveConnnection} className='w-20' alt="" />
-                        <h1 className='text-[#636363] uppercase text-sm'>August, 9, 2024</h1>
                       </div>
-                      <img src={profile.cover_photo} alt="profile" className='w-14 h-14 rounded-full object-cover' />
                   </div>
               ))}
-              <hr />
+              <hr className='w-[90%]'/>
             </div>
           }
-          {!loading && matchProfile.length === 0 && <div className='w-full mt-6 text-center text-colortext-primary'>{languageData.dashboard.noMatchUser}</div>}
+          {!showMatchUserLoading && matchProfile.length === 0 && <div className='w-full mt-6 text-center text-colortext-primary'>{languageData.dashboard.noMatchUser}</div>}
           </div>
           <div className='totalMatch w-full h-[90px] bg-colorbg-secondary p-3 flex items-center justify-center' id='TotalLikes'>
             {totalLikeGet && totalLikesGive && (
